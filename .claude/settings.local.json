@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/parth/Documents/Guardium Group Of Companies/builds/**)",
+      "Bash(bun create:*)"
+    ]
+  }
+}

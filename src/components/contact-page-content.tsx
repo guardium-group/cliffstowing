@@ -77,6 +77,7 @@ export function ContactPageContent() {
   const [honeypot, setHoneypot] = useState("");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
+  const pendingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [pendingSubmit, setPendingSubmit] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
@@ -88,6 +89,22 @@ export function ContactPageContent() {
     const { token, timestamp } = generateFormToken();
     setFormToken(token);
     setFormTimestamp(timestamp);
+  }, []);
+
+  const abortPendingVerification = (message: string) => {
+    if (pendingTimerRef.current) {
+      clearTimeout(pendingTimerRef.current);
+      pendingTimerRef.current = null;
+    }
+    setPendingSubmit(false);
+    setIsSubmitting(false);
+    setTurnstileToken(null);
+    turnstileRef.current?.reset();
+    setSubmitStatus({ type: "error", message });
+  };
+
+  useEffect(() => () => {
+    if (pendingTimerRef.current) clearTimeout(pendingTimerRef.current);
   }, []);
 
   const performSubmit = async (token: string) => {
@@ -128,6 +145,10 @@ export function ContactPageContent() {
   // When Turnstile resolves after a pending submit, fire automatically
   useEffect(() => {
     if (pendingSubmit && turnstileToken) {
+      if (pendingTimerRef.current) {
+        clearTimeout(pendingTimerRef.current);
+        pendingTimerRef.current = null;
+      }
       setPendingSubmit(false);
       void performSubmit(turnstileToken);
     }
@@ -151,6 +172,12 @@ export function ContactPageContent() {
       setIsSubmitting(true);
       setPendingSubmit(true);
       turnstileRef.current?.execute();
+      // Safety valve: if Turnstile never responds, unblock after 15s
+      pendingTimerRef.current = setTimeout(() => {
+        abortPendingVerification(
+          `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
+        );
+      }, 15000);
     }
   };
 
@@ -303,15 +330,16 @@ export function ContactPageContent() {
                     siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
                     onSuccess={setTurnstileToken}
                     onExpire={() => setTurnstileToken(null)}
-                    onError={() => {
-                      setTurnstileToken(null);
-                      setPendingSubmit(false);
-                      setIsSubmitting(false);
-                      setSubmitStatus({
-                        type: "error",
-                        message: `Security verification failed. Please refresh the page and try again, or call us directly at ${siteConfig.phone.display}.`,
-                      });
-                    }}
+                    onError={() =>
+                      abortPendingVerification(
+                        `Security verification failed. Please refresh the page and try again, or call us directly at ${siteConfig.phone.display}.`
+                      )
+                    }
+                    onTimeout={() =>
+                      abortPendingVerification(
+                        `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
+                      )
+                    }
                     options={{ execution: "execute", size: "invisible" }}
                   />
 

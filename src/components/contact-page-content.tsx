@@ -12,7 +12,7 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
-import { Turnstile } from "@marsidev/react-turnstile";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { Button } from "@/components/ui/button";
 import { submitContact, type ContactSubmission } from "@/lib/actions/contact";
 import { serviceOptions } from "@/lib/validations/contact";
@@ -76,7 +76,7 @@ export function ContactPageContent() {
   const [formTimestamp, setFormTimestamp] = useState(0);
   const [honeypot, setHoneypot] = useState("");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const turnstileRef = useRef<{ reset: () => void } | null>(null);
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;

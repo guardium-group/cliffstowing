@@ -181,36 +181,6 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
 
               </motion.div>
             </AnimatePresence>
-
-            {/* Mobile video — inline below CTAs, hidden on desktop */}
-            {ctvVideoUrl && (
-              <motion.div
-                className="block lg:hidden mt-2 mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.45, duration: 0.6, ease: "easeOut" }}
-              >
-                <div className="rounded-xl overflow-hidden backdrop-blur-xl bg-white/10 border border-white/10 shadow-xl">
-                  <div className="relative aspect-video bg-black">
-                    <iframe
-                      src={ctvVideoUrl}
-                      title="CTV News: Cliff's Towing is back under new management"
-                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                      allowFullScreen
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      className="absolute inset-0 w-full h-full border-0"
-                    />
-                  </div>
-                  <div className="px-4 py-2.5 flex items-center justify-between bg-black/80">
-                    <div className="flex items-center gap-2">
-                      <RadioTower className="w-3.5 h-3.5 text-primary" />
-                      <span className="text-xs text-white/80 font-mono">CTV News</span>
-                    </div>
-                    <span className="text-xs text-white/50">Featured Coverage</span>
-                  </div>
-                </div>
-              </motion.div>
-            )}
           </div>
         </div>
       </div>

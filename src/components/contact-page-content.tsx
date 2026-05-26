@@ -169,10 +169,9 @@ export function ContactPageContent() {
     if (turnstileToken) {
       void performSubmit(turnstileToken);
     } else {
+      // Token not yet ready (Turnstile still loading) — wait for onSuccess
       setIsSubmitting(true);
       setPendingSubmit(true);
-      turnstileRef.current?.execute();
-      // Safety valve: if Turnstile never responds, unblock after 15s
       pendingTimerRef.current = setTimeout(() => {
         abortPendingVerification(
           `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
@@ -340,7 +339,7 @@ export function ContactPageContent() {
                         `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
                       )
                     }
-                    options={{ execution: "execute", size: "invisible" }}
+                    options={{ execution: "render", size: "invisible", refreshExpired: "auto" }}
                   />
 
                   <Button

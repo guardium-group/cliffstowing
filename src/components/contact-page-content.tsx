@@ -78,6 +78,7 @@ export function ContactPageContent() {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [pendingSubmit, setPendingSubmit] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
@@ -89,38 +90,25 @@ export function ContactPageContent() {
     setFormTimestamp(timestamp);
   }, []);
 
-  const handleServiceToggle = (service: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      services: prev.services.includes(service)
-        ? prev.services.filter((s) => s !== service)
-        : [...prev.services, service],
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const performSubmit = async (token: string) => {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
-
     try {
       const submission: ContactSubmission = {
         ...formData,
         _honeypot: honeypot,
         _formToken: formToken,
         _timestamp: formTimestamp,
-        _turnstileToken: turnstileToken ?? "",
+        _turnstileToken: token,
       };
-
       const result = await submitContact(submission);
-
       if (result.success) {
         setSubmitStatus({ type: "success", message: result.message });
         setFormData({ name: "", email: "", phone: "", message: "", services: [] });
         setTurnstileToken(null);
         turnstileRef.current?.reset();
-        const { token, timestamp } = generateFormToken();
-        setFormToken(token);
+        const { token: newToken, timestamp } = generateFormToken();
+        setFormToken(newToken);
         setFormTimestamp(timestamp);
       } else {
         turnstileRef.current?.reset();
@@ -134,6 +122,35 @@ export function ContactPageContent() {
       });
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  // When Turnstile resolves after a pending submit, fire automatically
+  useEffect(() => {
+    if (pendingSubmit && turnstileToken) {
+      setPendingSubmit(false);
+      void performSubmit(turnstileToken);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingSubmit, turnstileToken]);
+
+  const handleServiceToggle = (service: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter((s) => s !== service)
+        : [...prev.services, service],
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (turnstileToken) {
+      void performSubmit(turnstileToken);
+    } else {
+      setIsSubmitting(true);
+      setPendingSubmit(true);
+      turnstileRef.current?.execute();
     }
   };
 
@@ -286,13 +303,17 @@ export function ContactPageContent() {
                     siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
                     onSuccess={setTurnstileToken}
                     onExpire={() => setTurnstileToken(null)}
-                    onError={() => setTurnstileToken(null)}
-                    options={{ theme: "light", size: "normal" }}
+                    onError={() => {
+                      setTurnstileToken(null);
+                      setPendingSubmit(false);
+                      setIsSubmitting(false);
+                    }}
+                    options={{ execution: "execute", size: "invisible" }}
                   />
 
                   <Button
                     type="submit"
-                    disabled={isSubmitting || !turnstileToken}
+                    disabled={isSubmitting}
                     className="w-full rounded-lg py-3 text-base font-medium"
                     size="lg"
                   >

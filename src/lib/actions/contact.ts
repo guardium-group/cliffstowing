@@ -1,7 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
-import { type ContactFormData } from "@/lib/validations/contact";
+import { type ContactFormData, contactSchema } from "@/lib/validations/contact";
+import { escapeHtml } from "@/lib/security/html-escape";
 import {
   checkRateLimit,
   getRateLimitKey,
@@ -110,16 +111,33 @@ export async function submitContact(
       };
     }
 
-    // Layer 4: Sanitize
+    // Layer 4: Zod validation
+    const parseResult = contactSchema.safeParse({
+      name: rawData.name,
+      email: rawData.email,
+      phone: rawData.phone,
+      message: rawData.message,
+      services: rawData.services,
+    });
+    if (!parseResult.success) {
+      return {
+        success: false,
+        message: parseResult.error.issues[0]?.message ?? "Please check your inputs and try again.",
+        code: "VALIDATION_ERROR",
+      };
+    }
+
+    // Layer 5: Sanitize
     const data = sanitizeFormData(rawData);
 
-    // Layer 5: Rate limit by email
+    // Layer 6: Rate limit by email
     const emailRateLimit = checkRateLimit(
       getRateLimitKey("contact_email", data.email.toLowerCase()),
       RATE_LIMITS.contactByEmail
     );
     if (!emailRateLimit.allowed) {
-      logSecurityEvent("RATE_LIMIT_EMAIL", { ip: clientIP, email: data.email });
+      const maskedEmail = data.email.replace(/(.{2})(.*)(@.*)/, "$1***$3");
+      logSecurityEvent("RATE_LIMIT_EMAIL", { ip: clientIP, email: maskedEmail });
       return {
         success: false,
         message: "A message was recently sent from this email. Please wait or call us directly.",
@@ -127,7 +145,7 @@ export async function submitContact(
       };
     }
 
-    // Layer 6: Spam check
+    // Layer 7: Spam check
     const spamCheck = performSpamCheck({ name: data.name, email: data.email, message: data.message });
     if (spamCheck.isSpam) {
       logSecurityEvent("SPAM_DETECTED", { ip: clientIP, score: spamCheck.score, reasons: spamCheck.reasons });
@@ -139,7 +157,7 @@ export async function submitContact(
       };
     }
 
-    // Layer 7: Config check
+    // Layer 8: Config check
     if (!process.env.BREVO_API_KEY) {
       console.error("BREVO_API_KEY not configured");
       return {
@@ -155,10 +173,15 @@ export async function submitContact(
       timeStyle: "short",
     });
 
+    const eName = escapeHtml(data.name);
+    const eEmail = escapeHtml(data.email);
+    const ePhone = escapeHtml(data.phone);
+    const eMessage = escapeHtml(data.message).replace(/\n/g, "<br>");
+
     const servicesHtml = data.services && data.services.length > 0
       ? `<tr>
           <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><strong style="color: #6b7280;">Service Needed:</strong></td>
-          <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">${data.services.join(", ")}</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">${data.services.map(escapeHtml).join(", ")}</td>
         </tr>`
       : "";
 
@@ -166,7 +189,7 @@ export async function submitContact(
       sender: { name: "Cliff's Towing Website", email: "noreply@cliffstowing.ca" },
       to: [{ email: siteConfig.email, name: "Cliff's Towing Dispatch" }],
       replyTo: { email: data.email, name: data.name },
-      subject: `New Towing Inquiry - ${data.name}`,
+      subject: `New Towing Inquiry - ${eName}`,
       htmlContent: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background-color: #dc2626; padding: 20px; text-align: center;">
@@ -176,15 +199,15 @@ export async function submitContact(
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><strong style="color: #6b7280;">Name:</strong></td>
-                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">${data.name}</td>
+                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">${eName}</td>
               </tr>
               <tr>
                 <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><strong style="color: #6b7280;">Email:</strong></td>
-                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><a href="mailto:${data.email}" style="color: #dc2626;">${data.email}</a></td>
+                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><a href="mailto:${eEmail}" style="color: #dc2626;">${eEmail}</a></td>
               </tr>
               <tr>
                 <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><strong style="color: #6b7280;">Phone:</strong></td>
-                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><a href="tel:${data.phone}" style="color: #dc2626;">${data.phone}</a></td>
+                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;"><a href="tel:${ePhone}" style="color: #dc2626;">${ePhone}</a></td>
               </tr>
               ${servicesHtml}
               <tr>
@@ -195,7 +218,7 @@ export async function submitContact(
             <div style="margin-top: 24px;">
               <strong style="color: #6b7280;">Message:</strong>
               <div style="background-color: white; padding: 16px; border-radius: 8px; margin-top: 8px; border: 1px solid #e5e7eb;">
-                ${data.message.replace(/\n/g, "<br>")}
+                ${eMessage}
               </div>
             </div>
           </div>

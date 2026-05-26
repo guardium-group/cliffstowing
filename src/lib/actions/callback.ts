@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { checkRateLimit, getRateLimitKey, RATE_LIMITS } from "@/lib/security/rate-limiter";
+import { escapeHtml } from "@/lib/security/html-escape";
 import { siteConfig } from "@/lib/site";
 
 const BREVO_API_URL = "https://api.brevo.com/v3";
@@ -22,6 +23,14 @@ export async function requestCallback(data: CallbackRequest): Promise<CallbackRe
     headersList.get("x-forwarded-for")?.split(",")[0].trim() ??
     headersList.get("x-real-ip") ??
     "unknown";
+
+  // Basic input validation
+  if (
+    typeof data.name !== "string" || data.name.trim().length < 2 || data.name.length > 120 ||
+    typeof data.phone !== "string" || data.phone.trim().length < 7 || data.phone.length > 30
+  ) {
+    return { success: false, message: "Please provide a valid name and phone number." };
+  }
 
   const rateLimit = checkRateLimit(getRateLimitKey("callback_ip", ip), RATE_LIMITS.contact);
   if (!rateLimit.allowed) {
@@ -45,8 +54,8 @@ export async function requestCallback(data: CallbackRequest): Promise<CallbackRe
     timeStyle: "short",
   });
 
-  const name = data.name.slice(0, 120).replace(/[<>]/g, "");
-  const phone = data.phone.slice(0, 30).replace(/[<>]/g, "");
+  const name = escapeHtml(data.name.slice(0, 120));
+  const phone = escapeHtml(data.phone.slice(0, 30));
 
   try {
     const response = await fetch(`${BREVO_API_URL}/smtp/email`, {

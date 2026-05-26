@@ -307,6 +307,10 @@ export function ContactPageContent() {
                       setTurnstileToken(null);
                       setPendingSubmit(false);
                       setIsSubmitting(false);
+                      setSubmitStatus({
+                        type: "error",
+                        message: `Security verification failed. Please refresh the page and try again, or call us directly at ${siteConfig.phone.display}.`,
+                      });
                     }}
                     options={{ execution: "execute", size: "invisible" }}
                   />

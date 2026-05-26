@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import Link from "next/link";
@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu as MenuIcon, X, Phone } from "lucide-react";
+import { Menu as MenuIcon, X, Phone, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Menu, MenuItem, HoveredLink } from "@/components/ui/navbar-menu";
 import { primaryNavLinks, siteConfig } from "@/lib/site";
@@ -49,6 +49,7 @@ const mobileLinkVariants = {
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [active, setActive] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -72,7 +73,7 @@ export function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
       >
-        <div className="container mx-auto px-4 max-w-7xl py-3">
+        <div className="container mx-auto px-5 sm:px-6 max-w-7xl py-3">
           <motion.div
             className={cn(
               "flex items-center justify-between border bg-white/96 backdrop-blur-xl rounded-full py-3 px-6 transition-all duration-300",
@@ -107,33 +108,33 @@ export function Header() {
                 </Link>
 
                 <MenuItem setActive={setActive} active={active} item="Services">
-                  <div className="flex flex-col space-y-4 text-sm">
+                  <div className="flex flex-col space-y-3.5">
                     <HoveredLink href="/services">
                       <div className="flex flex-col pb-3 border-b border-gray-100">
-                        <span className="font-bold text-primary">View all services</span>
+                        <span className="text-sm font-semibold text-primary">View all services</span>
                         <span className="text-xs text-gray-400 font-normal mt-0.5">Full list of towing services</span>
                       </div>
                     </HoveredLink>
                     {services.map((service) => (
                       <HoveredLink key={service.name} href={service.href}>
-                        <span className="text-gray-700 hover:text-primary">{service.name}</span>
+                        {service.name}
                       </HoveredLink>
                     ))}
                   </div>
                 </MenuItem>
 
                 <MenuItem setActive={setActive} active={active} item="Service Areas">
-                  <div className="text-sm">
+                  <div>
                     <HoveredLink href="/service-areas">
                       <div className="flex flex-col pb-3 border-b border-gray-100 mb-3">
-                        <span className="font-bold text-primary">View all service areas</span>
+                        <span className="text-sm font-semibold text-primary">View all service areas</span>
                         <span className="text-xs text-gray-400 font-normal mt-0.5">Edmonton &amp; surrounding communities</span>
                       </div>
                     </HoveredLink>
                     <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                       {serviceAreas.map((area) => (
                         <HoveredLink key={area.name} href={area.href}>
-                          <span className="text-gray-700 hover:text-primary">{area.name}</span>
+                          {area.name}
                         </HoveredLink>
                       ))}
                     </div>
@@ -235,34 +236,145 @@ export function Header() {
               className="lg:hidden bg-white/98 backdrop-blur-xl border border-gray-100 shadow-xl overflow-hidden mx-4 rounded-2xl mt-1"
             >
               <div className="px-5 py-5 space-y-1">
-                {primaryNavLinks.map((link, i) => (
-                  <motion.div
-                    key={link.href}
-                    custom={i}
-                    variants={mobileLinkVariants}
-                    initial="hidden"
-                    animate="visible"
+
+                {/* Home */}
+                <motion.div custom={0} variants={mobileLinkVariants} initial="hidden" animate="visible">
+                  <Link
+                    href="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "flex items-center justify-between py-3 px-3 rounded-xl text-sm font-medium transition-colors duration-150",
+                      isActive("/") ? "bg-red-50 text-primary" : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                    )}
                   >
+                    Home
+                    {isActive("/") && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
+                  </Link>
+                </motion.div>
+
+                {/* Services — expandable */}
+                <motion.div custom={1} variants={mobileLinkVariants} initial="hidden" animate="visible">
+                  <button
+                    onClick={() => setMobileExpanded(mobileExpanded === "services" ? null : "services")}
+                    className={cn(
+                      "flex items-center justify-between w-full py-3 px-3 rounded-xl text-sm font-medium transition-colors duration-150",
+                      isActive("/services") ? "bg-red-50 text-primary" : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                    )}
+                  >
+                    Services
+                    <motion.span
+                      animate={{ rotate: mobileExpanded === "services" ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </motion.span>
+                  </button>
+                  <AnimatePresence>
+                    {mobileExpanded === "services" && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-1 ml-3 pl-3 border-l border-gray-100 space-y-0.5 pb-1">
+                          <Link
+                            href="/services"
+                            onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }}
+                            className="flex items-center py-2 px-2 rounded-lg text-sm font-semibold text-primary hover:bg-red-50 transition-colors"
+                          >
+                            View all services
+                          </Link>
+                          {services.map((service) => (
+                            <Link
+                              key={service.name}
+                              href={service.href}
+                              onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }}
+                              className="flex items-center py-2 px-2 rounded-lg text-sm text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors"
+                            >
+                              {service.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+
+                {/* Service Areas — expandable */}
+                <motion.div custom={2} variants={mobileLinkVariants} initial="hidden" animate="visible">
+                  <button
+                    onClick={() => setMobileExpanded(mobileExpanded === "service-areas" ? null : "service-areas")}
+                    className={cn(
+                      "flex items-center justify-between w-full py-3 px-3 rounded-xl text-sm font-medium transition-colors duration-150",
+                      isActive("/service-areas") ? "bg-red-50 text-primary" : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                    )}
+                  >
+                    Service Areas
+                    <motion.span
+                      animate={{ rotate: mobileExpanded === "service-areas" ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </motion.span>
+                  </button>
+                  <AnimatePresence>
+                    {mobileExpanded === "service-areas" && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-1 ml-3 pl-3 border-l border-gray-100 space-y-0.5 pb-1">
+                          <Link
+                            href="/service-areas"
+                            onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }}
+                            className="flex items-center py-2 px-2 rounded-lg text-sm font-semibold text-primary hover:bg-red-50 transition-colors"
+                          >
+                            View all service areas
+                          </Link>
+                          {serviceAreas.map((area) => (
+                            <Link
+                              key={area.name}
+                              href={area.href}
+                              onClick={() => { setMobileMenuOpen(false); setMobileExpanded(null); }}
+                              className="flex items-center py-2 px-2 rounded-lg text-sm text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors"
+                            >
+                              {area.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+
+                {/* Articles, About, Contact */}
+                {[
+                  { label: "Articles", href: "/blog" },
+                  { label: "About", href: "/about" },
+                  { label: "Contact", href: "/contact" },
+                ].map((link, i) => (
+                  <motion.div key={link.href} custom={i + 3} variants={mobileLinkVariants} initial="hidden" animate="visible">
                     <Link
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={cn(
                         "flex items-center justify-between py-3 px-3 rounded-xl text-sm font-medium transition-colors duration-150",
-                        isActive(link.href)
-                          ? "bg-red-50 text-primary"
-                          : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                        isActive(link.href) ? "bg-red-50 text-primary" : "text-gray-700 hover:bg-gray-50 hover:text-primary"
                       )}
                     >
                       {link.label}
-                      {isActive(link.href) && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      )}
+                      {isActive(link.href) && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
                     </Link>
                   </motion.div>
                 ))}
 
                 <motion.div
-                  custom={primaryNavLinks.length}
+                  custom={6}
                   variants={mobileLinkVariants}
                   initial="hidden"
                   animate="visible"

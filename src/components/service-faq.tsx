@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
@@ -45,7 +45,7 @@ export const faqs = [
 export function ServiceFAQ() {
   return (
     <section className="py-24 sm:py-36 bg-white border-t border-gray-100">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
           <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-4">

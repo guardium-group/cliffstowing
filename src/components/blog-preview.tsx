@@ -1,7 +1,19 @@
+﻿"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
 import { getFeaturedBlogPosts } from "@/lib/blog";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 22 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  }),
+};
 
 export function BlogPreview() {
   const posts = getFeaturedBlogPosts(3);
@@ -10,9 +22,16 @@ export function BlogPreview() {
 
   return (
     <section className="py-20 sm:py-28 bg-white border-t border-black/[0.04]">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
         {/* Section header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-12">
+        <motion.div
+          variants={fadeUp}
+          custom={0}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-12"
+        >
           <div>
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-3">
               Guides &amp; articles
@@ -28,13 +47,21 @@ export function BlogPreview() {
             View all articles
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           {/* Featured card */}
+          <motion.div
+            variants={fadeUp}
+            custom={1}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            className="lg:col-span-7"
+          >
           <Link
             href={`/blog/${featured.slug}`}
-            className="group lg:col-span-7 bg-gray-50 rounded-2xl overflow-hidden ring-1 ring-black/[0.06] hover:ring-black/[0.10] hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+            className="group block bg-gray-50 rounded-2xl overflow-hidden ring-1 ring-black/[0.06] hover:ring-black/[0.10] hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
           >
             <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
               <Image
@@ -62,12 +89,20 @@ export function BlogPreview() {
               </p>
             </div>
           </Link>
+          </motion.div>
 
           {/* Secondary cards */}
           <div className="lg:col-span-5 flex flex-col gap-4">
-            {secondary.map((post) => (
-              <Link
+            {secondary.map((post, i) => (
+              <motion.div
                 key={post.slug}
+                variants={fadeUp}
+                custom={i + 2}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+              >
+              <Link
                 href={`/blog/${post.slug}`}
                 className="group flex gap-4 bg-gray-50 rounded-2xl p-4 ring-1 ring-black/[0.06] hover:ring-black/[0.10] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
               >
@@ -95,6 +130,7 @@ export function BlogPreview() {
                   </p>
                 </div>
               </Link>
+              </motion.div>
             ))}
           </div>
         </div>

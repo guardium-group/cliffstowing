@@ -93,7 +93,7 @@ export const HoveredLink = ({ children, ...rest }: React.ComponentProps<typeof L
   return (
     <Link
       {...rest}
-      className="text-gray-600 hover:text-primary transition-colors duration-150"
+      className="text-sm text-gray-700 hover:text-primary transition-colors duration-150"
     >
       {children}
     </Link>

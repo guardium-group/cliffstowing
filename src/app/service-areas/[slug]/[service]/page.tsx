@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Phone, MapPin } from "lucide-react";
@@ -89,7 +89,7 @@ export default async function ServiceLocationPage({ params }: ComboPageProps) {
         <header className="relative overflow-hidden bg-[#3e000c] pt-36 sm:pt-40 pb-16 sm:pb-20 text-white">
           <div className="absolute inset-0 bg-linear-to-br from-[#3e000c] via-[#3e000c]/85 to-[#3e000c]/60" aria-hidden="true" />
 
-          <div className="relative z-10 container mx-auto px-4 max-w-7xl">
+          <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-7xl">
             <Link
               href={`/service-areas/${loc.citySlug}`}
               className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors mb-8"
@@ -125,7 +125,7 @@ export default async function ServiceLocationPage({ params }: ComboPageProps) {
         </header>
 
         {/* Content */}
-        <div className="container mx-auto px-4 max-w-7xl py-14 sm:py-20">
+        <div className="container mx-auto px-5 sm:px-6 max-w-7xl py-14 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
             {/* Main content */}

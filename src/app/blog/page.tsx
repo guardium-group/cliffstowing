@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
@@ -48,7 +48,7 @@ export default function BlogPage() {
       />
 
       <section className="py-16 sm:py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-12 sm:mb-16">
             <div className="lg:col-span-5">
               <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-4">

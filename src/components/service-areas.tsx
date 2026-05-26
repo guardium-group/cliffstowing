@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 import { ServiceAreasMap } from "@/components/service-areas-map";
@@ -9,7 +9,7 @@ export function ServiceAreas() {
       id="service-areas"
       className="py-20 sm:py-28 bg-white border-t border-black/[0.06] scroll-mt-24 overflow-hidden"
     >
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Left: copy + city pills */}

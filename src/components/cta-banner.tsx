@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Phone, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
@@ -23,7 +23,7 @@ export function CTABanner() {
         </div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 max-w-7xl py-20 sm:py-28">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-7xl py-20 sm:py-28">
         <div className="max-w-[52ch]">
           <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-4">
             24/7 emergency service

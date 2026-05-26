@@ -15,16 +15,16 @@ interface BreadcrumbHeroProps {
 
 export function BreadcrumbHero({ title, breadcrumbs }: BreadcrumbHeroProps) {
   return (
-    <section className="relative h-[200px] sm:h-[240px] md:h-[300px] lg:h-[320px] overflow-hidden mt-0 bg-[#3e000c]">
+    <section className="relative overflow-hidden bg-[#3e000c] pt-28 sm:pt-32 md:pt-36 pb-10 sm:pb-14">
       {/* Subtle red ambient glow, top right only */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 right-0 w-80 h-80 bg-primary/25 rounded-full blur-[80px] transform translate-x-1/3 -translate-y-1/3" />
       </div>
-      {/* Bottom edge fade */}
+      {/* Bottom edge */}
       <div className="absolute bottom-0 inset-x-0 h-px bg-white/[0.06]" />
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 px-6 sm:px-10 md:px-16 lg:px-20 pb-10">
+      <div className="relative z-30 container mx-auto px-5 sm:px-6 max-w-7xl">
         <motion.nav
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

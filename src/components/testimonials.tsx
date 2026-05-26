@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const reviews = [
   {
@@ -106,7 +107,13 @@ export function Testimonials() {
 
   return (
     <section className="py-20 sm:py-28 bg-gray-50 border-t border-gray-100 overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl mb-10 sm:mb-12 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        className="container mx-auto px-5 sm:px-6 max-w-7xl mb-10 sm:mb-12 text-center"
+      >
         <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-4">
           Customer reviews
         </p>
@@ -116,7 +123,7 @@ export function Testimonials() {
         <p className="text-gray-500 text-base mt-3 max-w-[48ch] mx-auto leading-relaxed">
           Real reviews from real Edmonton-area customers on Google.
         </p>
-      </div>
+      </motion.div>
 
       {/* Marquee */}
       <div

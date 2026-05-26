@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Phone, Navigation, Wrench } from "lucide-react";
 import { motion } from "framer-motion";
@@ -43,7 +43,7 @@ const fadeUp = {
 export function HowItWorks() {
   return (
     <section className="py-20 sm:py-28 bg-[#3e000c] overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 sm:mb-20">
           <div className="lg:col-span-5">
             <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-4">

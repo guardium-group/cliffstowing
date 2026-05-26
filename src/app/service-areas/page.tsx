@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin, Clock, Phone } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -36,7 +36,7 @@ export default function ServiceAreasPage() {
       <main className="bg-white">
         {/* Hero */}
         <header className="bg-[#3e000c] pt-36 sm:pt-40 pb-16 sm:pb-20 text-white">
-          <div className="container mx-auto px-4 max-w-7xl">
+          <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
             <div className="flex flex-wrap items-center gap-3 border-l border-lime-300 pl-3 text-xs font-mono uppercase tracking-[0.16em] text-lime-300 mb-5">
               <span className="text-white flex items-center gap-1.5">
                 <MapPin className="h-3 w-3" />
@@ -62,7 +62,7 @@ export default function ServiceAreasPage() {
         </header>
 
         {/* Areas grid */}
-        <div className="container mx-auto px-4 max-w-7xl py-14 sm:py-20">
+        <div className="container mx-auto px-5 sm:px-6 max-w-7xl py-14 sm:py-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {serviceAreas.map((area) => (
               <Link

@@ -1,4 +1,4 @@
-import { RadioTower } from "lucide-react";
+﻿import { RadioTower } from "lucide-react";
 
 const announcementPoints = [
   {
@@ -30,7 +30,7 @@ export function NewsVideoSection() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 container mx-auto px-4 max-w-7xl">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-7xl">
         <div className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <div className="mb-5 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-primary">

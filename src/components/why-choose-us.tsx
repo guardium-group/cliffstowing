@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Clock, ShieldCheck, Star, Headphones } from "lucide-react";
 import { motion } from "framer-motion";
@@ -50,7 +50,7 @@ const itemVariants = {
 export function WhyChooseUs() {
   return (
     <section className="py-20 sm:py-28 bg-[#3e000c] overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
 
         {/* Top: headline + stats row */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 sm:mb-20">

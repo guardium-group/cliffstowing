@@ -21,6 +21,7 @@ export interface ContactSubmission extends ContactFormData {
   _honeypot?: string;
   _formToken?: string;
   _timestamp?: number;
+  _turnstileToken?: string;
 }
 
 export interface ContactResponse {
@@ -58,6 +59,33 @@ export async function submitContact(
   const clientIP = await getClientIP();
 
   try {
+    // Layer 0: Cloudflare Turnstile
+    if (!process.env.TURNSTILE_SECRET_KEY) {
+      console.error("TURNSTILE_SECRET_KEY not configured");
+    } else {
+      const turnstileRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            secret: process.env.TURNSTILE_SECRET_KEY,
+            response: rawData._turnstileToken ?? "",
+            remoteip: clientIP !== "unknown" ? clientIP : undefined,
+          }),
+        }
+      );
+      const turnstileData = await turnstileRes.json() as { success: boolean };
+      if (!turnstileData.success) {
+        logSecurityEvent("TURNSTILE_FAILED", { ip: clientIP });
+        return {
+          success: false,
+          message: "Human verification failed. Please try again.",
+          code: "TURNSTILE_ERROR",
+        };
+      }
+    }
+
     // Layer 1: Honeypot
     if (!validateHoneypot(rawData._honeypot)) {
       logSecurityEvent("HONEYPOT_TRIGGERED", { ip: clientIP });

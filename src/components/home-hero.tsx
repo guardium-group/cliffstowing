@@ -132,7 +132,7 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <motion.h1
-                  className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-[75px] font-bold mb-1 sm:mb-1 leading-tight tracking-tight text-white"
+                  className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-[70px] font-bold mb-1 sm:mb-1 leading-tight tracking-tight text-white"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1, duration: 0.5 }}
@@ -142,7 +142,7 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
                 </motion.h1>
 
                 <motion.p
-                  className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-6 max-w-2xl leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-6 max-w-3xl leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}

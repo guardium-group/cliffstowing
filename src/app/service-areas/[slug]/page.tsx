@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -94,7 +94,7 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
             <div className="absolute inset-0 bg-linear-to-br from-[#3e000c] via-[#3e000c]/75 to-[#3e000c]/40" />
           </div>
 
-          <div className="relative z-10 container mx-auto px-4 max-w-7xl">
+          <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-7xl">
             <Link
               href="/#service-areas"
               className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors mb-8"
@@ -131,7 +131,7 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
 
         {/* Key facts bar */}
         <div className="bg-gray-950 text-white">
-          <div className="container mx-auto px-4 max-w-7xl py-6">
+          <div className="container mx-auto px-5 sm:px-6 max-w-7xl py-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-primary flex-shrink-0" />
@@ -159,7 +159,7 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
         </div>
 
         {/* Content */}
-        <div className="container mx-auto px-4 max-w-7xl py-14 sm:py-20">
+        <div className="container mx-auto px-5 sm:px-6 max-w-7xl py-14 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
             {/* Main content */}

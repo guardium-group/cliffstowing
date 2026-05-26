@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -158,7 +158,7 @@ export function ServiceSpotlights({ limit }: ServiceSpotlightsProps) {
             id={service.id}
             className="relative py-20 sm:py-28 scroll-mt-24"
           >
-            <div className="container mx-auto px-4 max-w-7xl">
+            <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
               <div
                 className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
                   isEven ? "" : "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1"

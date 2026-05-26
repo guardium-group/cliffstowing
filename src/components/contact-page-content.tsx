@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Variants } from "framer-motion";
 import { motion } from "framer-motion";
 import {
@@ -12,6 +12,7 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { Button } from "@/components/ui/button";
 import { submitContact, type ContactSubmission } from "@/lib/actions/contact";
 import { serviceOptions } from "@/lib/validations/contact";
@@ -74,6 +75,8 @@ export function ContactPageContent() {
   const [formToken, setFormToken] = useState("");
   const [formTimestamp, setFormTimestamp] = useState(0);
   const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<{ reset: () => void } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
@@ -106,6 +109,7 @@ export function ContactPageContent() {
         _honeypot: honeypot,
         _formToken: formToken,
         _timestamp: formTimestamp,
+        _turnstileToken: turnstileToken ?? "",
       };
 
       const result = await submitContact(submission);
@@ -113,10 +117,14 @@ export function ContactPageContent() {
       if (result.success) {
         setSubmitStatus({ type: "success", message: result.message });
         setFormData({ name: "", email: "", phone: "", message: "", services: [] });
+        setTurnstileToken(null);
+        turnstileRef.current?.reset();
         const { token, timestamp } = generateFormToken();
         setFormToken(token);
         setFormTimestamp(timestamp);
       } else {
+        turnstileRef.current?.reset();
+        setTurnstileToken(null);
         setSubmitStatus({ type: "error", message: result.message });
       }
     } catch {
@@ -273,9 +281,18 @@ export function ContactPageContent() {
                     </div>
                   )}
 
+                  <Turnstile
+                    ref={turnstileRef}
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                    onSuccess={setTurnstileToken}
+                    onExpire={() => setTurnstileToken(null)}
+                    onError={() => setTurnstileToken(null)}
+                    options={{ theme: "light", size: "normal" }}
+                  />
+
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !turnstileToken}
                     className="w-full rounded-lg py-3 text-base font-medium"
                     size="lg"
                   >

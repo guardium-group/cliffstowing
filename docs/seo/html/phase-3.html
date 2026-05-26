@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 3 — Depth, Authority &amp; Measurement · Cliff's Towing SEO</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-phase="phase-3">
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="brand">Cliff's Towing <small>· SEO Execution Plan</small></div>
+      <a href="index.html">Overview</a>
+      <a href="phase-1.html">Phase 1</a>
+      <a href="phase-2.html">Phase 2</a>
+      <a href="phase-3.html" class="active">Phase 3</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">Phase 3 · Days 61–90</p>
+      <h1>Depth, authority &amp; measurement</h1>
+      <p class="lead">Build the long-tail compounding moat (service × location matrix), launch link-building, and start an optimization loop driven by real Search Console data.</p>
+    </div>
+
+    <div class="progress-panel">
+      <div class="row">
+        <strong>Phase 3 progress</strong>
+        <span>
+          <span class="progress-count">0 / 0 complete · 0%</span>
+          <button class="reset" type="button">Reset</button>
+        </span>
+      </div>
+      <div class="progress-bar"><div></div></div>
+    </div>
+
+    <!-- 3.1 Service × Location -->
+    <section class="phase-section">
+      <h2><span class="num">3.1</span>Service × Location matrix (the long-tail compound play)</h2>
+      <p class="intro">Where most competitors stop and where you pull ahead. Build 32 pages (4 top services × 8 top cities). Do NOT build all 108 combos — Google's helpful-content algorithm penalizes thin templated pages. Phase in only the high-value combos.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p3-1-1" data-task="3.1.1">
+          <div class="task-body">
+            <label for="p3-1-1" class="task-title">Create catch-all route <code>src/app/service-areas/[city]/[service]/page.tsx</code></label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="verify"><strong>VERIFY</strong> File compiles, <code>npm run build</code> succeeds.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-1-2" data-task="3.1.2">
+          <div class="task-body">
+            <label for="p3-1-2" class="task-title">Build content generator <code>src/lib/service-locations.ts</code></label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Matrix of <code>{city, service, responseTime, localRoute, sampleCall, faqs[]}</code>. Each combo must read like a human wrote it — no boilerplate string-replace.</div>
+            <div class="verify"><strong>VERIFY</strong> File exports a typed array with exactly 32 entries.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-1-3" data-task="3.1.3">
+          <div class="task-body">
+            <label for="p3-1-3" class="task-title"><code>generateStaticParams()</code> returns exactly 32 combos (not 108)</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="verify"><strong>VERIFY</strong> Build output reports 32 static service-location pages generated.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-1-4" data-task="3.1.4">
+          <div class="task-body">
+            <label for="p3-1-4" class="task-title">Update sitemap.ts to enumerate the 32 combos</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">See <a href="../reference/schema-snippets.md" target="_blank">schema-snippets.md, Patch 6</a>.</div>
+            <div class="verify"><strong>VERIFY</strong> <code>/sitemap.xml</code> shows ≥ 69 URLs total (8 static + 9 services + 12 areas + 32 combos + ≥ 8 blogs).</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-1-5" data-task="3.1.5">
+          <div class="task-body">
+            <label for="p3-1-5" class="task-title">Cross-link service pages ↔ their location variants</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Each service page should list its 8 city variants; each city page should list its 4 service variants.</div>
+            <div class="verify"><strong>VERIFY</strong> Random spot-check on <code>/services/heavy-duty-towing</code> shows ≥ 8 links to <code>/service-areas/[city]/heavy-duty-towing</code>.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-1-6" data-task="3.1.6">
+          <div class="task-body">
+            <label for="p3-1-6" class="task-title">Add structured data: Service + Place schema scoped to specific city</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="verify"><strong>VERIFY</strong> Rich Results Test on 3 random combos returns Service schema with correct city as <code>areaServed</code>.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-1-7" data-task="3.1.7">
+          <div class="task-body">
+            <label for="p3-1-7" class="task-title">Publish all 32 service × location pages</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Combinations: <strong>4 services</strong> (heavy-duty, flatbed, accident, roadside) × <strong>8 cities</strong> (Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc, Fort Saskatchewan, Nisku, Acheson).</div>
+            <div class="verify"><strong>VERIFY</strong> All 32 URLs return 200. Each ≥ 250 words of genuinely unique content (not templated boilerplate).</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 3.2 Third blog wave -->
+    <section class="phase-section">
+      <h2><span class="num">3.2</span>Third blog wave (8 more posts → 20 total)</h2>
+      <p class="intro">Round out topical authority. Mix evergreen, seasonal, and B2B-leaning content.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p3-2-1" data-task="3.2.1">
+          <div class="task-body">
+            <label for="p3-2-1" class="task-title">Post 13 — "Winter towing in Edmonton — extreme cold playbook"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Post live, linked from sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-2-2" data-task="3.2.2">
+          <div class="task-body">
+            <label for="p3-2-2" class="task-title">Post 14 — "What to keep in your trunk year-round (Edmonton edition)"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Post live, linked from sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-2-3" data-task="3.2.3">
+          <div class="task-body">
+            <label for="p3-2-3" class="task-title">Post 15 — "Towing an RV or motorhome in Alberta — what to know"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Post live, linked from sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-2-4" data-task="3.2.4">
+          <div class="task-body">
+            <label for="p3-2-4" class="task-title">Post 16 — "Motorcycle towing in Edmonton — when to call a flatbed"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Post live, linked from sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-2-5" data-task="3.2.5">
+          <div class="task-body">
+            <label for="p3-2-5" class="task-title">Post 17 — "Glossary: 22 towing terms every Edmonton driver should know"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Good for AI Overview citation — Google likes pulling from glossaries.</div>
+            <div class="verify"><strong>VERIFY</strong> Post live, contains ≥ 22 defined terms.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-2-6" data-task="3.2.6">
+          <div class="task-body">
+            <label for="p3-2-6" class="task-title">Post 18 — "Property managers — how to handle parking-lot tows legally"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Opens the B2B audience funnel (property management is a high-LTV segment).</div>
+            <div class="verify"><strong>VERIFY</strong> Post live, includes contact CTA aimed at property managers.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-2-7" data-task="3.2.7">
+          <div class="task-body">
+            <label for="p3-2-7" class="task-title">Post 19 — "Comparing Edmonton towing companies — what to actually look for"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Comparison-stage content for high-intent users.</div>
+            <div class="verify"><strong>VERIFY</strong> Post live, written objectively (not just a Cliff's brochure).</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-2-8" data-task="3.2.8">
+          <div class="task-body">
+            <label for="p3-2-8" class="task-title">Post 20 — "Behind the scenes — what a typical Cliff's dispatch shift looks like"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Humanizes the brand. Strong E-E-A-T signal — Google rewards content that proves real-world expertise.</div>
+            <div class="verify"><strong>VERIFY</strong> Post live, includes real (not stock) photos of the dispatch operation.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 3.3 Link building -->
+    <section class="phase-section">
+      <h2><span class="num">3.3</span>Link-building outreach</h2>
+      <p class="intro">Quality &gt; quantity. Target 5–10 real, contextually relevant backlinks. Track every attempt: target, contact, date, status, link acquired (yes/no).</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p3-3-1" data-task="3.3.1">
+          <div class="task-body">
+            <label for="p3-3-1" class="task-title">Apply to Alberta Motor Association as an approved service provider</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="verify"><strong>VERIFY</strong> Application submitted; track outcome (approval can take weeks).</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-3-2" data-task="3.3.2">
+          <div class="task-body">
+            <label for="p3-3-2" class="task-title">Edmonton Chamber of Commerce member directory link</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="verify"><strong>VERIFY</strong> Active link from Chamber member listing to cliffstowing.ca.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-3-3" data-task="3.3.3">
+          <div class="task-body">
+            <label for="p3-3-3" class="task-title">Pitch 5 local insurance brokers for referral partnership</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Offer to be their preferred towing referral in exchange for a website mention.</div>
+            <div class="verify"><strong>VERIFY</strong> 5 pitches sent. Track outcomes — even 1 conversion = a high-trust backlink.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-3-4" data-task="3.3.4">
+          <div class="task-body">
+            <label for="p3-3-4" class="task-title">Driving school content partnership</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Pitch 3 Edmonton driving schools: free guest content "What to do if you break down" in exchange for a backlink to your roadside page.</div>
+            <div class="verify"><strong>VERIFY</strong> ≥ 1 driving school publishes content with backlink.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-3-5" data-task="3.3.5">
+          <div class="task-body">
+            <label for="p3-3-5" class="task-title">Local news pitch (CTV Edmonton or Edmonton Journal)</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Pitch a winter-driving safety story with quotes from your dispatcher. Strong link + brand authority play.</div>
+            <div class="verify"><strong>VERIFY</strong> Pitch sent to ≥ 2 outlets. Track responses.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-3-6" data-task="3.3.6">
+          <div class="task-body">
+            <label for="p3-3-6" class="task-title">Sign up for HARO / Qwoted / Connectively</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Answer journalist queries about roadside emergencies, vehicle recovery, winter driving. Free, high-authority backlinks when picked up.</div>
+            <div class="verify"><strong>VERIFY</strong> Account active; ≥ 3 responses submitted in the phase.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-3-7" data-task="3.3.7">
+          <div class="task-body">
+            <label for="p3-3-7" class="task-title">Provincial Towing Association of Alberta (if applicable)</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="verify"><strong>VERIFY</strong> Member directory link active.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-3-8" data-task="3.3.8">
+          <div class="task-body">
+            <label for="p3-3-8" class="task-title">Property management association directories</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">REIBC, REIM Alberta — listings open the B2B door for parking-lot towing contracts.</div>
+            <div class="verify"><strong>VERIFY</strong> ≥ 1 association directory link live.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 3.4 GSC loop -->
+    <section class="phase-section">
+      <h2><span class="num">3.4</span>GSC-driven optimization loop</h2>
+      <p class="intro">The discipline that turns SEO from a project into a system. Repeat this monthly forever.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p3-4-1" data-task="3.4.1">
+          <div class="task-body">
+            <label for="p3-4-1" class="task-title">Pull 90-day GSC report</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">Identify: top 20 queries by impressions; top 10 queries with high impressions + low CTR; queries ranking position 11–20 (almost-page-1).</div>
+            <div class="verify"><strong>VERIFY</strong> Three lists exported (e.g., to spreadsheet). Each list has ≥ 5 items.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-4-2" data-task="3.4.2">
+          <div class="task-body">
+            <label for="p3-4-2" class="task-title">Rewrite title + meta for high-impression / low-CTR pages</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Better match the query intent, add stronger CTA. Wait 2–4 weeks, re-check CTR.</div>
+            <div class="verify"><strong>VERIFY</strong> ≥ 5 page metadata updates shipped. CTR re-checked after 2 weeks; document delta.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-4-3" data-task="3.4.3">
+          <div class="task-body">
+            <label for="p3-4-3" class="task-title">Beef up "almost ranking" pages (position 11–20)</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">For each: add 200–500 more relevant words, add an internal link from a higher-authority page, add 1–2 FAQ entries targeting related long-tail variants.</div>
+            <div class="verify"><strong>VERIFY</strong> ≥ 5 pages updated. Track rank movement after 30 days.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-4-4" data-task="3.4.4">
+          <div class="task-body">
+            <label for="p3-4-4" class="task-title">Find &amp; fix orphan pages</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Identify pages not linked from anywhere on the site. Add internal links.</div>
+            <div class="verify"><strong>VERIFY</strong> Zero orphan pages reported by your crawler / GSC Insights.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-4-5" data-task="3.4.5">
+          <div class="task-body">
+            <label for="p3-4-5" class="task-title">Clean up 404s and redirect chains</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> GSC Coverage report shows zero 404 errors and zero redirect chains.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-4-6" data-task="3.4.6">
+          <div class="task-body">
+            <label for="p3-4-6" class="task-title">Schedule a recurring monthly optimization session</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">Calendar invite, every 4 weeks, runs through the same loop. Without this scheduled, the loop dies.</div>
+            <div class="verify"><strong>VERIFY</strong> Recurring event live on the calendar.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 3.5 GBP velocity -->
+    <section class="phase-section">
+      <h2><span class="num">3.5</span>GBP review velocity</h2>
+      <p class="intro">By end of Phase 3, target ≥ 30 total reviews with steady velocity. Maintain the Phase 2 flow plus the additions below.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p3-5-1" data-task="3.5.1">
+          <div class="task-body">
+            <label for="p3-5-1" class="task-title">Maintain the automated review request flow</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> Sample 10 closed jobs from Phase 3 — confirm SMS/email was sent.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-5-2" data-task="3.5.2">
+          <div class="task-body">
+            <label for="p3-5-2" class="task-title">Reply to every review within 24 hours</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="verify"><strong>VERIFY</strong> Response rate ≥ 90% (run an audit).</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-5-3" data-task="3.5.3">
+          <div class="task-body">
+            <label for="p3-5-3" class="task-title">Publish weekly GBP posts</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Service updates, weather tips, before/after photos. Active posting is a ranking signal.</div>
+            <div class="verify"><strong>VERIFY</strong> ≥ 4 GBP posts published during this phase.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-5-4" data-task="3.5.4">
+          <div class="task-body">
+            <label for="p3-5-4" class="task-title">Upload 5+ new GBP photos</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="verify"><strong>VERIFY</strong> Photo count up ≥ 5 vs. end of Phase 2.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-5-5" data-task="3.5.5">
+          <div class="task-body">
+            <label for="p3-5-5" class="task-title">Update AggregateRating schema with current numbers</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="verify"><strong>VERIFY</strong> Schema values match current GBP count and average. Re-validate in Rich Results Test.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 3.6 Measurement dashboard -->
+    <section class="phase-section">
+      <h2><span class="num">3.6</span>Measurement dashboard</h2>
+      <p class="intro">Build the dashboard so you stop guessing whether SEO is working.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p3-6-1" data-task="3.6.1">
+          <div class="task-body">
+            <label for="p3-6-1" class="task-title">GA4 dashboard: organic sessions, conversions, top landing pages</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> GA4 Reports → Acquisition shows organic-attributed traffic and conversion counts.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-6-2" data-task="3.6.2">
+          <div class="task-body">
+            <label for="p3-6-2" class="task-title">GSC dashboard: impressions, clicks, average position, top queries + pages</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> GSC Performance view bookmarked with the 90-day default range.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-6-3" data-task="3.6.3">
+          <div class="task-body">
+            <label for="p3-6-3" class="task-title">GBP insights: views, calls, direction requests</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> GBP Insights tab tracked monthly; export to spreadsheet.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-6-4" data-task="3.6.4">
+          <div class="task-body">
+            <label for="p3-6-4" class="task-title">Local-pack tracker (Local Falcon or BrightLocal)</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">~$30–50/mo. Track local-pack rankings by zip code for "tow truck near me" + 8 city queries.</div>
+            <div class="verify"><strong>VERIFY</strong> Tool configured with ≥ 9 tracked queries and weekly snapshot enabled.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-6-5" data-task="3.6.5">
+          <div class="task-body">
+            <label for="p3-6-5" class="task-title">Backlink tracker (Ahrefs / Semrush MCP or spreadsheet)</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> Either MCP connected, or manual spreadsheet has every link from §3.3 logged.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-6-6" data-task="3.6.6">
+          <div class="task-body">
+            <label for="p3-6-6" class="task-title">Schedule a weekly SEO snapshot</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">Ask Cowork to run automatically once GSC + GA4 are connected: <em>"Every Monday at 8am, pull GSC clicks, impressions, and top 5 new queries from last week, plus GBP review count and average rating. Summarize changes vs. prior week."</em></div>
+            <div class="verify"><strong>VERIFY</strong> Scheduled task active; first snapshot received in inbox.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- Exit criteria -->
+    <section class="exit-criteria">
+      <h2>Phase 3 exit criteria</h2>
+      <p>All items below must be ticked. After this, work shifts from "build" to "compound" — keep blogging, keep getting reviews, keep iterating the GSC loop.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p3-exit-1" data-task="exit.1">
+          <div class="task-body">
+            <label for="p3-exit-1" class="task-title">All 32 service × location pages indexed in GSC</label>
+            <div class="verify"><strong>VERIFY</strong> GSC Coverage → Valid count ≥ 32 service-location URLs.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-exit-2" data-task="exit.2">
+          <div class="task-body">
+            <label for="p3-exit-2" class="task-title">≥ 20 blog posts indexed</label>
+            <div class="verify"><strong>VERIFY</strong> <code>/blog</code> lists ≥ 20 posts, GSC shows them all in Valid status.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-exit-3" data-task="exit.3">
+          <div class="task-body">
+            <label for="p3-exit-3" class="task-title">Ranking positions for ≥ 30 distinct queries</label>
+            <div class="verify"><strong>VERIFY</strong> GSC Performance → Queries with ≥ 1 impression and position ≤ 50: ≥ 30 rows.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-exit-4" data-task="exit.4">
+          <div class="task-body">
+            <label for="p3-exit-4" class="task-title">≥ 5 quality backlinks acquired (excluding directories)</label>
+            <div class="verify"><strong>VERIFY</strong> Backlink tracker shows 5 distinct linking domains beyond the citation directories from Phase 2.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-exit-5" data-task="exit.5">
+          <div class="task-body">
+            <label for="p3-exit-5" class="task-title">Local pack appearance for ≥ 5 distinct "tow truck [city]" queries</label>
+            <div class="verify"><strong>VERIFY</strong> Spot-check 5 queries in an incognito browser; Cliff's appears in the 3-pack.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-exit-6" data-task="exit.6">
+          <div class="task-body">
+            <label for="p3-exit-6" class="task-title">GBP ≥ 30 reviews, ≥ 4.5 average</label>
+            <div class="verify"><strong>VERIFY</strong> Public GBP listing shows the count and average.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-exit-7" data-task="exit.7">
+          <div class="task-body">
+            <label for="p3-exit-7" class="task-title">Monthly optimization loop scheduled and running</label>
+            <div class="verify"><strong>VERIFY</strong> Calendar event recurring; documented playbook saved in <code>docs/seo/</code>.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p3-exit-8" data-task="exit.8">
+          <div class="task-body">
+            <label for="p3-exit-8" class="task-title">Measurement dashboards live and reviewed weekly</label>
+            <div class="verify"><strong>VERIFY</strong> GA4, GSC, GBP, and local-pack snapshots all bookmarked or scheduled.</div>
+          </div>
+        </li>
+
+      </ul>
+      <div class="next-phase">
+        <span>All 8 green? You've completed the 90-day execution plan. Now compound.</span>
+        <a href="index.html">Back to overview →</a>
+      </div>
+    </section>
+
+    <section class="phase-section" style="margin-top: 24px;">
+      <h2><span class="num">∞</span>What comes after Phase 3</h2>
+      <p class="intro">Beyond day 90, the work shifts from "build" to "compound":</p>
+      <ul class="tasks">
+        <li><input type="checkbox" disabled><div class="task-body"><span class="task-title">Continue 2 blog posts/week → ~96 posts by end of year 1</span></div></li>
+        <li><input type="checkbox" disabled><div class="task-body"><span class="task-title">Continue review acquisition → 100+ reviews by end of year 1</span></div></li>
+        <li><input type="checkbox" disabled><div class="task-body"><span class="task-title">Expand service × location matrix to all 108 combos as ranking data proves out demand</span></div></li>
+        <li><input type="checkbox" disabled><div class="task-body"><span class="task-title">Run quarterly competitor gap analyses</span></div></li>
+        <li><input type="checkbox" disabled><div class="task-body"><span class="task-title">Open a second front: paid Google Local Service Ads (LSAs) appear above the local pack and are pay-per-lead</span></div></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    Phase 3 of 3 · Cliff's Towing SEO Execution Plan
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

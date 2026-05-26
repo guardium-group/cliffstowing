@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 /* CSS Variables for shadcn/ui - Light theme with white bg and #dc2626 red primary */
 @layer base {
@@ -9,7 +10,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 0 72% 51%; /* #dc2626 red */
+    --primary: 358 81% 51%; /* #e81e25 red */
     --primary-foreground: 0 0% 100%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -21,7 +22,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 0 72% 51%;
+    --ring: 358 81% 51%;
     --radius: 0.5rem;
   }
 
@@ -63,6 +64,34 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Accordion animations */
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+.animate-accordion-down {
+  animation: accordion-down 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-accordion-up {
+  animation: accordion-up 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Noise grain overlay; pointer-events-none, fixed, never on scrolling containers */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -85,6 +114,24 @@ html {
 :focus-visible {
   outline: 2px solid hsl(var(--primary));
   outline-offset: 2px;
+}
+
+/* Leaflet map tooltip override */
+.cliffs-map-tooltip {
+  background: #111827;
+  border: 1px solid rgba(232, 30, 37, 0.35);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 11px;
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+}
+.cliffs-map-tooltip::before {
+  border-top-color: rgba(232, 30, 37, 0.35) !important;
 }
 
 /* Skip to main content link (hidden until focused) */

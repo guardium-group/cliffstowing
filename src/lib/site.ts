@@ -1,0 +1,60 @@
+export const siteConfig = {
+  name: "Cliff's Towing",
+  legalName: "Cliff's Towing",
+  url: "https://cliffstowing.ca",
+  description:
+    "Cliff's Towing — Edmonton's 24/7 tow truck, roadside assistance, and heavy recovery service. Light duty, flatbed, heavy haul, and winching across 12 Alberta communities. Call anytime.",
+  phone: {
+    display: "+1 (780) 451-1555",
+    href: "tel:+17804511555",
+    compact: "780-451-1555",
+  },
+  email: "dispatch@cliffstowing.ca",
+  address: {
+    street: "4918 Roper Rd NW Suite 206",
+    city: "Edmonton",
+    region: "AB",
+    postalCode: "T6B 3T7",
+    country: "CA",
+    display: "4918 Roper Rd NW Suite 206, Edmonton, AB T6B 3T7",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=4918%20Roper%20Rd%20NW%20Suite%20206%2C%20Edmonton%2C%20AB%20T6B%203T7",
+  },
+  owner: "Guardium Group of Companies",
+  foundedCopy: "serving Edmonton for over 70 years",
+  hours: "24/7 emergency dispatch",
+  serviceArea: [
+    "Edmonton",
+    "Sherwood Park",
+    "St. Albert",
+    "Spruce Grove",
+    "Leduc",
+    "Beaumont",
+    "Devon",
+    "Morinville",
+    "Fort Saskatchewan",
+    "Stony Plain",
+    "Nisku",
+    "Acheson",
+  ],
+  services: [
+    "Light duty towing",
+    "Medium duty towing",
+    "Heavy duty towing",
+    "Flatbed towing",
+    "Accident recovery",
+    "Roadside assistance",
+    "Winching and recovery",
+    "Equipment transport",
+  ],
+  ogImage: "/images/hero/cliffs500rotator.jpg",
+} as const;
+
+export const primaryNavLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Service Areas", href: "/service-areas" },
+  { label: "Articles", href: "/blog" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+] as const;

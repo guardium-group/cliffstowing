@@ -13,6 +13,7 @@ import {
   performSpamCheck,
   sanitizeFormData,
 } from "@/lib/security/spam-detection";
+import { siteConfig } from "@/lib/site";
 
 const BREVO_API_URL = "https://api.brevo.com/v3";
 
@@ -60,7 +61,7 @@ export async function submitContact(
     // Layer 1: Honeypot
     if (!validateHoneypot(rawData._honeypot)) {
       logSecurityEvent("HONEYPOT_TRIGGERED", { ip: clientIP });
-      return { success: true, message: "Message sent successfully!" };
+      return { success: true, message: "Message sent successfully." };
     }
 
     // Layer 2: Timing
@@ -105,7 +106,7 @@ export async function submitContact(
       checkRateLimit(getRateLimitKey("suspicious", clientIP), RATE_LIMITS.suspicious);
       return {
         success: false,
-        message: "Your message could not be sent. Please call us directly at +1 (780) 555-0100.",
+        message: `Your message could not be sent. Please call us directly at ${siteConfig.phone.display}.`,
         code: "VALIDATION_ERROR",
       };
     }
@@ -115,7 +116,7 @@ export async function submitContact(
       console.error("BREVO_API_KEY not configured");
       return {
         success: false,
-        message: "Contact service temporarily unavailable. Please call us directly.",
+        message: `Contact service temporarily unavailable. Please call ${siteConfig.phone.display}.`,
         code: "CONFIG_ERROR",
       };
     }
@@ -135,9 +136,9 @@ export async function submitContact(
 
     const emailPayload = {
       sender: { name: "Cliff's Towing Website", email: "noreply@cliffstowing.ca" },
-      to: [{ email: "info@cliffstowing.ca", name: "Cliff's Towing" }],
+      to: [{ email: siteConfig.email, name: "Cliff's Towing Dispatch" }],
       replyTo: { email: data.email, name: data.name },
-      subject: `New Towing Inquiry — ${data.name}`,
+      subject: `New Towing Inquiry - ${data.name}`,
       htmlContent: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background-color: #dc2626; padding: 20px; text-align: center;">
@@ -170,7 +171,7 @@ export async function submitContact(
               </div>
             </div>
           </div>
-          <div style="padding: 20px; background-color: #1f2937; text-align: center;">
+          <div style="padding: 20px; background-color: #3e000c; text-align: center;">
             <p style="color: #9ca3af; margin: 0; font-size: 12px;">
               This message was sent from the Cliff's Towing website contact form.
             </p>
@@ -194,7 +195,7 @@ export async function submitContact(
       console.error("Brevo email error:", errorData);
       return {
         success: false,
-        message: "Unable to send message. Please try again or call us directly.",
+        message: `Unable to send message. Please try again or call ${siteConfig.phone.display}.`,
         code: "EMAIL_ERROR",
       };
     }
@@ -203,7 +204,7 @@ export async function submitContact(
 
     return {
       success: true,
-      message: "Message sent successfully! We'll get back to you within 2 hours.",
+      message: "Message sent successfully. We'll get back to you as soon as possible.",
     };
   } catch (error) {
     console.error("Contact submission error:", error);
@@ -213,7 +214,7 @@ export async function submitContact(
     });
     return {
       success: false,
-      message: "Unable to send message. Please try again or call us directly.",
+      message: `Unable to send message. Please try again or call ${siteConfig.phone.display}.`,
       code: "SERVER_ERROR",
     };
   }

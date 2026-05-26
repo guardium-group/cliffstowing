@@ -2,6 +2,7 @@
 import React from "react";
 import { motion, type Transition } from "framer-motion";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const transition: Transition = {
@@ -24,29 +25,40 @@ export const MenuItem = ({
   item: string;
   children?: React.ReactNode;
 }) => {
+  const isOpen = active === item;
+
   return (
     <div onMouseEnter={() => setActive(item)} className="relative">
-      <motion.p
-        transition={{ duration: 0.3 }}
+      <motion.button
+        type="button"
+        transition={{ duration: 0.2 }}
         className={cn(
-          "cursor-pointer font-mono text-gray-900 hover:text-primary font-medium text-md transition-colors",
-          active === item && "text-primary"
+          "flex items-center gap-1 cursor-pointer font-medium text-sm transition-colors duration-200 select-none",
+          isOpen ? "text-primary" : "text-gray-700 hover:text-primary"
         )}
       >
         {item}
-      </motion.p>
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          className="flex items-center"
+        >
+          <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+        </motion.span>
+      </motion.button>
+
       {active !== null && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 10 }}
+          initial={{ opacity: 0, scale: 0.95, y: 8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={transition}
         >
-          {active === item && (
-            <div className="absolute top-[calc(100%+0.5rem)] left-1/2 transform -translate-x-1/2 pt-4">
+          {isOpen && (
+            <div className="absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 pt-2">
               <motion.div
                 transition={transition}
                 layoutId="active"
-                className="bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 shadow-xl"
+                className="bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-100 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15)]"
               >
                 <motion.div layout className="w-max h-full p-4">
                   {children}
@@ -70,7 +82,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="relative bg-none font-mono flex justify-center space-x-4 px-8 py-3.5"
+      className="relative bg-none flex justify-center items-center space-x-4 px-6 py-3"
     >
       {children}
     </nav>
@@ -81,7 +93,7 @@ export const HoveredLink = ({ children, ...rest }: React.ComponentProps<typeof L
   return (
     <Link
       {...rest}
-      className="text-gray-600 font-mono hover:text-primary transition-colors"
+      className="text-gray-600 hover:text-primary transition-colors duration-150"
     >
       {children}
     </Link>

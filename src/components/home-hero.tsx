@@ -3,9 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Phone, ArrowRight, ShieldCheck, Clock, Star } from "lucide-react";
+import { Phone, ArrowRight, ShieldCheck, Clock, Star, RadioTower } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/lib/site";
 import { motion, AnimatePresence } from "framer-motion";
 
 export interface HeroSlide {
@@ -18,15 +19,66 @@ export interface HeroSlide {
 interface HomeHeroProps {
   slides: HeroSlide[];
   intervalMs?: number;
+  ctvVideoUrl?: string;
+}
+
+function GlassmorphicCTVPlayer({ ctvVideoUrl }: { ctvVideoUrl: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" as const }}
+      className="absolute bottom-8 right-8 z-20 hidden lg:block"
+    >
+      <div className="relative rounded-xl overflow-hidden backdrop-blur-xl bg-white/10 border border-gray-500/10 shadow-3xl">
+        <div className="relative w-80 lg:w-100 aspect-video overflow-hidden rounded-t-xl bg-black">
+          <iframe
+            src={ctvVideoUrl}
+            title="CTV News: Cliff's Towing is back under new management"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            className="absolute inset-0 w-full h-full border-0"
+          />
+        </div>
+        <div className="px-4 py-3 flex items-center justify-between bg-black">
+          <div className="flex items-center gap-2">
+            <RadioTower className="w-4 h-4 text-primary" />
+            <span className="text-xs text-white/80">CTV News</span>
+          </div>
+          <div className="text-xs text-white/80">Featured Coverage</div>
+        </div>
+        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-26 h-1 rounded-full bg-white/30" />
+      </div>
+    </motion.div>
+  );
 }
 
 const trustBadges = [
-  { icon: Clock, label: "24/7 Available" },
-  { icon: ShieldCheck, label: "Licensed & Insured" },
-  { icon: Star, label: "40+ Years Experience" },
+  {
+    icon: Clock,
+    label: "24/7 Available",
+    className: "bg-emerald-500/20 border-emerald-400/30 text-emerald-200",
+    dotClass: "bg-emerald-400",
+    iconClass: "text-emerald-300/70",
+  },
+  {
+    icon: ShieldCheck,
+    label: "Licensed & Insured",
+    className: "bg-blue-500/20 border-blue-400/30 text-blue-200",
+    dotClass: "bg-blue-400",
+    iconClass: "text-blue-300/70",
+  },
+  {
+    icon: Star,
+    label: "70+ Years Experience",
+    className: "bg-amber-500/20 border-amber-400/30 text-amber-200",
+    dotClass: "bg-amber-400",
+    iconClass: "text-amber-300/70",
+  },
 ];
 
-export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
+export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -41,7 +93,7 @@ export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
   const current = slides[activeIndex];
 
   return (
-    <section className="relative min-h-[100svh] sm:min-h-[650px] md:min-h-[700px] xl:h-[775px] overflow-hidden text-white">
+    <section className="relative min-h-svh sm:min-h-[700px] md:min-h-[750px] xl:h-[775px] overflow-hidden text-white">
       {/* Background Images */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -54,7 +106,7 @@ export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
           >
             <Image
               src={slide.image}
-              alt=""
+              alt={`${slide.title} ${slide.highlight}`}
               fill
               priority={index === 0}
               sizes="100vw"
@@ -65,12 +117,12 @@ export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-linear-to-br from-black via-black/65 to-gray-900/70" />
+      <div className="absolute inset-0 bg-linear-to-br from-black via-black/45 to-black/20" />
 
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10 h-full min-h-[100svh] sm:min-h-[650px] md:min-h-[700px] flex items-center">
-        <div className="flex h-full w-full items-center pb-16 sm:pb-20 pt-24 sm:pt-28">
-          <div className="max-w-4xl border-l-2 sm:border-l pl-4 sm:pl-8 border-white/50 pb-4">
+      <div className="container mx-auto px-4 relative z-10 h-full min-h-svh sm:min-h-[650px] md:min-h-[700px] flex items-center">
+        <div className="flex h-full w-full items-center py-16 sm:py-20">
+          <div className="max-w-7xl border-l-2 sm:border-l pl-4 sm:pl-8 border-white/50 pb-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.image}
@@ -79,27 +131,18 @@ export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <motion.p
-                  className="text-sm sm:text-base font-mono text-red-400 uppercase tracking-widest mb-2"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05, duration: 0.5 }}
-                >
-                  Edmonton&apos;s Trusted Towing Service
-                </motion.p>
-
                 <motion.h1
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-bold mb-2 sm:mb-4 leading-tight tracking-tight text-white"
+                  className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-[75px] font-bold mb-1 sm:mb-1 leading-tight tracking-tight text-white"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1, duration: 0.5 }}
                 >
                   {current.title}{" "}
-                  <span className="text-primary">{current.highlight}</span>
+                  <span className="text-white">{current.highlight}</span>
                 </motion.h1>
 
                 <motion.p
-                  className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-8 max-w-2xl leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-6 max-w-2xl leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
@@ -108,7 +151,7 @@ export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
                 </motion.p>
 
                 <motion.div
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-2 mb-8 sm:mb-10"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
@@ -118,9 +161,9 @@ export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
                     asChild
                     className="bg-primary hover:bg-primary/90 text-white font-semibold w-full sm:w-auto rounded-full text-sm sm:text-base shadow-lg shadow-red-900/30"
                   >
-                    <a href="tel:+17805550100">
+                    <a href={siteConfig.phone.href}>
                       <Phone className="mr-2 h-5 w-5" />
-                      Call Now — +1 (780) 555-0100
+                      Call Now - {siteConfig.phone.display}
                     </a>
                   </Button>
                   <Button
@@ -136,28 +179,15 @@ export function HomeHero({ slides, intervalMs = 5500 }: HomeHeroProps) {
                   </Button>
                 </motion.div>
 
-                {/* Trust Badges */}
-                <motion.div
-                  className="flex flex-wrap gap-3 sm:gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                >
-                  {trustBadges.map((badge) => (
-                    <div
-                      key={badge.label}
-                      className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm text-white/90"
-                    >
-                      <badge.icon className="h-4 w-4 text-primary" />
-                      <span>{badge.label}</span>
-                    </div>
-                  ))}
-                </motion.div>
+               
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
       </div>
+
+      {/* CTV News Video Widget */}
+      {ctvVideoUrl && <GlassmorphicCTVPlayer ctvVideoUrl={ctvVideoUrl} />}
 
       {/* Slide Indicators */}
       {slides.length > 1 && (

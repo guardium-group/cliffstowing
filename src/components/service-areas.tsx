@@ -1,49 +1,59 @@
-import { MapPin } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-
-const primaryAreas = [
-  "Edmonton",
-  "Sherwood Park",
-  "St. Albert",
-  "Spruce Grove",
-  "Leduc",
-  "Beaumont",
-  "Devon",
-  "Morinville",
-  "Fort Saskatchewan",
-  "Stony Plain",
-  "Nisku",
-  "Acheson",
-];
+import Link from "next/link";
+import { MapPin, Phone } from "lucide-react";
+import { siteConfig } from "@/lib/site";
+import { ServiceAreasMap } from "@/components/service-areas-map";
 
 export function ServiceAreas() {
   return (
-    <section className="py-16 sm:py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <Badge variant="secondary" className="mb-4">Service Area</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Serving Edmonton &amp; <span className="text-primary">Surrounding Areas</span>
-          </h2>
-          <p className="text-gray-500 mb-8 sm:mb-10 max-w-2xl mx-auto">
-            We provide fast towing and roadside assistance across the greater Edmonton region. If you&apos;re not sure if we cover your area, just call — we&apos;ll do our best to get to you.
-          </p>
+    <section
+      id="service-areas"
+      className="py-20 sm:py-28 bg-white border-t border-black/[0.06] scroll-mt-24 overflow-hidden"
+    >
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          <div className="flex flex-wrap justify-center gap-3">
-            {primaryAreas.map((area) => (
-              <div
-                key={area}
-                className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-700 font-medium shadow-sm"
-              >
-                <MapPin className="h-3.5 w-3.5 text-primary flex-shrink-0" />
-                {area}
-              </div>
-            ))}
+          {/* Left: copy + city pills */}
+          <div>
+            <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-4">
+              Service area
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-4 text-wrap-balance">
+              Serving Edmonton &amp; surroundings.
+            </h2>
+            <p className="text-gray-500 leading-relaxed mb-6 max-w-[46ch]">
+              Fast towing, recovery, transport, and roadside assistance across
+              the greater Edmonton region — 24/7, every day of the year. Not
+              sure if we cover your area? Call dispatch.
+            </p>
+            <a
+              href={siteConfig.phone.href}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline underline-offset-4 mb-8"
+            >
+              <Phone className="h-4 w-4" />
+              {siteConfig.phone.display}
+            </a>
+
+            {/* City pills */}
+            <div className="flex flex-wrap gap-2 mt-2">
+              {siteConfig.serviceArea.map((area) => {
+                const slug = area.toLowerCase().replace(/\./g, "").replace(/\s+/g, "-");
+                return (
+                  <Link
+                    key={area}
+                    href={`/service-areas/${slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-gray-500 bg-gray-50 border border-gray-200 hover:border-primary/40 hover:text-gray-800 rounded-full px-3 py-1.5 transition-colors duration-200"
+                  >
+                    <MapPin className="h-2.5 w-2.5 text-primary/70 shrink-0" />
+                    {area}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
-          <p className="mt-6 text-sm text-gray-400">
-            Not on the list? Call us — we serve a wide area and will do our best to help.
-          </p>
+          {/* Right: interactive map */}
+          <ServiceAreasMap />
+
         </div>
       </div>
     </section>

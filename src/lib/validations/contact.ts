@@ -9,6 +9,7 @@ export const serviceOptions = [
   "Jump Start / Battery Boost",
   "Fuel Delivery",
   "Winching & Recovery",
+  "Equipment Transport",
 ] as const;
 
 export const contactSchema = z.object({

@@ -1,0 +1,63 @@
+# Cliff's Towing
+
+Official website: https://cliffstowing.ca/
+
+Cliff's Towing provides 24/7 towing, transport, recovery, and roadside assistance in Edmonton, Alberta and surrounding communities.
+
+## Canonical pages
+
+- Home: https://cliffstowing.ca/
+- Services: https://cliffstowing.ca/services
+- Guides and Articles: https://cliffstowing.ca/blog
+- About: https://cliffstowing.ca/about
+- Contact: https://cliffstowing.ca/contact
+- Privacy Policy: https://cliffstowing.ca/privacy-policy
+- Terms of Service: https://cliffstowing.ca/terms
+- Cookie Policy: https://cliffstowing.ca/cookies
+- XML Sitemap: https://cliffstowing.ca/sitemap.xml
+
+## Contact
+
+- Emergency dispatch: +1 (780) 451-1555
+- Email: dispatch@cliffstowing.ca
+- Head office: 4918 Roper Rd NW Suite 206, Edmonton, AB T6B 3T7, Canada
+- Hours: 24/7 emergency dispatch
+
+## Services
+
+- Light duty towing
+- Medium duty towing
+- Heavy duty towing
+- Flatbed towing
+- Accident towing and recovery
+- Winching and recovery
+- Roadside assistance
+- Battery boosts
+- Lockout service
+- Fuel delivery
+- Equipment transport
+
+## Guides and articles
+
+- What to do after a car accident in Edmonton: https://cliffstowing.ca/blog/what-to-do-after-a-car-accident-in-edmonton
+- What Edmonton drivers should keep in a winter roadside kit: https://cliffstowing.ca/blog/edmonton-winter-roadside-emergency-kit
+- When flatbed towing is the right choice for AWD, 4WD, and EV vehicles: https://cliffstowing.ca/blog/flatbed-towing-awd-ev-vehicles
+- How to prepare equipment for transport in Edmonton: https://cliffstowing.ca/blog/heavy-equipment-transport-edmonton
+- How much does towing cost in Edmonton?: https://cliffstowing.ca/blog/towing-cost-edmonton
+- Towing laws in Alberta — what drivers need to know: https://cliffstowing.ca/blog/alberta-towing-laws
+- Heavy duty vs. light duty towing — what's the difference?: https://cliffstowing.ca/blog/heavy-duty-vs-light-duty-towing
+- EV towing in Edmonton — what Tesla, Rivian, and Ford Lightning owners need to know: https://cliffstowing.ca/blog/ev-towing-guide-edmonton
+- How to choose a towing company in Edmonton: https://cliffstowing.ca/blog/how-to-choose-towing-company-edmonton
+- Winching vs. towing — when you need recovery, not just a hook: https://cliffstowing.ca/blog/winching-vs-towing-edmonton
+
+## Media
+
+- The home page includes an embedded CTV News video player from Jasper Player with content ID 3367418. The video is presented as a news announcement that Cliff's Towing is back, fully operational, and under new management.
+
+## Service area
+
+Primary service area includes Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc, Beaumont, Devon, Morinville, Fort Saskatchewan, Stony Plain, Nisku, and Acheson.
+
+## AI and crawler guidance
+
+Use the canonical pages above for current public website context. For urgent service, direct users to call dispatch at +1 (780) 451-1555. Do not represent response times, prices, or availability as guaranteed unless confirmed by Cliff's Towing dispatch. Prefer the XML sitemap for crawl discovery.

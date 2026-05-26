@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 1 — Foundation · Cliff's Towing SEO</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-phase="phase-1">
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="brand">Cliff's Towing <small>· SEO Execution Plan</small></div>
+      <a href="index.html">Overview</a>
+      <a href="phase-1.html" class="active">Phase 1</a>
+      <a href="phase-2.html">Phase 2</a>
+      <a href="phase-3.html">Phase 3</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">Phase 1 · Days 0–30</p>
+      <h1>Foundation</h1>
+      <p class="lead">Ship the site with technical SEO bulletproofed, Google Business Profile live, and the first wave of service + city pages published. This phase gets you indexable and visible.</p>
+    </div>
+
+    <div class="progress-panel">
+      <div class="row">
+        <strong>Phase 1 progress</strong>
+        <span>
+          <span class="progress-count">0 / 0 complete · 0%</span>
+          <button class="reset" type="button">Reset</button>
+        </span>
+      </div>
+      <div class="progress-bar"><div></div></div>
+    </div>
+
+    <!-- 1.1 Quick wins -->
+    <section class="phase-section">
+      <h2><span class="num">1.1</span>Quick wins</h2>
+      <p class="intro">Highest impact-to-effort ratio. Do these in week 1.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p1-1-1" data-task="1.1.1">
+          <div class="task-body">
+            <label for="p1-1-1" class="task-title">Add geo coordinates to LocalBusiness JSON-LD</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">File: <code>src/lib/structured-data.ts</code>, function <code>localBusinessJsonLd()</code>. Add inside the returned object:</div>
+<pre><code>geo: { "@type": "GeoCoordinates", latitude: 53.5461, longitude: -113.4938 },
+priceRange: "$$",</code></pre>
+            <div class="verify"><strong>VERIFY</strong> View page source on homepage. Confirm the JSON-LD <code>&lt;script&gt;</code> contains <code>"geo"</code>. Then run it through <a href="https://search.google.com/test/rich-results" target="_blank" rel="noreferrer">Rich Results Test</a> — must show no errors.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-2" data-task="1.1.2">
+          <div class="task-body">
+            <label for="p1-1-2" class="task-title">Uncomment or replace <code>&lt;MapEmbed /&gt;</code> on the homepage</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">File: <code>src/app/page.tsx</code>, line 46. Either uncomment the existing component, or replace with a lighter static map pointing to the GBP listing once claimed.</div>
+            <div class="verify"><strong>VERIFY</strong> Load <code>/</code> in a browser — the map renders below the testimonials section.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-3" data-task="1.1.3">
+          <div class="task-body">
+            <label for="p1-1-3" class="task-title">Update homepage hero H1 to include "Edmonton" + service keyword</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">File: <code>src/components/home-hero.tsx</code>. Current pattern is brand-first ("Fast, Reliable Towing Service"). Change to: <strong>"24/7 Towing &amp; Recovery in Edmonton"</strong>.</div>
+            <div class="verify"><strong>VERIFY</strong> View page source — confirm there is exactly one <code>&lt;h1&gt;</code> on the homepage and it contains both "Edmonton" and a service keyword.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-4" data-task="1.1.4">
+          <div class="task-body">
+            <label for="p1-1-4" class="task-title">Audit image alt text across all components</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Search the codebase for <code>&lt;Image</code> and <code>alt=</code>. Replace generic alts (<code>"Cliff's truck"</code>) with descriptive, keyword-aware text. Example: <code>alt="Flatbed tow truck loading SUV on Anthony Henday Edmonton"</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> Run <code>grep -rn 'alt=' src/components</code> and inspect every result. Zero generic alts remain.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-5" data-task="1.1.5">
+          <div class="task-body">
+            <label for="p1-1-5" class="task-title">Remove duplicate FAQ JSON-LD from non-service pages</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Remove <code>&lt;JsonLd data={faqJsonLd(faqs)} /&gt;</code> from <code>/about</code>, <code>/contact</code>, and the blog <code>[slug]</code> page. Keep on <code>/services</code> only. The FAQ <em>section</em> can still render visually — just drop the structured data.</div>
+            <div class="verify"><strong>VERIFY</strong> View source on <code>/about</code> — no <code>"@type": "FAQPage"</code> blocks. View source on <code>/services</code> — exactly one FAQPage block.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-6" data-task="1.1.6">
+          <div class="task-body">
+            <label for="p1-1-6" class="task-title">Add a "Last updated" line visually to blog posts</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Already in JSON-LD as <code>dateModified</code>. Verify it renders visually in the blog post layout for E-E-A-T signal — readers and Google both like to see freshness.</div>
+            <div class="verify"><strong>VERIFY</strong> Load any blog post — visible "Last updated [date]" appears near the byline.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-7" data-task="1.1.7">
+          <div class="task-body">
+            <label for="p1-1-7" class="task-title">Set up Google Search Console</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Verify domain ownership at <a href="https://search.google.com/search-console" target="_blank" rel="noreferrer">search.google.com/search-console</a>. Submit <code>sitemap.xml</code>. Set international targeting to Canada.</div>
+            <div class="verify"><strong>VERIFY</strong> GSC dashboard shows "Verified" for the domain and "Submitted" status for the sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-8" data-task="1.1.8">
+          <div class="task-body">
+            <label for="p1-1-8" class="task-title">Set up Bing Webmaster Tools</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Verify domain at <a href="https://www.bing.com/webmasters" target="_blank" rel="noreferrer">bing.com/webmasters</a>. Submit sitemap. Bing is ~5% of CA market — still worth it.</div>
+            <div class="verify"><strong>VERIFY</strong> Bing Webmaster Tools shows the site verified with sitemap submitted.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-1-9" data-task="1.1.9">
+          <div class="task-body">
+            <label for="p1-1-9" class="task-title">Wire up GA4 conversion events</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">Track at minimum: phone-click (any <code>tel:</code> anchor), contact form submit, GBP directions click. Add an analytics helper or wire into existing event handlers.</div>
+            <div class="verify"><strong>VERIFY</strong> Open GA4 DebugView, click the phone CTA on the live site, confirm the event lands.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 1.2 GBP -->
+    <section class="phase-section">
+      <h2><span class="num">1.2</span>Google Business Profile</h2>
+      <p class="intro">GBP is ~32% of local-pack ranking. Without it, you do not exist in the 3-pack. Do this in week 1, in parallel with the code work above.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p1-2-1" data-task="1.2.1">
+          <div class="task-body">
+            <label for="p1-2-1" class="task-title">Claim the GBP listing</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Go to <a href="https://business.google.com" target="_blank" rel="noreferrer">business.google.com</a>, search for Cliff's Towing, claim or create the listing.</div>
+            <div class="verify"><strong>VERIFY</strong> Dashboard shows the listing under your Google account.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-2" data-task="1.2.2">
+          <div class="task-body">
+            <label for="p1-2-2" class="task-title">Complete verification (postcard, phone, or video)</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Google decides the verification method. Plan for up to 14 days if it's postcard.</div>
+            <div class="verify"><strong>VERIFY</strong> GBP dashboard shows green "Verified" badge.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-3" data-task="1.2.3">
+          <div class="task-body">
+            <label for="p1-2-3" class="task-title">Set primary category to "Towing service"</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Add secondary categories: <strong>Roadside assistance service</strong>, <strong>Auto wrecker</strong>, and <strong>Equipment rental agency</strong> (if doing transport jobs).</div>
+            <div class="verify"><strong>VERIFY</strong> Profile info → Categories shows primary + 2–3 secondary categories.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-4" data-task="1.2.4">
+          <div class="task-body">
+            <label for="p1-2-4" class="task-title">Add all 12 service-area cities</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">From <code>siteConfig.serviceArea</code>: Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc, Beaumont, Devon, Morinville, Fort Saskatchewan, Stony Plain, Nisku, Acheson.</div>
+            <div class="verify"><strong>VERIFY</strong> GBP "Service area" lists all 12.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-5" data-task="1.2.5">
+          <div class="task-body">
+            <label for="p1-2-5" class="task-title">Set business hours to "Open 24 hours" all 7 days</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="verify"><strong>VERIFY</strong> Profile shows "Open 24 hours" 7 days/week.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-6" data-task="1.2.6">
+          <div class="task-body">
+            <label for="p1-2-6" class="task-title">Verify NAP is identical to the site</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Phone: <code>+1 (780) 451-1555</code> · Address: <code>4918 Roper Rd NW Suite 206, Edmonton, AB T6B 3T7</code>. Must match the site exactly — formatting included.</div>
+            <div class="verify"><strong>VERIFY</strong> Cross-check: site footer phone == GBP phone, site address == GBP address, character-for-character.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-7" data-task="1.2.7">
+          <div class="task-body">
+            <label for="p1-2-7" class="task-title">Write a 750-character business description</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Must include: <em>Edmonton, 24/7, towing, heavy duty, roadside assistance, 70+ years</em>. Write it as a paragraph, not a keyword list.</div>
+            <div class="verify"><strong>VERIFY</strong> Profile description is 600–750 characters and contains all required terms.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-8" data-task="1.2.8">
+          <div class="task-body">
+            <label for="p1-2-8" class="task-title">Upload at least 15 photos</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Mix: exterior of trucks (multiple angles), heavy recovery in action, flatbed loading, team/operator faces (builds trust), logo and signage. Real photos &gt; stock.</div>
+            <div class="verify"><strong>VERIFY</strong> Photo count ≥ 15 in GBP dashboard, no stock-photo watermarks.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-9" data-task="1.2.9">
+          <div class="task-body">
+            <label for="p1-2-9" class="task-title">Add all 9 services from siteConfig with descriptions</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Light/medium/heavy duty towing, flatbed, accident recovery, roadside, winching, equipment transport, battery boost. Short description per service.</div>
+            <div class="verify"><strong>VERIFY</strong> GBP "Services" section lists all 9 with text.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-10" data-task="1.2.10">
+          <div class="task-body">
+            <label for="p1-2-10" class="task-title">Enable relevant attributes</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Turn on: 24/7 emergency, On-site services, Online estimates (if applicable).</div>
+            <div class="verify"><strong>VERIFY</strong> Attributes visible in the public preview of the profile.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-11" data-task="1.2.11">
+          <div class="task-body">
+            <label for="p1-2-11" class="task-title">Seed 5–8 Questions in Q&amp;A and answer them yourself</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="task-detail">Use questions from your existing FAQ: cost, response time, EV towing, AWD towing, insurance handling, etc.</div>
+            <div class="verify"><strong>VERIFY</strong> GBP profile shows ≥ 5 answered questions.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-2-12" data-task="1.2.12">
+          <div class="task-body">
+            <label for="p1-2-12" class="task-title">Publish the first GBP post announcing 24/7 service</label>
+            <div class="task-meta"><span class="badge badge-manual">MANUAL</span></div>
+            <div class="verify"><strong>VERIFY</strong> Post visible in the "Updates" section of the public GBP listing.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 1.3 Service pages -->
+    <section class="phase-section">
+      <h2><span class="num">1.3</span>Build the service-pages route</h2>
+      <p class="intro">Single biggest code change in Phase 1. Current <code>/services</code> uses anchor fragments — Google cannot rank fragments as separate pages.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p1-3-1" data-task="1.3.1">
+          <div class="task-body">
+            <label for="p1-3-1" class="task-title">Create <code>src/lib/services.ts</code> with the service data model</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Mirror the shape of <code>src/lib/blog.ts</code>. Each entry needs: <code>slug</code>, <code>title</code>, <code>metaDescription</code>, <code>h1</code>, <code>intro</code>, <code>sections[]</code>, <code>faqs[]</code>, <code>keywords[]</code>, <code>relatedServices[]</code>, <code>heroImage</code>, <code>heroImageAlt</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> File exports a typed <code>services</code> array. TypeScript compiles with no errors.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-2" data-task="1.3.2">
+          <div class="task-body">
+            <label for="p1-3-2" class="task-title">Create <code>src/app/services/[slug]/page.tsx</code></label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Mirror <code>src/app/blog/[slug]/page.tsx</code>. Implement <code>generateStaticParams()</code> + <code>generateMetadata()</code> with per-page title, description, canonical, OG. Render breadcrumb + Service + FAQPage JSON-LD.</div>
+            <div class="verify"><strong>VERIFY</strong> <code>npm run build</code> succeeds and produces 9 static routes under <code>/services/*</code>.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-3" data-task="1.3.3">
+          <div class="task-body">
+            <label for="p1-3-3" class="task-title">Add Service schema generator to <code>src/lib/structured-data.ts</code></label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">See <a href="../reference/schema-snippets.md" target="_blank">schema-snippets.md, Patch 3</a> for the exact code.</div>
+            <div class="verify"><strong>VERIFY</strong> <a href="https://search.google.com/test/rich-results" target="_blank" rel="noreferrer">Rich Results Test</a> on any service URL detects the Service schema and reports no errors.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-4" data-task="1.3.4">
+          <div class="task-body">
+            <label for="p1-3-4" class="task-title">Update <code>src/components/services-section.tsx</code> links</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Change every <code>href: "/services#anchor"</code> to <code>href: "/services/[slug]"</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> <code>grep -n 'services#' src/components/services-section.tsx</code> returns zero matches.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-5" data-task="1.3.5">
+          <div class="task-body">
+            <label for="p1-3-5" class="task-title">Update <code>src/app/sitemap.ts</code> to iterate services</label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">See <a href="../reference/schema-snippets.md" target="_blank">schema-snippets.md, Patch 5</a> for the full refactor.</div>
+            <div class="verify"><strong>VERIFY</strong> Visit <code>/sitemap.xml</code> on staging — confirm all service URLs appear.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-6" data-task="1.3.6">
+          <div class="task-body">
+            <label for="p1-3-6" class="task-title">Write &amp; publish <code>/services/heavy-duty-towing</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">800–1,500 words, H1 includes "Heavy Duty Towing Edmonton", 5+ service-specific FAQs, hero image with descriptive alt, links to 2–3 related services + 1 blog post, phone CTA above fold.</div>
+            <div class="verify"><strong>VERIFY</strong> Page loads, passes Rich Results Test, word count ≥ 800.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-7" data-task="1.3.7">
+          <div class="task-body">
+            <label for="p1-3-7" class="task-title">Write &amp; publish <code>/services/flatbed-towing</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Page loads, passes Rich Results Test, word count ≥ 800.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-8" data-task="1.3.8">
+          <div class="task-body">
+            <label for="p1-3-8" class="task-title">Write &amp; publish <code>/services/accident-recovery</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Page loads, passes Rich Results Test, word count ≥ 800.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-3-9" data-task="1.3.9">
+          <div class="task-body">
+            <label for="p1-3-9" class="task-title">Write &amp; publish <code>/services/roadside-assistance</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Page loads, passes Rich Results Test, word count ≥ 800.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 1.4 City pages -->
+    <section class="phase-section">
+      <h2><span class="num">1.4</span>Build the service-areas (city) route</h2>
+      <p class="intro">12 cities are declared in <code>siteConfig.serviceArea</code> but have no landing pages. Without them you cannot rank for "tow truck [city]" queries.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p1-4-1" data-task="1.4.1">
+          <div class="task-body">
+            <label for="p1-4-1" class="task-title">Create <code>src/lib/service-areas.ts</code></label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Per-city data: <code>slug</code>, <code>name</code>, <code>intro</code>, <code>responseTime</code>, <code>mainRoutes[]</code>, <code>localLandmarks[]</code>, <code>testimonial?</code>, <code>faqs[]</code>, <code>mapEmbedUrl</code>, <code>keywords[]</code>, <code>metaDescription</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> File compiles, types match the city pages' expected shape.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-4-2" data-task="1.4.2">
+          <div class="task-body">
+            <label for="p1-4-2" class="task-title">Create <code>src/app/service-areas/[slug]/page.tsx</code></label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Same dynamic-route pattern as blog. Add LocalBusiness JSON-LD scoped to the city (see <a href="../reference/schema-snippets.md" target="_blank">schema-snippets.md, Patch 4</a>).</div>
+            <div class="verify"><strong>VERIFY</strong> <code>npm run build</code> generates static pages for the 4 cities listed below.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-4-3" data-task="1.4.3">
+          <div class="task-body">
+            <label for="p1-4-3" class="task-title">Convert city pills to links in <code>src/components/service-areas.tsx</code></label>
+            <div class="task-meta"><span class="badge badge-code">CODE</span></div>
+            <div class="task-detail">Currently plain <code>&lt;span&gt;</code>. Change to <code>&lt;Link href="/service-areas/[slug]"&gt;</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> Clicking any city pill on the homepage navigates to its dedicated page.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-4-4" data-task="1.4.4">
+          <div class="task-body">
+            <label for="p1-4-4" class="task-title">Write &amp; publish <code>/service-areas/edmonton</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">≥ 300 words, mention real local routes (Henday, Whitemud, QEII), realistic response time, embedded map, internal links to 3+ services. Must NOT be templated — Google penalizes doorway pages.</div>
+            <div class="verify"><strong>VERIFY</strong> Page word count ≥ 300, contains ≥ 2 city-specific facts not on other city pages.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-4-5" data-task="1.4.5">
+          <div class="task-body">
+            <label for="p1-4-5" class="task-title">Write &amp; publish <code>/service-areas/sherwood-park</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Page word count ≥ 300, ≥ 2 unique Sherwood Park facts.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-4-6" data-task="1.4.6">
+          <div class="task-body">
+            <label for="p1-4-6" class="task-title">Write &amp; publish <code>/service-areas/st-albert</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Page word count ≥ 300, ≥ 2 unique St. Albert facts.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-4-7" data-task="1.4.7">
+          <div class="task-body">
+            <label for="p1-4-7" class="task-title">Write &amp; publish <code>/service-areas/spruce-grove</code></label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="verify"><strong>VERIFY</strong> Page word count ≥ 300, ≥ 2 unique Spruce Grove facts.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 1.5 Blog wave -->
+    <section class="phase-section">
+      <h2><span class="num">1.5</span>First blog wave (4 new posts)</h2>
+      <p class="intro">Question-format keywords that compete for People Also Ask snippets. Each post adds an entry to <code>blogPosts</code> in <code>src/lib/blog.ts</code> — no code changes needed.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p1-5-1" data-task="1.5.1">
+          <div class="task-body">
+            <label for="p1-5-1" class="task-title">Post 1 — "How much does a tow cost in Edmonton?"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Target: <code>how much does a tow cost in edmonton</code>. Angle: pricing structure, what changes a quote, what to ask dispatch. Link to <code>/services/roadside-assistance</code> and <code>/services/flatbed-towing</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> Post visible at <code>/blog/[slug]</code>, listed in <code>/blog</code>, appears in sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-5-2" data-task="1.5.2">
+          <div class="task-body">
+            <label for="p1-5-2" class="task-title">Post 2 — "Do you have to use the tow truck the police called?"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Target: <code>do i have to use the tow truck the police call</code>. Angle: driver rights, choosing your own tow, insurance implications. Link to <code>/services/accident-recovery</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> Post live, sitemap updated.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-5-3" data-task="1.5.3">
+          <div class="task-body">
+            <label for="p1-5-3" class="task-title">Post 3 — "Towing an EV in Edmonton — what every owner should know"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Target: <code>ev towing edmonton</code>. Angle: why flatbed is mandatory, what to tell dispatch, battery concerns. Link to <code>/services/flatbed-towing</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> Post live, sitemap updated.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-5-4" data-task="1.5.4">
+          <div class="task-body">
+            <label for="p1-5-4" class="task-title">Post 4 — "Insurance and towing in Alberta — what you need to know"</label>
+            <div class="task-meta"><span class="badge badge-content">CONTENT</span></div>
+            <div class="task-detail">Target: <code>accident towing edmonton</code>, <code>insurance towing alberta</code>. Link to <code>/services/accident-recovery</code>.</div>
+            <div class="verify"><strong>VERIFY</strong> Post live, sitemap updated.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 1.6 Technical hardening -->
+    <section class="phase-section">
+      <h2><span class="num">1.6</span>Technical SEO hardening</h2>
+      <p class="intro">Pre-launch validation. Each item should pass before the site goes live.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p1-6-1" data-task="1.6.1">
+          <div class="task-body">
+            <label for="p1-6-1" class="task-title">Run <code>npm run build</code> with zero errors</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> Build succeeds. Resolve any warnings related to metadata, image dimensions, or unused imports.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-6-2" data-task="1.6.2">
+          <div class="task-body">
+            <label for="p1-6-2" class="task-title">Run Lighthouse audit on production</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">Target: ≥ 90 Performance, ≥ 95 SEO, ≥ 95 Accessibility, ≥ 95 Best Practices.</div>
+            <div class="verify"><strong>VERIFY</strong> Lighthouse panel in Chrome DevTools shows all 4 scores at target. Repeat on 3 pages: home, a service page, a blog post.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-6-3" data-task="1.6.3">
+          <div class="task-body">
+            <label for="p1-6-3" class="task-title">Core Web Vitals pass</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">LCP &lt; 2.5s · CLS &lt; 0.1 · INP &lt; 200ms.</div>
+            <div class="verify"><strong>VERIFY</strong> <a href="https://pagespeed.web.dev" target="_blank" rel="noreferrer">PageSpeed Insights</a> shows green for all three on mobile.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-6-4" data-task="1.6.4">
+          <div class="task-body">
+            <label for="p1-6-4" class="task-title">Validate JSON-LD on 5 page types</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="task-detail">Homepage, <code>/services</code>, a <code>/services/[slug]</code>, a <code>/service-areas/[slug]</code>, a blog post.</div>
+            <div class="verify"><strong>VERIFY</strong> <a href="https://validator.schema.org" target="_blank" rel="noreferrer">validator.schema.org</a> returns no errors for all 5.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-6-5" data-task="1.6.5">
+          <div class="task-body">
+            <label for="p1-6-5" class="task-title">Validate sitemap.xml</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> <a href="https://www.xml-sitemaps.com/validate-xml-sitemap.html" target="_blank" rel="noreferrer">xml-sitemaps validator</a> reports valid. Manually count: contains 8 static + 9 service + 12 area + 8 blog = 37 URLs.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-6-6" data-task="1.6.6">
+          <div class="task-body">
+            <label for="p1-6-6" class="task-title">Check robots.txt is publicly accessible</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> <code>curl https://cliffstowing.ca/robots.txt</code> returns the allow + sitemap directive.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-6-7" data-task="1.6.7">
+          <div class="task-body">
+            <label for="p1-6-7" class="task-title">All canonicals point to production domain</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> View source on 5 pages — every <code>&lt;link rel="canonical"&gt;</code> uses <code>https://cliffstowing.ca</code>, not staging or localhost.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-6-8" data-task="1.6.8">
+          <div class="task-body">
+            <label for="p1-6-8" class="task-title">No noindex headers leaking from staging</label>
+            <div class="task-meta"><span class="badge badge-tech">TECH</span></div>
+            <div class="verify"><strong>VERIFY</strong> <code>curl -I https://cliffstowing.ca</code> — response headers do not contain <code>X-Robots-Tag: noindex</code>.</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- Exit criteria -->
+    <section class="exit-criteria">
+      <h2>Phase 1 exit criteria</h2>
+      <p>Every item below must be ticked before starting Phase 2. The "Continue" button unlocks once all are green.</p>
+      <ul class="tasks">
+
+        <li>
+          <input type="checkbox" id="p1-exit-1" data-task="exit.1">
+          <div class="task-body">
+            <label for="p1-exit-1" class="task-title">Section 1.1 (Quick wins) all green</label>
+            <div class="verify"><strong>VERIFY</strong> 9 / 9 quick-win checkboxes ticked above.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-exit-2" data-task="exit.2">
+          <div class="task-body">
+            <label for="p1-exit-2" class="task-title">GBP claimed, verified, and fully populated</label>
+            <div class="verify"><strong>VERIFY</strong> Searching <em>"Cliff's Towing" Edmonton</em> on Google shows the listing with photos, hours, and categories visible.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-exit-3" data-task="exit.3">
+          <div class="task-body">
+            <label for="p1-exit-3" class="task-title">4 service pages live and indexable</label>
+            <div class="verify"><strong>VERIFY</strong> <code>/services/heavy-duty-towing</code>, <code>/flatbed-towing</code>, <code>/accident-recovery</code>, <code>/roadside-assistance</code> all return 200, contain Service schema, listed in sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-exit-4" data-task="exit.4">
+          <div class="task-body">
+            <label for="p1-exit-4" class="task-title">4 city pages live and indexable</label>
+            <div class="verify"><strong>VERIFY</strong> Edmonton, Sherwood Park, St. Albert, Spruce Grove pages return 200, ≥ 300 words each, in sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-exit-5" data-task="exit.5">
+          <div class="task-body">
+            <label for="p1-exit-5" class="task-title">4 new blog posts live</label>
+            <div class="verify"><strong>VERIFY</strong> <code>/blog</code> lists 8 posts total (4 original + 4 new), all indexed in sitemap.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-exit-6" data-task="exit.6">
+          <div class="task-body">
+            <label for="p1-exit-6" class="task-title">GSC + Bing Webmaster receiving and processing sitemap</label>
+            <div class="verify"><strong>VERIFY</strong> GSC Coverage report shows "Submitted" status and ≥ 30 discovered URLs.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-exit-7" data-task="exit.7">
+          <div class="task-body">
+            <label for="p1-exit-7" class="task-title">Rich Results Test passes on 5 page types</label>
+            <div class="verify"><strong>VERIFY</strong> Homepage (LocalBusiness), services page, a service detail (Service), a blog post (BlogPosting), a city page — zero errors on all.</div>
+          </div>
+        </li>
+
+        <li>
+          <input type="checkbox" id="p1-exit-8" data-task="exit.8">
+          <div class="task-body">
+            <label for="p1-exit-8" class="task-title">Lighthouse SEO score ≥ 95 on 3 pages</label>
+            <div class="verify"><strong>VERIFY</strong> Homepage, a service detail, a blog post — all ≥ 95 SEO.</div>
+          </div>
+        </li>
+
+      </ul>
+      <div class="next-phase">
+        <span>Once all 8 exit criteria are green, you're cleared for Phase 2.</span>
+        <a href="phase-2.html" class="locked" aria-disabled="true">Continue to Phase 2 →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Phase 1 of 3 · Cliff's Towing SEO Execution Plan
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

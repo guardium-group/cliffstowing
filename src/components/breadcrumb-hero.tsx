@@ -15,13 +15,13 @@ interface BreadcrumbHeroProps {
 
 export function BreadcrumbHero({ title, breadcrumbs }: BreadcrumbHeroProps) {
   return (
-    <section className="relative h-[200px] sm:h-[240px] md:h-[300px] lg:h-[340px] overflow-hidden mt-0 bg-gray-900">
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-linear-to-br from-gray-900 via-gray-800 to-gray-900" />
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
+    <section className="relative h-[200px] sm:h-[240px] md:h-[300px] lg:h-[320px] overflow-hidden mt-0 bg-[#3e000c]">
+      {/* Subtle red ambient glow, top right only */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-primary/25 rounded-full blur-[80px] transform translate-x-1/3 -translate-y-1/3" />
       </div>
+      {/* Bottom edge fade */}
+      <div className="absolute bottom-0 inset-x-0 h-px bg-white/[0.06]" />
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 z-30 px-6 sm:px-10 md:px-16 lg:px-20 pb-10">

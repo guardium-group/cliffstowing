@@ -10,75 +10,63 @@ import {
   Car,
   ArrowRight,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const allServices = [
   {
     icon: Truck,
-    title: "Light & Medium Duty Towing",
+    title: "Light & medium duty towing",
     shortDescription: "Fast towing for cars, SUVs, and light trucks.",
-    description:
-      "We tow all makes and models of passenger vehicles, SUVs, minivans, and light trucks. Our operators arrive quickly and handle your vehicle with care.",
-    href: "/services#light-duty",
-    badge: "Most Popular",
+    href: "/services/light-duty-towing",
+    badge: "Most popular",
   },
   {
     icon: HardHat,
-    title: "Heavy Duty Towing",
+    title: "Heavy duty towing",
     shortDescription: "Semi trucks, buses, and commercial vehicles.",
-    description:
-      "Equipped for large commercial vehicles including semi-trucks, buses, RVs, and heavy equipment. We have the horsepower to get the job done.",
-    href: "/services#heavy-duty",
+    href: "/services/heavy-duty-towing",
   },
   {
     icon: ArrowUpDown,
-    title: "Flatbed Towing",
+    title: "Flatbed towing",
     shortDescription: "Safest option for low-clearance or damaged vehicles.",
-    description:
-      "Our flatbed trucks keep all four wheels off the ground — ideal for low-clearance vehicles, all-wheel drive, classic cars, and damaged vehicles.",
-    href: "/services#flatbed",
+    href: "/services/flatbed-towing",
   },
   {
     icon: ShieldCheck,
-    title: "Accident Towing & Recovery",
+    title: "Accident towing & recovery",
     shortDescription: "Post-accident towing and recovery services.",
-    description:
-      "We work with all major insurance companies and can tow your vehicle safely after an accident. Available 24/7 for emergency response.",
-    href: "/services#accident",
+    href: "/services/accident-recovery",
     badge: "24/7",
   },
   {
     icon: Wrench,
-    title: "Roadside Assistance",
+    title: "Roadside assistance",
     shortDescription: "Lockouts, tire changes, and more.",
-    description:
-      "Locked your keys in the car? Flat tire? We provide fast roadside assistance including lockout service, tire changes, and minor repairs.",
-    href: "/services#roadside",
+    href: "/services/roadside-assistance",
   },
   {
     icon: Zap,
-    title: "Jump Start / Battery Boost",
+    title: "Jump start / battery boost",
     shortDescription: "Dead battery? We'll get you going.",
-    description:
-      "Our technicians carry commercial-grade battery boosters to get your vehicle started quickly — no waiting for a tow if a boost will do.",
-    href: "/services#roadside",
+    href: "/services/roadside-assistance",
   },
   {
     icon: Fuel,
-    title: "Fuel Delivery",
+    title: "Fuel delivery",
     shortDescription: "Emergency fuel delivery to your location.",
-    description:
-      "Ran out of gas? We'll bring fuel to you wherever you are in the Edmonton area — get back on the road without a tow.",
-    href: "/services#roadside",
+    href: "/services/roadside-assistance",
   },
   {
     icon: Car,
-    title: "Winching & Recovery",
+    title: "Winching & recovery",
     shortDescription: "Stuck in snow, mud, or a ditch? We'll recover you.",
-    description:
-      "Stuck off-road or in a ditch? Our winching and vehicle recovery service can extract vehicles from difficult situations safely.",
-    href: "/services#recovery",
+    href: "/services/winching-recovery",
+  },
+  {
+    icon: Truck,
+    title: "Equipment transport",
+    shortDescription: "Forklifts, equipment, and specialty transport.",
+    href: "/services/equipment-transport",
   },
 ];
 
@@ -90,56 +78,64 @@ export function ServicesSection({ limit }: ServicesSectionProps) {
   const services = limit ? allServices.slice(0, limit) : allServices;
 
   return (
-    <section className="py-16 sm:py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-10 sm:mb-14">
-          <Badge variant="secondary" className="mb-4">Our Services</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Everything You Need, <span className="text-primary">When You Need It</span>
-          </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto">
-            From light-duty towing to heavy commercial recovery, Cliff&apos;s Towing has the equipment and expertise to handle any situation.
-          </p>
-        </div>
+    <section className="py-20 sm:py-28 bg-white">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {services.map((service) => (
-            <Link key={service.title} href={service.href} className="group">
-              <Card className="h-full hover:shadow-md hover:border-primary/30 transition-all duration-200">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-200">
-                      <service.icon className="h-6 w-6 text-primary group-hover:text-white transition-colors duration-200" />
-                    </div>
-                    {service.badge && (
-                      <Badge variant="default" className="text-xs">
-                        {service.badge}
-                      </Badge>
-                    )}
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2 leading-snug">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">
-                    {service.shortDescription}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
-
-        {limit && (
-          <div className="text-center mt-10">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-200"
-            >
-              View All Services
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          {/* Left: Section header */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
+            <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary mb-4">
+              What we do
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-4 text-wrap-balance">
+              Every situation, covered.
+            </h2>
+            <p className="text-gray-500 leading-relaxed mb-8 max-w-[50ch]">
+              From a dead battery on a side street to a jackknifed semi on the highway, Cliff&apos;s Towing has the equipment and experience to handle it.
+            </p>
+            {limit && (
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary group"
+              >
+                View all services
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+            )}
           </div>
-        )}
+
+          {/* Right: Service cards grid */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {services.map((service) => (
+                <Link
+                  key={service.title}
+                  href={service.href}
+                  className="group relative flex flex-col gap-4 p-6 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-[0_4px_24px_-6px_rgba(0,0,0,0.1)] border border-transparent hover:border-gray-100 transition-all duration-300"
+                >
+                  {service.badge && (
+                    <span className="absolute top-4 right-4 text-[10px] font-mono uppercase tracking-widest text-primary font-semibold">
+                      {service.badge}
+                    </span>
+                  )}
+                  <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:border-primary transition-all duration-300">
+                    <service.icon className="h-5 w-5 text-gray-500 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1.5 leading-snug">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      {service.shortDescription}
+                    </p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-gray-300 group-hover:text-primary mt-auto transition-all duration-200 group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

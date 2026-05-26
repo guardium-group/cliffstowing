@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowLeft } from "lucide-react";
+import { siteConfig } from "@/lib/site";
 
 export default function NotFound() {
   return (
@@ -19,7 +20,7 @@ export default function NotFound() {
             </Link>
           </Button>
           <Button variant="outline" asChild className="rounded-full">
-            <a href="tel:+17805550100">
+            <a href={siteConfig.phone.href}>
               <Phone className="mr-2 h-4 w-4" />
               Call Us Now
             </a>

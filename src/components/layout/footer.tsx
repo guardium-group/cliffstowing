@@ -1,171 +1,208 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import Image from "next/image";
+import { siteConfig } from "@/lib/site";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TwitterIcon,
+  LinkedinIcon,
+} from "@/components/ui/social-icons";
 
-const serviceLinks = [
-  { name: "Light & Medium Duty Towing", href: "/services#light-duty" },
-  { name: "Heavy Duty Towing", href: "/services#heavy-duty" },
-  { name: "Flatbed Towing", href: "/services#flatbed" },
-  { name: "Accident Towing & Recovery", href: "/services#accident" },
-  { name: "Roadside Assistance", href: "/services#roadside" },
-  { name: "Fuel Delivery & Jump Start", href: "/services#roadside" },
+const socialLinks = [
+  { name: "Facebook", href: "https://www.facebook.com/cliffstowing", icon: FacebookIcon },
+  { name: "Instagram", href: "https://www.instagram.com/cliffstowing", icon: InstagramIcon },
+  { name: "Twitter", href: "https://x.com/cliffstowing", icon: TwitterIcon },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/cliffstowing", icon: LinkedinIcon },
 ];
 
-const quickLinks = [
-  { name: "About Us", href: "/about" },
+const serviceLinks = [
+  { name: "Light & medium duty towing", href: "/services/light-duty-towing" },
+  { name: "Heavy duty towing", href: "/services/heavy-duty-towing" },
+  { name: "Flatbed towing", href: "/services/flatbed-towing" },
+  { name: "Accident towing & recovery", href: "/services/accident-recovery" },
+  { name: "Roadside assistance", href: "/services/roadside-assistance" },
+  { name: "Winching & recovery", href: "/services/winching-recovery" },
+  { name: "Equipment transport", href: "/services/equipment-transport" },
+];
+
+const serviceAreaLinks = [
+  { name: "Edmonton", href: "/service-areas/edmonton" },
+  { name: "Sherwood Park", href: "/service-areas/sherwood-park" },
+  { name: "St. Albert", href: "/service-areas/st-albert" },
+  { name: "Spruce Grove", href: "/service-areas/spruce-grove" },
+  { name: "Leduc", href: "/service-areas/leduc" },
+  { name: "Beaumont", href: "/service-areas/beaumont" },
+  { name: "Devon", href: "/service-areas/devon" },
+  { name: "Morinville", href: "/service-areas/morinville" },
+  { name: "Fort Saskatchewan", href: "/service-areas/fort-saskatchewan" },
+  { name: "Stony Plain", href: "/service-areas/stony-plain" },
+  { name: "Nisku", href: "/service-areas/nisku" },
+  { name: "Acheson", href: "/service-areas/acheson" },
+];
+
+const companyLinks = [
+  { name: "About us", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "Service Areas", href: "/service-areas" },
+  { name: "Articles", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 
 const legalLinks = [
-  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Privacy policy", href: "/privacy-policy" },
+  { name: "Terms of service", href: "/terms" },
+  { name: "Cookie policy", href: "/cookies" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 relative overflow-hidden">
-      {/* Subtle background orbs */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-red-500 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-red-500 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
-      </div>
+    <footer className="bg-[#3e000c] relative overflow-hidden">
+      <div
+        className="absolute -top-40 right-0 w-[700px] h-[700px] bg-white/[0.03] rounded-full blur-[100px] pointer-events-none"
+        aria-hidden="true"
+      />
 
-      <div className="relative">
-        {/* Main Footer Content */}
-        <div className="container mx-auto px-4 pt-10 sm:pt-12 md:pt-16 pb-8 sm:pb-10 md:pb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Brand Column */}
-            <div className="lg:col-span-4 space-y-4 sm:space-y-6 text-center lg:text-left">
-              <Link href="/" className="inline-flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">CT</span>
-                </div>
-                <span className="text-white font-bold text-xl">Cliff&apos;s Towing</span>
-              </Link>
+      <div className="relative container mx-auto px-6 max-w-7xl">
 
-              <p className="text-white/70 text-sm leading-relaxed max-w-sm mx-auto lg:mx-0">
-                Edmonton&apos;s trusted towing and roadside assistance service. Available 24 hours a day,
-                7 days a week — whenever you need us most.
-              </p>
+        {/* ── Main grid ── */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pt-16 pb-12 border-b border-white/[0.08]">
 
-              <div className="flex items-center justify-center lg:justify-start gap-2 pt-2">
-                <div className="flex items-center gap-2 text-white/60 text-sm">
-                  <Clock className="h-4 w-4 text-primary" />
-                  <span>24/7 Emergency Service</span>
-                </div>
-              </div>
-            </div>
+          {/* Brand column */}
+          <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
+            <Link href="/" className="inline-block">
+              <Image
+                src="/cliffs_logo.png"
+                alt="Cliff's Towing"
+                width={150}
+                height={42}
+                className="h-10 w-auto object-contain brightness-0 invert"
+              />
+            </Link>
 
-            {/* Links Columns */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8">
-                {/* Services */}
-                <div className="col-span-2 sm:col-span-1">
-                  <h4 className="text-white font-semibold mb-4 sm:mb-5 text-sm">
-                    Our Services
-                  </h4>
-                  <ul className="space-y-2 sm:space-y-2.5">
-                    {serviceLinks.map((link) => (
-                      <li key={link.name}>
-                        <Link
-                          href={link.href}
-                          className="text-white/60 hover:text-white text-sm transition-colors"
-                        >
-                          {link.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <p className="text-white/45 text-sm leading-relaxed max-w-[220px]">
+              Edmonton&apos;s trusted towing and recovery team — on call every
+              hour of every day.
+            </p>
 
-                {/* Quick Links */}
-                <div>
-                  <h4 className="text-white font-semibold mb-4 sm:mb-5 text-sm">
-                    Company
-                  </h4>
-                  <ul className="space-y-2 sm:space-y-2.5">
-                    {quickLinks.map((link) => (
-                      <li key={link.name}>
-                        <Link
-                          href={link.href}
-                          className="text-white/60 hover:text-white text-sm transition-colors"
-                        >
-                          {link.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Legal */}
-                <div>
-                  <h4 className="text-white font-semibold mb-4 sm:mb-5 text-sm">
-                    Legal
-                  </h4>
-                  <ul className="space-y-2 sm:space-y-2.5">
-                    {legalLinks.map((link) => (
-                      <li key={link.name}>
-                        <Link
-                          href={link.href}
-                          className="text-white/60 hover:text-white text-sm transition-colors"
-                        >
-                          {link.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Contact Bar */}
-        <div className="border-t border-white/10">
-          <div className="container mx-auto px-4 py-5 sm:py-6">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-              <a
-                href="tel:+17805550100"
-                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm"
-              >
-                <Phone className="h-4 w-4 flex-shrink-0" />
-                <span>+1 (780) 555-0100</span>
-              </a>
-              <a
-                href="mailto:info@cliffstowing.ca"
-                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm"
-              >
-                <Mail className="h-4 w-4 flex-shrink-0" />
-                <span>info@cliffstowing.ca</span>
-              </a>
-              <span className="flex items-center gap-2 text-white/60 text-sm">
-                <MapPin className="h-4 w-4 flex-shrink-0" />
-                <span>Edmonton, AB</span>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 bg-black/20">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-xs text-white/40 text-center sm:text-left">
-              <p>
-                &copy; {new Date().getFullYear()} Cliff&apos;s Towing. All rights reserved.
-              </p>
-              <p>
-                Built by{" "}
+            <div className="flex items-center gap-2 mt-auto">
+              {socialLinks.map((social) => (
                 <a
-                  href="https://guardiumtech.com"
+                  key={social.name}
+                  href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-white/60 hover:text-white transition-colors"
+                  aria-label={social.name}
+                  className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center text-white/50 hover:bg-white hover:text-[#3e000c] transition-all duration-200"
                 >
-                  Guardium Technologies
+                  <social.icon className="h-3.5 w-3.5" />
                 </a>
-              </p>
+              ))}
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+              Services
+            </h4>
+            <ul className="space-y-3">
+              {serviceLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-white/55 hover:text-white text-sm leading-snug transition-colors duration-150"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Service Areas */}
+          <div>
+            <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+              Service Areas
+            </h4>
+            <ul className="grid grid-cols-2 gap-x-3 gap-y-2.5">
+              {serviceAreaLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-white/55 hover:text-white text-sm leading-snug transition-colors duration-150"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company + Legal stacked */}
+          <div className="flex flex-col gap-10">
+            <div>
+              <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+                Company
+              </h4>
+              <ul className="space-y-3">
+                {companyLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-white/55 hover:text-white text-sm transition-colors duration-150"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+                Legal
+              </h4>
+              <ul className="space-y-3">
+                {legalLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-white/55 hover:text-white text-sm transition-colors duration-150"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
+
+        {/* ── Bottom bar ── */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 py-6 text-xs text-white/25">
+          <p>&copy; {new Date().getFullYear()} Cliff&apos;s Towing. All rights reserved.</p>
+          <p>
+            A{" "}
+            <Link
+              href="https://guardiumgroup.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/40 hover:text-white transition-colors"
+            >
+              Guardium Group
+            </Link>{" "}
+            company &middot; Built by{" "}
+            <Link
+              href="https://guardiumgroup.com/companies/technologies"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/40 hover:text-white transition-colors"
+            >
+              Guardium Technologies
+            </Link>
+          </p>
+        </div>
+
       </div>
     </footer>
   );

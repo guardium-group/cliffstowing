@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { LeadCapturePopup } from "@/components/lead-capture-popup";
 import { CookieConsent } from "@/components/cookie-consent";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/lib/site";
@@ -89,7 +88,6 @@ export default function RootLayout({
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
-        <LeadCapturePopup />
         <CookieConsent />
       </body>
     </html>

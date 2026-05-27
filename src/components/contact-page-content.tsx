@@ -65,6 +65,7 @@ const contactCards = [
 ];
 
 export function ContactPageContent() {
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -166,6 +167,14 @@ export function ContactPageContent() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!turnstileSiteKey) {
+      setSubmitStatus({
+        type: "error",
+        message: `Security verification is unavailable. Please call ${siteConfig.phone.display}.`,
+      });
+      return;
+    }
+
     if (turnstileToken) {
       void performSubmit(turnstileToken);
     } else {
@@ -324,23 +333,32 @@ export function ContactPageContent() {
                     </div>
                   )}
 
-                  <Turnstile
-                    ref={turnstileRef}
-                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                    onSuccess={setTurnstileToken}
-                    onExpire={() => setTurnstileToken(null)}
-                    onError={() =>
-                      abortPendingVerification(
-                        `Security verification failed. Please refresh the page and try again, or call us directly at ${siteConfig.phone.display}.`
-                      )
-                    }
-                    onTimeout={() =>
-                      abortPendingVerification(
-                        `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
-                      )
-                    }
-                    options={{ execution: "render", size: "normal", refreshExpired: "auto" }}
-                  />
+                  {turnstileSiteKey ? (
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey={turnstileSiteKey}
+                      onSuccess={setTurnstileToken}
+                      onExpire={() => setTurnstileToken(null)}
+                      onError={() =>
+                        abortPendingVerification(
+                          `Security verification failed. Please refresh the page and try again, or call us directly at ${siteConfig.phone.display}.`
+                        )
+                      }
+                      onTimeout={() =>
+                        abortPendingVerification(
+                          `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
+                        )
+                      }
+                      options={{ execution: "render", size: "normal", refreshExpired: "auto" }}
+                    />
+                  ) : (
+                    <div className="flex items-start gap-2 p-4 rounded-lg bg-red-50 text-red-700">
+                      <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">
+                        Security verification is unavailable. Please call {siteConfig.phone.display}.
+                      </span>
+                    </div>
+                  )}
 
                   <Button
                     type="submit"

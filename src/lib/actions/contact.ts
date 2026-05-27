@@ -15,6 +15,8 @@ import {
 } from "@/lib/security/spam-detection";
 import { siteConfig } from "@/lib/site";
 
+const TURNSTILE_SITEVERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+
 export interface ContactSubmission extends ContactFormData {
   _honeypot?: string;
   _formToken?: string;
@@ -27,6 +29,11 @@ export interface ContactResponse {
   message: string;
   error?: string;
   code?: string;
+}
+
+interface TurnstileVerifyResult {
+  success: boolean;
+  "error-codes"?: string[];
 }
 
 async function getClientIP(): Promise<string> {
@@ -47,6 +54,48 @@ function logSecurityEvent(event: string, details: Record<string, unknown>): void
   });
 }
 
+async function verifyTurnstileToken(
+  token: string | undefined,
+  clientIP: string
+): Promise<{ valid: boolean; code?: string }> {
+  if (!token) {
+    return { valid: false, code: "missing-token" };
+  }
+
+  if (!process.env.TURNSTILE_SECRET_KEY) {
+    console.error("TURNSTILE_SECRET_KEY not configured");
+    return { valid: false, code: "missing-secret" };
+  }
+
+  const response = await fetch(TURNSTILE_SITEVERIFY_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      secret: process.env.TURNSTILE_SECRET_KEY,
+      response: token,
+      remoteip: clientIP,
+    }),
+  });
+
+  if (!response.ok) {
+    console.error("Turnstile verification request failed", response.status);
+    return { valid: false, code: "request-failed" };
+  }
+
+  const result = (await response.json()) as TurnstileVerifyResult;
+  if (!result.success) {
+    console.warn("Turnstile verification failed", result["error-codes"]);
+    return {
+      valid: false,
+      code: result["error-codes"]?.join(",") || "verification-failed",
+    };
+  }
+
+  return { valid: true };
+}
+
 export async function submitContact(
   rawData: ContactSubmission
 ): Promise<ContactResponse> {
@@ -63,13 +112,23 @@ export async function submitContact(
     const timingResult = validateFormTiming(rawData._formToken, rawData._timestamp);
     if (!timingResult.valid) {
       logSecurityEvent("TIMING_VIOLATION", { ip: clientIP, reason: timingResult.reason });
-      return { success: false, message: timingResult.reason || "Please try again", code: "TIMING_ERROR" };
+      return {
+        success: false,
+        message: timingResult.reason || "Please try again",
+        code: "TIMING_ERROR",
+      };
     }
 
     // Layer 3: Rate limit by IP
-    const ipRateLimit = checkRateLimit(getRateLimitKey("contact_ip", clientIP), RATE_LIMITS.contact);
+    const ipRateLimit = checkRateLimit(
+      getRateLimitKey("contact_ip", clientIP),
+      RATE_LIMITS.contact
+    );
     if (!ipRateLimit.allowed) {
-      logSecurityEvent("RATE_LIMIT_IP", { ip: clientIP, retryAfter: ipRateLimit.retryAfter });
+      logSecurityEvent("RATE_LIMIT_IP", {
+        ip: clientIP,
+        retryAfter: ipRateLimit.retryAfter,
+      });
       return {
         success: false,
         message: `Too many requests. Please wait ${Math.ceil((ipRateLimit.retryAfter || 60) / 60)} minutes.`,
@@ -112,9 +171,17 @@ export async function submitContact(
     }
 
     // Layer 7: Spam check
-    const spamCheck = performSpamCheck({ name: data.name, email: data.email, message: data.message });
+    const spamCheck = performSpamCheck({
+      name: data.name,
+      email: data.email,
+      message: data.message,
+    });
     if (spamCheck.isSpam) {
-      logSecurityEvent("SPAM_DETECTED", { ip: clientIP, score: spamCheck.score, reasons: spamCheck.reasons });
+      logSecurityEvent("SPAM_DETECTED", {
+        ip: clientIP,
+        score: spamCheck.score,
+        reasons: spamCheck.reasons,
+      });
       checkRateLimit(getRateLimitKey("suspicious", clientIP), RATE_LIMITS.suspicious);
       return {
         success: false,
@@ -123,7 +190,18 @@ export async function submitContact(
       };
     }
 
-    // Layer 8: Web3Forms
+    // Layer 8: Turnstile verification
+    const turnstileResult = await verifyTurnstileToken(rawData._turnstileToken, clientIP);
+    if (!turnstileResult.valid) {
+      logSecurityEvent("TURNSTILE_FAILED", { ip: clientIP, code: turnstileResult.code });
+      return {
+        success: false,
+        message: `Security verification failed. Please refresh and try again, or call ${siteConfig.phone.display}.`,
+        code: "TURNSTILE_ERROR",
+      };
+    }
+
+    // Layer 9: Web3Forms
     if (!process.env.WEB3FORMS_ACCESS_KEY) {
       console.error("WEB3FORMS_ACCESS_KEY not configured");
       return {
@@ -141,7 +219,7 @@ export async function submitContact(
 
     const payload = {
       access_key: process.env.WEB3FORMS_ACCESS_KEY,
-      subject: `New Towing Inquiry — ${data.name}`,
+      subject: `New Towing Inquiry - ${data.name}`,
       from_name: "Cliff's Towing Website",
       name: data.name,
       email: data.email,
@@ -161,7 +239,7 @@ export async function submitContact(
       body: JSON.stringify(payload),
     });
 
-    const result = await response.json() as { success: boolean; message?: string };
+    const result = (await response.json()) as { success: boolean; message?: string };
 
     if (!response.ok || !result.success) {
       console.error("Web3Forms error:", result);

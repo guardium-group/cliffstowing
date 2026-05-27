@@ -16,7 +16,6 @@ import {
 import { siteConfig } from "@/lib/site";
 
 const TURNSTILE_SITEVERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-const WEB3FORMS_SUBMIT_URL = "https://api.web3forms.com/submit";
 const EXTERNAL_REQUEST_TIMEOUT_MS = 10_000;
 
 export interface ContactSubmission extends ContactFormData {
@@ -26,12 +25,39 @@ export interface ContactSubmission extends ContactFormData {
   _turnstileToken?: string;
 }
 
-export interface ContactResponse {
-  success: boolean;
+export interface ContactDeliveryPayload {
+  subject: string;
+  from_name: string;
+  name: string;
+  email: string;
+  phone: string;
+  services: string;
   message: string;
-  error?: string;
-  code?: string;
+  submitted_at: string;
 }
+
+export type ContactErrorCode =
+  | "CONTACT_CONFIG_ERROR"
+  | "CONTACT_DELIVERY_READY"
+  | "CONTACT_RATE_LIMITED"
+  | "CONTACT_SECURITY_ERROR"
+  | "CONTACT_SPAM_REJECTED"
+  | "CONTACT_TIMING_ERROR"
+  | "CONTACT_VALIDATION_ERROR";
+
+export type ContactResponse =
+  | {
+      success: true;
+      message: string;
+      code: "CONTACT_DELIVERY_READY";
+      payload: ContactDeliveryPayload;
+      web3formsFormId?: string;
+    }
+  | {
+      success: false;
+      message: string;
+      code: Exclude<ContactErrorCode, "CONTACT_DELIVERY_READY">;
+    };
 
 interface TurnstileVerifyResult {
   success: boolean;
@@ -40,11 +66,6 @@ interface TurnstileVerifyResult {
   hostname?: string;
   action?: string;
   cdata?: string;
-}
-
-interface Web3FormsResult {
-  success: boolean;
-  message?: string;
 }
 
 async function getClientIP(): Promise<string> {
@@ -151,7 +172,7 @@ async function verifyTurnstileToken(
   }
 }
 
-export async function submitContact(
+export async function validateContactSubmission(
   rawData: ContactSubmission
 ): Promise<ContactResponse> {
   const clientIP = await getClientIP();
@@ -160,7 +181,11 @@ export async function submitContact(
     // Layer 1: Honeypot
     if (!validateHoneypot(rawData._honeypot)) {
       logSecurityEvent("HONEYPOT_TRIGGERED", { ip: clientIP });
-      return { success: true, message: "Message sent successfully." };
+      return {
+        success: false,
+        message: "Your message could not be sent. Please call dispatch.",
+        code: "CONTACT_SPAM_REJECTED",
+      };
     }
 
     // Layer 2: Timing
@@ -170,7 +195,7 @@ export async function submitContact(
       return {
         success: false,
         message: timingResult.reason || "Please try again",
-        code: "TIMING_ERROR",
+        code: "CONTACT_TIMING_ERROR",
       };
     }
 
@@ -187,7 +212,7 @@ export async function submitContact(
       return {
         success: false,
         message: `Too many requests. Please wait ${Math.ceil((ipRateLimit.retryAfter || 60) / 60)} minutes.`,
-        code: "RATE_LIMIT",
+        code: "CONTACT_RATE_LIMITED",
       };
     }
 
@@ -203,7 +228,7 @@ export async function submitContact(
       return {
         success: false,
         message: parseResult.error.issues[0]?.message ?? "Please check your inputs and try again.",
-        code: "VALIDATION_ERROR",
+        code: "CONTACT_VALIDATION_ERROR",
       };
     }
 
@@ -221,7 +246,7 @@ export async function submitContact(
       return {
         success: false,
         message: "A message was recently sent from this email. Please wait or call us directly.",
-        code: "RATE_LIMIT",
+        code: "CONTACT_RATE_LIMITED",
       };
     }
 
@@ -241,7 +266,7 @@ export async function submitContact(
       return {
         success: false,
         message: `Your message could not be sent. Please call us directly at ${siteConfig.phone.display}.`,
-        code: "VALIDATION_ERROR",
+        code: "CONTACT_SPAM_REJECTED",
       };
     }
 
@@ -252,17 +277,19 @@ export async function submitContact(
       return {
         success: false,
         message: `Security verification failed. Please refresh and try again, or call ${siteConfig.phone.display}.`,
-        code: "TURNSTILE_ERROR",
+        code: "CONTACT_SECURITY_ERROR",
       };
     }
 
-    // Layer 9: Web3Forms
-    if (!process.env.WEB3FORMS_ACCESS_KEY) {
-      console.error("WEB3FORMS_ACCESS_KEY not configured");
+    const web3formsFormId =
+      process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_FORM_ID;
+
+    if (!web3formsFormId) {
+      console.error("Web3Forms form ID not configured");
       return {
         success: false,
-        message: `Contact service temporarily unavailable. Please call ${siteConfig.phone.display}.`,
-        code: "CONFIG_ERROR",
+        message: `Contact form delivery is not configured. Please call ${siteConfig.phone.display}.`,
+        code: "CONTACT_CONFIG_ERROR",
       };
     }
 
@@ -272,66 +299,21 @@ export async function submitContact(
       timeStyle: "short",
     });
 
-    const payload = {
-      access_key: process.env.WEB3FORMS_ACCESS_KEY,
-      subject: `New Towing Inquiry - ${data.name}`,
-      from_name: "Cliff's Towing Website",
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      services: data.services?.join(", ") || "None specified",
-      message: data.message,
-      submitted_at: submittedAt,
-    };
-
-    let response: Response;
-    let result: Web3FormsResult;
-
-    try {
-      response = await fetchWithTimeout(WEB3FORMS_SUBMIT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      result = (await response.json()) as Web3FormsResult;
-    } catch (error) {
-      const code = error instanceof DOMException && error.name === "AbortError"
-        ? "request-timeout"
-        : "request-error";
-
-      console.error("Web3Forms request error:", {
-        code,
-        error: error instanceof Error ? error.message : "Unknown",
-      });
-
-      return {
-        success: false,
-        message: `Unable to send message. Please try again or call ${siteConfig.phone.display}.`,
-        code: "EMAIL_ERROR",
-      };
-    }
-
-    if (!response.ok || !result.success) {
-      console.error("Web3Forms error:", {
-        status: response.status,
-        message: result.message,
-      });
-      return {
-        success: false,
-        message: `Unable to send message. Please try again or call ${siteConfig.phone.display}.`,
-        code: "EMAIL_ERROR",
-      };
-    }
-
-    console.log(`[CONTACT] Message sent from ${data.email}`);
-
     return {
       success: true,
-      message: "Message sent successfully. We'll get back to you as soon as possible.",
+      message: "Contact security checks passed.",
+      code: "CONTACT_DELIVERY_READY",
+      web3formsFormId,
+      payload: {
+        subject: `New Towing Inquiry - ${data.name}`,
+        from_name: "Cliff's Towing Website",
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        services: data.services?.join(", ") || "None specified",
+        message: data.message,
+        submitted_at: submittedAt,
+      },
     };
   } catch (error) {
     console.error("Contact submission error:", error);
@@ -341,8 +323,8 @@ export async function submitContact(
     });
     return {
       success: false,
-      message: `Unable to send message. Please try again or call ${siteConfig.phone.display}.`,
-      code: "SERVER_ERROR",
+      message: `Contact form validation failed unexpectedly. Please call ${siteConfig.phone.display}.`,
+      code: "CONTACT_SECURITY_ERROR",
     };
   }
 }

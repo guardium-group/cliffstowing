@@ -7,6 +7,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/lib/site";
 import { localBusinessJsonLd } from "@/lib/structured-data";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -89,6 +90,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );

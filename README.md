@@ -18,20 +18,23 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Contact Form Environment
 
-The contact form uses app-owned Cloudflare Turnstile verification before sending
-the message through Web3Forms. Set these values in `.env.local` at the project
-root:
+The contact form uses app-owned Cloudflare Turnstile verification first, then
+sends the message through Web3Forms from the browser. Set these values in
+`.env.local` at the project root:
 
 ```bash
 WEB3FORMS_ACCESS_KEY=
+NEXT_PUBLIC_WEB3FORMS_FORM_ID=
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
 ```
 
-Restart `next dev` after changing `.env.local`. The Turnstile site key is
-prefixed with `NEXT_PUBLIC_`, so production changes to that value require a new
-build/deploy before the browser bundle sees them. Do not enable Turnstile again
-inside the Web3Forms dashboard unless the app stops validating it directly.
+`NEXT_PUBLIC_WEB3FORMS_FORM_ID` and `WEB3FORMS_ACCESS_KEY` can use the same
+Web3Forms UUID. The server-side key is used only to release the browser delivery
+after security checks pass. Restart `next dev` after changing `.env.local`.
+Production changes to `NEXT_PUBLIC_` values require a new build/deploy before
+the browser bundle sees them. Do not enable Turnstile again inside the Web3Forms
+dashboard unless the app stops validating it directly.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

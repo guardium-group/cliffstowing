@@ -17,7 +17,7 @@ const securityHeaders = [
       "img-src 'self' data: blob: https://images.unsplash.com https://picsum.photos https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org",
       "font-src 'self' data:",
       "frame-src https://challenges.cloudflare.com https://www.google.com https://maps.google.com https://embed.jasperplayer.com",
-      "connect-src 'self' https://challenges.cloudflare.com https://cloudflareinsights.com",
+      "connect-src 'self' https://challenges.cloudflare.com https://cloudflareinsights.com https://api.web3forms.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

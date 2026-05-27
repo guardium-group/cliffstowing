@@ -14,14 +14,146 @@ import {
 } from "lucide-react";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { Button } from "@/components/ui/button";
-import { submitContact, type ContactSubmission } from "@/lib/actions/contact";
+import {
+  validateContactSubmission,
+  type ContactDeliveryPayload,
+  type ContactSubmission,
+} from "@/lib/actions/contact";
 import { serviceOptions } from "@/lib/validations/contact";
 import { siteConfig } from "@/lib/site";
+
+const WEB3FORMS_SUBMIT_URL = "https://api.web3forms.com/submit";
+const DELIVERY_TIMEOUT_MS = 10_000;
+
+type ContactDeliveryResult =
+  | { success: true; message: string }
+  | { success: false; message: string };
+
+interface Web3FormsResponse {
+  success?: boolean;
+  message?: string;
+  error?: string;
+  statusCode?: number;
+  body?: {
+    message?: string;
+  };
+}
 
 function generateFormToken(): { token: string; timestamp: number } {
   const timestamp = Date.now();
   const token = btoa(`${timestamp}:${Math.random().toString(36)}`);
   return { token, timestamp };
+}
+
+function getWeb3FormsMessage(result: Web3FormsResponse | null): string {
+  return result?.message || result?.body?.message || result?.error || "";
+}
+
+function formatDeliveryError(
+  code: string,
+  message: string,
+  providerMessage?: string
+): string {
+  const detail = providerMessage ? ` Provider response: ${providerMessage}` : "";
+  return `${message}${detail} Please call ${siteConfig.phone.display}. (${code})`;
+}
+
+async function submitToWeb3Forms(
+  payload: ContactDeliveryPayload,
+  fallbackFormId?: string
+): Promise<ContactDeliveryResult> {
+  const configuredFormId = process.env.NEXT_PUBLIC_WEB3FORMS_FORM_ID?.trim();
+  const formId = configuredFormId || fallbackFormId?.trim();
+
+  if (!formId) {
+    return {
+      success: false,
+      message: formatDeliveryError(
+        "CONTACT_CONFIG_ERROR",
+        "Contact form is missing its delivery configuration."
+      ),
+    };
+  }
+
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), DELIVERY_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(`${WEB3FORMS_SUBMIT_URL}/${encodeURIComponent(formId)}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+
+    let result: Web3FormsResponse | null = null;
+    try {
+      result = (await response.json()) as Web3FormsResponse;
+    } catch {
+      result = null;
+    }
+
+    if (response.ok && result?.success !== false) {
+      return {
+        success: true,
+        message: "Message sent successfully. We'll get back to you as soon as possible.",
+      };
+    }
+
+    const providerMessage = getWeb3FormsMessage(result);
+
+    if (response.status === 429) {
+      return {
+        success: false,
+        message: formatDeliveryError(
+          "CONTACT_RATE_LIMITED",
+          "Too many form attempts.",
+          providerMessage
+        ),
+      };
+    }
+
+    if (response.status >= 500) {
+      return {
+        success: false,
+        message: formatDeliveryError(
+          "CONTACT_DELIVERY_UNAVAILABLE",
+          "The message provider is temporarily unavailable.",
+          providerMessage
+        ),
+      };
+    }
+
+    return {
+      success: false,
+      message: formatDeliveryError(
+        "CONTACT_DELIVERY_REJECTED",
+        "The message provider rejected the request.",
+        providerMessage
+      ),
+    };
+  } catch (error) {
+    const code = error instanceof DOMException && error.name === "AbortError"
+      ? "CONTACT_DELIVERY_TIMEOUT"
+      : "CONTACT_DELIVERY_UNAVAILABLE";
+
+    return {
+      success: false,
+      message: formatDeliveryError(
+        code,
+        "The message provider could not be reached."
+      ),
+    };
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
+function withErrorCode(message: string, code: string): string {
+  return message.includes(`(${code})`) ? message : `${message} (${code})`;
 }
 
 const fadeInUp: Variants = {
@@ -135,16 +267,31 @@ export function ContactPageContent() {
         _timestamp: formTimestamp,
         _turnstileToken: token,
       };
-      const result = await submitContact(submission);
-      if (result.success) {
-        setSubmitStatus({ type: "success", message: result.message });
+      const preflight = await validateContactSubmission(submission);
+
+      if (!preflight.success) {
+        resetTurnstile();
+        setSubmitStatus({
+          type: "error",
+          message: withErrorCode(preflight.message, preflight.code),
+        });
+        return;
+      }
+
+      const delivery = await submitToWeb3Forms(
+        preflight.payload,
+        preflight.web3formsFormId
+      );
+
+      if (delivery.success) {
+        setSubmitStatus({ type: "success", message: delivery.message });
         setFormData({ name: "", email: "", phone: "", message: "", services: [] });
         setHoneypot("");
         resetTurnstile();
         resetFormToken();
       } else {
         resetTurnstile();
-        setSubmitStatus({ type: "error", message: result.message });
+        setSubmitStatus({ type: "error", message: delivery.message });
       }
     } catch {
       resetTurnstile();

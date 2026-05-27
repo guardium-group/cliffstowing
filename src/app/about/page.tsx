@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { BreadcrumbHero } from "@/components/breadcrumb-hero";
 import { ServiceAreas } from "@/components/service-areas";
-import { CTABanner } from "@/components/cta-banner";
 import { Badge } from "@/components/ui/badge";
 import { Truck, ShieldCheck, Clock, Users } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";

@@ -6,7 +6,6 @@ import { ServiceSpotlights } from "@/components/service-spotlights";
 import { HowItWorks } from "@/components/how-it-works";
 import { ServiceFAQ } from "@/components/service-faq";
 import { CTACarousel } from "@/components/cta-carousel";
-import { MapEmbed } from "@/components/map-embed";
 import { ServiceAreas } from "@/components/service-areas";
 import { BlogPreview } from "@/components/blog-preview";
 import { Testimonials } from "@/components/testimonials";

@@ -10,7 +10,6 @@ import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { Testimonials } from "@/components/testimonials";
 import { ServiceFAQ } from "@/components/service-faq";
 import { CTACarousel } from "@/components/cta-carousel";
-import { ServiceAreas } from "@/components/service-areas";
 
 export const metadata: Metadata = {
   title: "Towing Guides & Roadside Articles",

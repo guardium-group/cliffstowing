@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Phone, ArrowRight, ShieldCheck, Clock, Star, RadioTower } from "lucide-react";
+import { Phone, ArrowRight, RadioTower } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";
@@ -53,30 +53,6 @@ function GlassmorphicCTVPlayer({ ctvVideoUrl }: { ctvVideoUrl: string }) {
     </motion.div>
   );
 }
-
-const trustBadges = [
-  {
-    icon: Clock,
-    label: "24/7 Available",
-    className: "bg-emerald-500/20 border-emerald-400/30 text-emerald-200",
-    dotClass: "bg-emerald-400",
-    iconClass: "text-emerald-300/70",
-  },
-  {
-    icon: ShieldCheck,
-    label: "Licensed & Insured",
-    className: "bg-blue-500/20 border-blue-400/30 text-blue-200",
-    dotClass: "bg-blue-400",
-    iconClass: "text-blue-300/70",
-  },
-  {
-    icon: Star,
-    label: "70+ Years Experience",
-    className: "bg-amber-500/20 border-amber-400/30 text-amber-200",
-    dotClass: "bg-amber-400",
-    iconClass: "text-amber-300/70",
-  },
-];
 
 export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);

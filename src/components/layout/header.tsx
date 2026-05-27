@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -9,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Menu as MenuIcon, X, Phone, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Menu, MenuItem, HoveredLink } from "@/components/ui/navbar-menu";
-import { primaryNavLinks, siteConfig } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 import { motion, AnimatePresence } from "framer-motion";
 
 

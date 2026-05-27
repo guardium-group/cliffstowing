@@ -16,6 +16,8 @@ import {
 import { siteConfig } from "@/lib/site";
 
 const TURNSTILE_SITEVERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const WEB3FORMS_SUBMIT_URL = "https://api.web3forms.com/submit";
+const EXTERNAL_REQUEST_TIMEOUT_MS = 10_000;
 
 export interface ContactSubmission extends ContactFormData {
   _honeypot?: string;
@@ -34,6 +36,15 @@ export interface ContactResponse {
 interface TurnstileVerifyResult {
   success: boolean;
   "error-codes"?: string[];
+  challenge_ts?: string;
+  hostname?: string;
+  action?: string;
+  cdata?: string;
+}
+
+interface Web3FormsResult {
+  success: boolean;
+  message?: string;
 }
 
 async function getClientIP(): Promise<string> {
@@ -54,6 +65,24 @@ function logSecurityEvent(event: string, details: Record<string, unknown>): void
   });
 }
 
+async function fetchWithTimeout(
+  url: string,
+  init: RequestInit,
+  timeoutMs = EXTERNAL_REQUEST_TIMEOUT_MS
+): Promise<Response> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(url, {
+      ...init,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 async function verifyTurnstileToken(
   token: string | undefined,
   clientIP: string
@@ -67,33 +96,59 @@ async function verifyTurnstileToken(
     return { valid: false, code: "missing-secret" };
   }
 
-  const response = await fetch(TURNSTILE_SITEVERIFY_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      secret: process.env.TURNSTILE_SECRET_KEY,
-      response: token,
-      remoteip: clientIP,
-    }),
-  });
+  try {
+    const response = await fetchWithTimeout(TURNSTILE_SITEVERIFY_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        secret: process.env.TURNSTILE_SECRET_KEY,
+        response: token,
+        remoteip: clientIP,
+      }),
+    });
 
-  if (!response.ok) {
-    console.error("Turnstile verification request failed", response.status);
-    return { valid: false, code: "request-failed" };
+    if (!response.ok) {
+      console.error("Turnstile verification request failed", {
+        status: response.status,
+        statusText: response.statusText,
+      });
+      return { valid: false, code: `request-failed-${response.status}` };
+    }
+
+    const result = (await response.json()) as TurnstileVerifyResult;
+    if (!result.success) {
+      const code = result["error-codes"]?.join(",") || "verification-failed";
+      console.warn("Turnstile verification failed", {
+        code,
+        hostname: result.hostname,
+        action: result.action,
+      });
+      return {
+        valid: false,
+        code,
+      };
+    }
+
+    console.info("Turnstile verification passed", {
+      hostname: result.hostname,
+      action: result.action,
+    });
+
+    return { valid: true };
+  } catch (error) {
+    const code = error instanceof DOMException && error.name === "AbortError"
+      ? "request-timeout"
+      : "request-error";
+
+    console.error("Turnstile verification request error", {
+      code,
+      error: error instanceof Error ? error.message : "Unknown",
+    });
+
+    return { valid: false, code };
   }
-
-  const result = (await response.json()) as TurnstileVerifyResult;
-  if (!result.success) {
-    console.warn("Turnstile verification failed", result["error-codes"]);
-    return {
-      valid: false,
-      code: result["error-codes"]?.join(",") || "verification-failed",
-    };
-  }
-
-  return { valid: true };
 }
 
 export async function submitContact(
@@ -227,22 +282,44 @@ export async function submitContact(
       services: data.services?.join(", ") || "None specified",
       message: data.message,
       submitted_at: submittedAt,
-      "cf-turnstile-response": rawData._turnstileToken ?? "",
     };
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    let response: Response;
+    let result: Web3FormsResult;
 
-    const result = (await response.json()) as { success: boolean; message?: string };
+    try {
+      response = await fetchWithTimeout(WEB3FORMS_SUBMIT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      result = (await response.json()) as Web3FormsResult;
+    } catch (error) {
+      const code = error instanceof DOMException && error.name === "AbortError"
+        ? "request-timeout"
+        : "request-error";
+
+      console.error("Web3Forms request error:", {
+        code,
+        error: error instanceof Error ? error.message : "Unknown",
+      });
+
+      return {
+        success: false,
+        message: `Unable to send message. Please try again or call ${siteConfig.phone.display}.`,
+        code: "EMAIL_ERROR",
+      };
+    }
 
     if (!response.ok || !result.success) {
-      console.error("Web3Forms error:", result);
+      console.error("Web3Forms error:", {
+        status: response.status,
+        message: result.message,
+      });
       return {
         success: false,
         message: `Unable to send message. Please try again or call ${siteConfig.phone.display}.`,

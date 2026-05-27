@@ -16,6 +16,23 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact Form Environment
+
+The contact form uses app-owned Cloudflare Turnstile verification before sending
+the message through Web3Forms. Set these values in `.env.local` at the project
+root:
+
+```bash
+WEB3FORMS_ACCESS_KEY=
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+```
+
+Restart `next dev` after changing `.env.local`. The Turnstile site key is
+prefixed with `NEXT_PUBLIC_`, so production changes to that value require a new
+build/deploy before the browser bundle sees them. Do not enable Turnstile again
+inside the Web3Forms dashboard unless the app stops validating it directly.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

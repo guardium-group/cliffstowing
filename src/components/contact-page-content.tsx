@@ -92,23 +92,39 @@ export function ContactPageContent() {
     setFormTimestamp(timestamp);
   }, []);
 
-  const abortPendingVerification = (message: string) => {
+  const clearPendingTimer = () => {
     if (pendingTimerRef.current) {
       clearTimeout(pendingTimerRef.current);
       pendingTimerRef.current = null;
     }
-    setPendingSubmit(false);
-    setIsSubmitting(false);
+  };
+
+  const resetTurnstile = () => {
     setTurnstileToken(null);
     turnstileRef.current?.reset();
+  };
+
+  const resetFormToken = () => {
+    const { token, timestamp } = generateFormToken();
+    setFormToken(token);
+    setFormTimestamp(timestamp);
+  };
+
+  const abortPendingVerification = (message: string) => {
+    clearPendingTimer();
+    setPendingSubmit(false);
+    setIsSubmitting(false);
+    resetTurnstile();
     setSubmitStatus({ type: "error", message });
   };
 
   useEffect(() => () => {
-    if (pendingTimerRef.current) clearTimeout(pendingTimerRef.current);
+    clearPendingTimer();
   }, []);
 
   const performSubmit = async (token: string) => {
+    clearPendingTimer();
+    setPendingSubmit(false);
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
     try {
@@ -123,22 +139,22 @@ export function ContactPageContent() {
       if (result.success) {
         setSubmitStatus({ type: "success", message: result.message });
         setFormData({ name: "", email: "", phone: "", message: "", services: [] });
-        setTurnstileToken(null);
-        turnstileRef.current?.reset();
-        const { token: newToken, timestamp } = generateFormToken();
-        setFormToken(newToken);
-        setFormTimestamp(timestamp);
+        setHoneypot("");
+        resetTurnstile();
+        resetFormToken();
       } else {
-        turnstileRef.current?.reset();
-        setTurnstileToken(null);
+        resetTurnstile();
         setSubmitStatus({ type: "error", message: result.message });
       }
     } catch {
+      resetTurnstile();
       setSubmitStatus({
         type: "error",
         message: `Something went wrong. Please try again or call ${siteConfig.phone.display}.`,
       });
     } finally {
+      clearPendingTimer();
+      setPendingSubmit(false);
       setIsSubmitting(false);
     }
   };
@@ -167,6 +183,8 @@ export function ContactPageContent() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     if (!turnstileSiteKey) {
       setSubmitStatus({
         type: "error",
@@ -178,7 +196,8 @@ export function ContactPageContent() {
     if (turnstileToken) {
       void performSubmit(turnstileToken);
     } else {
-      // Token not yet ready (Turnstile still loading) — wait for onSuccess
+      // Token not yet ready, so wait for Turnstile to resolve.
+      clearPendingTimer();
       setIsSubmitting(true);
       setPendingSubmit(true);
       pendingTimerRef.current = setTimeout(() => {

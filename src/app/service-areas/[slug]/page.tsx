@@ -8,7 +8,6 @@ import { serviceAreas, getArea } from "@/lib/service-areas";
 import { serviceLocations } from "@/lib/service-locations";
 import { siteConfig } from "@/lib/site";
 import { breadcrumbJsonLd, cityLocalBusinessJsonLd, faqJsonLd } from "@/lib/structured-data";
-import { ServicesSection } from "@/components/services-section";
 import { Testimonials } from "@/components/testimonials";
 import { CTACarousel } from "@/components/cta-carousel";
 import {
@@ -245,7 +244,7 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
                     {area.name} Dispatch
                   </p>
                   <p className="text-white/70 text-sm leading-relaxed mb-5">
-                    Stranded in {area.name}? Call dispatch — we're available 24/7 and will give you an honest ETA.
+                    Stranded in {area.name}? Call dispatch — we&apos;re available 24/7 and will give you an honest ETA.
                   </p>
                   <a
                     href={siteConfig.phone.href}

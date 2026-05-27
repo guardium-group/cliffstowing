@@ -339,7 +339,7 @@ export function ContactPageContent() {
                         `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
                       )
                     }
-                    options={{ execution: "render", size: "invisible", refreshExpired: "auto" }}
+                    options={{ execution: "render", size: "normal", refreshExpired: "auto" }}
                   />
 
                   <Button

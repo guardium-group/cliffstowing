@@ -83,8 +83,8 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
         <header className="relative overflow-hidden bg-[#3e000c] pt-36 sm:pt-40 pb-16 sm:pb-20 text-white">
           <div className="absolute inset-0 opacity-30" aria-hidden="true">
             <Image
-              src={siteConfig.ogImage}
-              alt={`Cliff's Towing serving ${area.name}`}
+              src="/images/hero/cliffs500rotator.jpg"
+              alt=""
               fill
               priority
               sizes="100vw"
@@ -95,7 +95,7 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
 
           <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-7xl">
             <Link
-              href="/#service-areas"
+              href="/service-areas"
               className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors mb-8"
             >
               <ArrowLeft className="h-4 w-4" />

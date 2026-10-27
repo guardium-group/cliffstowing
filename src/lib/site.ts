@@ -47,7 +47,7 @@ export const siteConfig = {
     "Winching and recovery",
     "Equipment transport",
   ],
-  ogImage: "/images/hero/cliffs500rotator.jpg",
+  ogImage: "/images/og/cliffs-og.jpg",
 } as const;
 
 export const primaryNavLinks = [

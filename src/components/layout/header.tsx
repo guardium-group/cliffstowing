@@ -85,7 +85,7 @@ export function Header() {
             <Link href="/" className="z-50 flex items-center shrink-0">
               <Image
                 src="/cliffs_logo.png"
-                alt="Cliff's Towing"
+                alt="Cliff's Towing home"
                 width={130}
                 height={36}
                 className="h-12 w-auto object-contain"

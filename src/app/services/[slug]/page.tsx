@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Phone, Check } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { services, getService } from "@/lib/services";
+import { serviceAreas } from "@/lib/service-areas";
+import { serviceLocations } from "@/lib/service-locations";
 import { siteConfig } from "@/lib/site";
 import { breadcrumbJsonLd, serviceJsonLd, faqJsonLd } from "@/lib/structured-data";
 import { ServiceAreas } from "@/components/service-areas";
@@ -70,6 +72,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
   if (!service) notFound();
 
   const relatedServices = services.filter((s) => service.relatedSlugs.includes(s.slug));
+  // Link to the city-specific page where one exists for this service, otherwise the city page.
+  const cityLinks = serviceAreas.map((area) => {
+    const hasCombo = serviceLocations.some(
+      (l) => l.serviceSlug === service.slug && l.citySlug === area.slug
+    );
+    return {
+      label: hasCombo ? `${service.name} in ${area.name}` : area.name,
+      href: hasCombo ? `/service-areas/${area.slug}/${service.slug}` : `/service-areas/${area.slug}`,
+    };
+  });
 
   return (
     <>
@@ -179,6 +191,26 @@ export default async function ServicePage({ params }: ServicePageProps) {
                       </AccordionItem>
                     ))}
                   </Accordion>
+                </section>
+
+                {/* City links */}
+                <section>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-6">
+                    {service.name} near you
+                  </h2>
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {cityLinks.map((city) => (
+                      <li key={city.href}>
+                        <Link
+                          href={city.href}
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-primary transition-colors group"
+                        >
+                          <ArrowRight className="h-3.5 w-3.5 text-gray-300 group-hover:text-primary transition-colors flex-shrink-0" />
+                          {city.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </section>
               </div>
             </div>

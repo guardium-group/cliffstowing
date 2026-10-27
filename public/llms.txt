@@ -25,17 +25,31 @@ Cliff's Towing provides 24/7 towing, transport, recovery, and roadside assistanc
 
 ## Services
 
-- Light duty towing
-- Medium duty towing
-- Heavy duty towing
-- Flatbed towing
-- Accident towing and recovery
-- Winching and recovery
-- Roadside assistance
-- Battery boosts
-- Lockout service
-- Fuel delivery
-- Equipment transport
+- Light and medium duty towing: https://cliffstowing.ca/services/light-duty-towing
+- Heavy duty towing: https://cliffstowing.ca/services/heavy-duty-towing
+- Flatbed towing: https://cliffstowing.ca/services/flatbed-towing
+- Accident towing and recovery: https://cliffstowing.ca/services/accident-recovery
+- Roadside assistance (battery boosts, lockouts, fuel delivery, tire changes): https://cliffstowing.ca/services/roadside-assistance
+- Winching and off-road recovery: https://cliffstowing.ca/services/winching-recovery
+- Equipment transport: https://cliffstowing.ca/services/equipment-transport
+
+## Service area pages
+
+- All service areas: https://cliffstowing.ca/service-areas
+- Edmonton: https://cliffstowing.ca/service-areas/edmonton
+- Sherwood Park: https://cliffstowing.ca/service-areas/sherwood-park
+- St. Albert: https://cliffstowing.ca/service-areas/st-albert
+- Spruce Grove: https://cliffstowing.ca/service-areas/spruce-grove
+- Leduc: https://cliffstowing.ca/service-areas/leduc
+- Beaumont: https://cliffstowing.ca/service-areas/beaumont
+- Devon: https://cliffstowing.ca/service-areas/devon
+- Morinville: https://cliffstowing.ca/service-areas/morinville
+- Fort Saskatchewan: https://cliffstowing.ca/service-areas/fort-saskatchewan
+- Stony Plain: https://cliffstowing.ca/service-areas/stony-plain
+- Nisku: https://cliffstowing.ca/service-areas/nisku
+- Acheson: https://cliffstowing.ca/service-areas/acheson
+
+City-specific service pages follow the pattern https://cliffstowing.ca/service-areas/{city}/{service} for heavy-duty-towing, flatbed-towing, accident-recovery, and roadside-assistance (for example https://cliffstowing.ca/service-areas/sherwood-park/flatbed-towing). The XML sitemap lists all of them.
 
 ## Guides and articles
 
@@ -44,9 +58,9 @@ Cliff's Towing provides 24/7 towing, transport, recovery, and roadside assistanc
 - When flatbed towing is the right choice for AWD, 4WD, and EV vehicles: https://cliffstowing.ca/blog/flatbed-towing-awd-ev-vehicles
 - How to prepare equipment for transport in Edmonton: https://cliffstowing.ca/blog/heavy-equipment-transport-edmonton
 - How much does towing cost in Edmonton?: https://cliffstowing.ca/blog/towing-cost-edmonton
-- Towing laws in Alberta — what drivers need to know: https://cliffstowing.ca/blog/alberta-towing-laws
+- Towing laws in Alberta: what drivers need to know: https://cliffstowing.ca/blog/alberta-towing-laws
 - Heavy duty vs. light duty towing — what's the difference?: https://cliffstowing.ca/blog/heavy-duty-vs-light-duty-towing
-- EV towing in Edmonton — what Tesla, Rivian, and Ford Lightning owners need to know: https://cliffstowing.ca/blog/ev-towing-guide-edmonton
+- EV towing in Edmonton: what Tesla, Rivian, and Ford Lightning owners need to know: https://cliffstowing.ca/blog/ev-towing-guide-edmonton
 - How to choose a towing company in Edmonton: https://cliffstowing.ca/blog/how-to-choose-towing-company-edmonton
 - Winching vs. towing — when you need recovery, not just a hook: https://cliffstowing.ca/blog/winching-vs-towing-edmonton
 

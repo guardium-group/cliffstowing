@@ -121,6 +121,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   year: "numeric",
                 }).format(new Date(`${post.publishedAt}T08:00:00-06:00`))}
               </time>
+              {post.updatedAt > post.publishedAt && (
+                <>
+                  <span>·</span>
+                  <span>
+                    Updated{" "}
+                    <time dateTime={post.updatedAt}>
+                      {new Intl.DateTimeFormat("en-CA", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                      }).format(new Date(`${post.updatedAt}T08:00:00-06:00`))}
+                    </time>
+                  </span>
+                </>
+              )}
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-wrap-balance max-w-7xl mb-6">

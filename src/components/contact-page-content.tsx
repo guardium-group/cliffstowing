@@ -21,6 +21,7 @@ import {
 } from "@/lib/actions/contact";
 import { serviceOptions } from "@/lib/validations/contact";
 import { siteConfig } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 const WEB3FORMS_SUBMIT_URL = "https://api.web3forms.com/submit";
 const DELIVERY_TIMEOUT_MS = 10_000;
@@ -284,6 +285,10 @@ export function ContactPageContent() {
       );
 
       if (delivery.success) {
+        trackEvent("generate_lead", {
+          form: "contact",
+          services: formData.services.join(", ") || undefined,
+        });
         setSubmitStatus({ type: "success", message: delivery.message });
         setFormData({ name: "", email: "", phone: "", message: "", services: [] });
         setHoneypot("");

@@ -81,7 +81,16 @@ export default async function ServiceLocationPage({ params }: ComboPageProps) {
           { name: loc.serviceName, url: `${siteConfig.url}/service-areas/${loc.citySlug}/${loc.serviceSlug}` },
         ])}
       />
-      {serviceData && <JsonLd data={serviceJsonLd(serviceData)} />}
+      {serviceData && (
+        <JsonLd
+          data={serviceJsonLd(serviceData, {
+            cityName: loc.cityName,
+            path: `/service-areas/${loc.citySlug}/${loc.serviceSlug}`,
+            name: loc.title,
+            description: loc.metaDescription,
+          })}
+        />
+      )}
       <JsonLd data={faqJsonLd(loc.faqs)} />
 
       <article className="bg-white">

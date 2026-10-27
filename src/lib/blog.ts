@@ -149,7 +149,7 @@ export const blogPosts: BlogPost[] = [
     updatedAt: "2026-05-11",
     readingTime: "5 min read",
     image: "/images/hero/decktruckoldcar1024x693.jpg",
-    imageAlt: "Flatbed truck carrying a passenger vehicle",
+    imageAlt: "Cliff's Towing flatbed carrying a classic car strapped down at all four wheels",
     keywords: [
       "flatbed towing Edmonton",
       "AWD towing Edmonton",
@@ -201,7 +201,7 @@ export const blogPosts: BlogPost[] = [
     updatedAt: "2026-05-11",
     readingTime: "6 min read",
     image: "/images/hero/decktruckequipment31024x695.jpg",
-    imageAlt: "Deck truck carrying heavy equipment",
+    imageAlt: "Cliff's deck truck hauling a tractor with a sweeper attachment, chained down for transport",
     keywords: [
       "equipment transport Edmonton",
       "forklift transport Edmonton",
@@ -255,7 +255,7 @@ export const blogPosts: BlogPost[] = [
     updatedAt: "2026-05-26",
     readingTime: "5 min read",
     image: "/images/hero/cliffs500rotator.jpg",
-    imageAlt: "Cliff's Towing truck on an Edmonton road",
+    imageAlt: "Cliff's heavy recovery rotator tow truck with the Edmonton skyline behind it",
     keywords: [
       "towing cost Edmonton",
       "how much does towing cost Edmonton",

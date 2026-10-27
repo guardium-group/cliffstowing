@@ -99,29 +99,35 @@ export function faqJsonLd(items: Array<{ q: string; a: string }>) {
   };
 }
 
-export function serviceJsonLd(service: ServiceData) {
+export function serviceJsonLd(
+  service: ServiceData,
+  location?: { cityName: string; path: string; name: string; description: string }
+) {
+  const areaServed = location
+    ? { "@type": "City", name: location.cityName }
+    : siteConfig.serviceArea.map((city) => ({
+        "@type": "City",
+        name: city,
+      }));
+
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${siteConfig.url}/services/${service.slug}#service`,
+    "@id": location
+      ? `${siteConfig.url}${location.path}#service`
+      : `${siteConfig.url}/services/${service.slug}#service`,
     serviceType: service.name,
-    name: service.title,
-    description: service.metaDescription,
+    name: location?.name ?? service.title,
+    description: location?.description ?? service.metaDescription,
     provider: {
       "@type": "LocalBusiness",
       "@id": `${siteConfig.url}/#business`,
     },
-    areaServed: siteConfig.serviceArea.map((city) => ({
-      "@type": "City",
-      name: city,
-    })),
+    areaServed,
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
-      areaServed: siteConfig.serviceArea.map((city) => ({
-        "@type": "City",
-        name: city,
-      })),
+      areaServed,
     },
   };
 }

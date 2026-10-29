@@ -81,13 +81,13 @@ async function submitToWeb3Forms(
   const timeout = window.setTimeout(() => controller.abort(), DELIVERY_TIMEOUT_MS);
 
   try {
-    const response = await fetch(`${WEB3FORMS_SUBMIT_URL}/${encodeURIComponent(formId)}`, {
+    const response = await fetch(WEB3FORMS_SUBMIT_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ access_key: formId, ...payload }),
       signal: controller.signal,
     });
 

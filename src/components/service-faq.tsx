@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site";
 export const faqs = [
   {
     q: "How quickly can you get to me in Edmonton?",
-    a: "Our average response time within Edmonton city limits is under 30 minutes. Surrounding areas like Sherwood Park, St. Albert, and Spruce Grove are typically 30-45 minutes depending on traffic and our nearest available unit. We'll give you an honest ETA when you call.",
+    a: "Our average response time within Edmonton city limits is about 30 minutes, depending on weather, traffic and road conditions. Surrounding areas like Sherwood Park, St. Albert, and Spruce Grove typically take 30–45 minutes, depending on the same conditions and our nearest available unit. We'll give you an honest ETA when you call.",
   },
   {
     q: "Do you tow AWD and 4WD vehicles?",

@@ -60,7 +60,7 @@ const allServices = [
     icon: Zap,
     title: "Jump start / battery boost",
     shortDescription: "Dead battery? We'll get you going.",
-    href: "/services/roadside-assistance",
+    href: "/services/battery-boost",
   },
   {
     icon: Fuel,

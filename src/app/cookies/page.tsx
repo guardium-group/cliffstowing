@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BreadcrumbHero } from "@/components/breadcrumb-hero";
 import { siteConfig } from "@/lib/site";
 
@@ -30,7 +31,7 @@ export default function CookiePolicyPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="space-y-8 text-gray-600 leading-relaxed">
-            <p className="text-gray-500">Last updated: October 27, 2026</p>
+            <p className="text-gray-500">Last updated: October 29, 2026</p>
 
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">
@@ -68,9 +69,18 @@ export default function CookiePolicyPage() {
                 Embedded Services
               </h2>
               <p>
-                Pages may include third-party services such as Google Maps.
-                Those services may set their own cookies or collect technical
-                information according to their own policies.
+                Some pages embed third-party content: a Google Maps map on the
+                contact page and a CTV News video player (Bell Media, via
+                Jasper Player) on the home page. These load when you open the
+                page, whether or not you accept analytics cookies, and the
+                providers may set their own cookies or collect technical
+                information such as your IP address under their own policies.
+              </p>
+              <p className="mt-3">
+                The contact form uses Cloudflare Turnstile to check that
+                submissions come from a person. Turnstile reads technical
+                signals from your browser to do this and is needed for the form
+                to work.
               </p>
             </div>
 
@@ -97,7 +107,11 @@ export default function CookiePolicyPage() {
                 <a href={`mailto:${siteConfig.email}`} className="text-primary">
                   {siteConfig.email}
                 </a>
-                .
+                . See our{" "}
+                <Link href="/privacy-policy" className="text-primary">
+                  Privacy Policy
+                </Link>{" "}
+                for how we handle personal information.
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Cliff's Towing",
-  legalName: "Cliff's Towing",
+  legalName: "Cliffs Towing and Recovery",
   url: "https://cliffstowing.ca",
   description:
     "Cliff's Towing — Edmonton's 24/7 tow truck, roadside assistance, and heavy recovery service. Light duty, flatbed, heavy haul, and winching across 12 Alberta communities. Call anytime.",

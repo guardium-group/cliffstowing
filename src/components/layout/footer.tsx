@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { CookieSettingsButton } from "@/components/cookie-settings-button";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -71,7 +72,7 @@ export function Footer() {
             <Link href="/" className="inline-block">
               <Image
                 src="/cliffs_logo.png"
-                alt="Cliff's Towing"
+                alt="Cliff's Towing home"
                 width={150}
                 height={42}
                 className="h-10 w-auto object-contain brightness-0 invert"
@@ -172,6 +173,9 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <CookieSettingsButton className="text-white/55 hover:text-white text-sm transition-colors duration-150 cursor-pointer" />
+                </li>
               </ul>
             </div>
           </div>

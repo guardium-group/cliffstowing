@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieConsent } from "@/components/cookie-consent";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import { AnalyticsEvents } from "@/components/analytics-events";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/lib/site";
 import { localBusinessJsonLd } from "@/lib/structured-data";
@@ -90,6 +92,8 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <CookieConsent />
+        <GoogleAnalytics />
+        <AnalyticsEvents />
         <Analytics />
       </body>
     </html>

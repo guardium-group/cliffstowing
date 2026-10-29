@@ -4,26 +4,29 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cookie } from "lucide-react";
 import Link from "next/link";
-
-const CONSENT_KEY = "cliffs-cookie-consent";
+import { getConsent, onConsentBannerOpen, setConsent } from "@/lib/consent";
 
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem(CONSENT_KEY)) return;
+    const unsubscribe = onConsentBannerOpen(() => setVisible(true));
+    if (getConsent()) return unsubscribe;
 
     const timer = window.setTimeout(() => setVisible(true), 0);
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      unsubscribe();
+    };
   }, []);
 
   const accept = () => {
-    localStorage.setItem(CONSENT_KEY, "accepted");
+    setConsent("accepted");
     setVisible(false);
   };
 
   const decline = () => {
-    localStorage.setItem(CONSENT_KEY, "declined");
+    setConsent("declined");
     setVisible(false);
   };
 
@@ -52,7 +55,8 @@ export function CookieConsent() {
                 <div>
                   <p className="font-semibold text-white text-sm">We use cookies</p>
                   <p className="text-white/40 text-xs mt-1 leading-relaxed">
-                    We use cookies to improve your experience. See our{" "}
+                    With your OK, we use Google Analytics cookies to see how visitors use the site.
+                    Essential storage works either way. See our{" "}
                     <Link
                       href="/cookies"
                       className="text-lime-400/80 hover:text-lime-300 transition-colors duration-150 underline underline-offset-2"

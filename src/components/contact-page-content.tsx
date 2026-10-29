@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import type { Variants } from "framer-motion";
 import { motion } from "framer-motion";
 import {
@@ -21,6 +22,7 @@ import {
 } from "@/lib/actions/contact";
 import { serviceOptions } from "@/lib/validations/contact";
 import { siteConfig } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 const WEB3FORMS_SUBMIT_URL = "https://api.web3forms.com/submit";
 const DELIVERY_TIMEOUT_MS = 10_000;
@@ -284,6 +286,10 @@ export function ContactPageContent() {
       );
 
       if (delivery.success) {
+        trackEvent("generate_lead", {
+          form: "contact",
+          services: formData.services.join(", ") || undefined,
+        });
         setSubmitStatus({ type: "success", message: delivery.message });
         setFormData({ name: "", email: "", phone: "", message: "", services: [] });
         setHoneypot("");
@@ -541,6 +547,16 @@ export function ContactPageContent() {
                       "Send Message"
                     )}
                   </Button>
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    We use these details to respond to your request and provide the service you ask
+                    for. Some of the providers that deliver and store messages are outside Canada.
+                    Questions about your information? Contact our Operations Manager at{" "}
+                    {siteConfig.email}. See our{" "}
+                    <Link href="/privacy-policy" className="text-primary underline-offset-2 hover:underline">
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
                 </form>
               </div>
 

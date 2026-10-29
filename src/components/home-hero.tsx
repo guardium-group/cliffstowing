@@ -75,7 +75,8 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
         {slides.map((slide, index) => (
           <motion.div
             key={slide.image}
-            initial={{ opacity: 0 }}
+            // Start at the visible state so the first slide isn't hidden until hydration (LCP).
+            initial={false}
             animate={{ opacity: index === activeIndex ? 1 : 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
             className="absolute inset-0"
@@ -84,7 +85,8 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
               src={slide.image}
               alt={`${slide.title} ${slide.highlight}`}
               fill
-              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "auto"}
               sizes="100vw"
               className="object-cover"
             />
@@ -99,7 +101,7 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
       <div className="container mx-auto px-4 relative z-10 h-full min-h-svh sm:min-h-[650px] md:min-h-[700px] flex items-center">
         <div className="flex h-full w-full items-center py-16 sm:py-20">
           <div className="max-w-7xl border-l-2 sm:border-l pl-4 sm:pl-8 border-white/50 pb-4">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={current.image}
                 initial={{ opacity: 0, y: 30 }}
@@ -174,7 +176,7 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
               aria-label={`Go to slide ${index + 1}`}
               onClick={() => setActiveIndex(index)}
               className={cn(
-                "h-1 rounded-full transition-all duration-300",
+                "relative h-1 rounded-full transition-all duration-300 before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']",
                 index === activeIndex
                   ? "w-8 sm:w-10 bg-white"
                   : "w-2 bg-white/30 hover:bg-white/50"

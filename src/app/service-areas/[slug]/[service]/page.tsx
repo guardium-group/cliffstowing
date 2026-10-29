@@ -7,6 +7,7 @@ import { serviceLocations, getServiceLocation } from "@/lib/service-locations";
 import { getService } from "@/lib/services";
 import { getArea } from "@/lib/service-areas";
 import { siteConfig } from "@/lib/site";
+import { RichText } from "@/components/rich-text";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/structured-data";
 import { Testimonials } from "@/components/testimonials";
 import { CTACarousel } from "@/components/cta-carousel";
@@ -171,7 +172,7 @@ export default async function ServiceLocationPage({ params }: ComboPageProps) {
                   </h2>
                   {section.body.map((para, j) => (
                     <p key={j} className="text-gray-600 leading-relaxed text-base sm:text-lg mb-3 last:mb-0">
-                      {para}
+                      <RichText text={para} />
                     </p>
                   ))}
                   {section.list && (

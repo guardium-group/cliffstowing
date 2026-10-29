@@ -6,6 +6,8 @@ export interface AreaData {
   responseTime: string;
   mainRoutes: string[];
   localLandmarks: string[];
+  /** Extra city-specific copy. Body strings may contain [label](/path) links. */
+  sections?: Array<{ heading: string; body: string[] }>;
   faqs: Array<{ q: string; a: string }>;
   keywords: string[];
 }

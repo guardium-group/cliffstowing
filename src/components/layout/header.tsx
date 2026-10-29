@@ -89,7 +89,7 @@ export function Header() {
                 width={130}
                 height={36}
                 className="h-12 w-auto object-contain"
-                priority
+                loading="eager"
               />
             </Link>
 

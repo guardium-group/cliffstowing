@@ -102,9 +102,9 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+            <h2 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
               Services
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.name}>
@@ -121,9 +121,9 @@ export function Footer() {
 
           {/* Service Areas */}
           <div>
-            <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+            <h2 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
               Service Areas
-            </h4>
+            </h2>
             <ul className="grid grid-cols-2 gap-x-3 gap-y-2.5">
               {serviceAreaLinks.map((link) => (
                 <li key={link.name}>
@@ -141,9 +141,9 @@ export function Footer() {
           {/* Company + Legal stacked */}
           <div className="flex flex-col gap-10">
             <div>
-              <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+              <h2 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
                 Company
-              </h4>
+              </h2>
               <ul className="space-y-3">
                 {companyLinks.map((link) => (
                   <li key={link.name}>
@@ -159,9 +159,9 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
+              <h2 className="text-white/35 font-mono text-[10px] uppercase tracking-[0.2em] mb-5">
                 Legal
-              </h4>
+              </h2>
               <ul className="space-y-3">
                 {legalLinks.map((link) => (
                   <li key={link.name}>

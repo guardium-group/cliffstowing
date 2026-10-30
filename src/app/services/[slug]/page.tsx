@@ -7,7 +7,9 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { services, getService } from "@/lib/services";
 import { serviceAreas } from "@/lib/service-areas";
 import { serviceLocations } from "@/lib/service-locations";
+import { blogPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
+import { RichText } from "@/components/rich-text";
 import { breadcrumbJsonLd, serviceJsonLd, faqJsonLd } from "@/lib/structured-data";
 import { ServiceAreas } from "@/components/service-areas";
 import { Testimonials } from "@/components/testimonials";
@@ -72,6 +74,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
   if (!service) notFound();
 
   const relatedServices = services.filter((s) => service.relatedSlugs.includes(s.slug));
+  const relatedGuides = blogPosts
+    .filter((p) => p.relatedService?.href === `/services/${service.slug}`)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, 4);
   // Link to the city-specific page where one exists for this service, otherwise the city page.
   const cityLinks = serviceAreas.map((area) => {
     const hasCombo = serviceLocations.some(
@@ -103,7 +109,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
               src={service.heroImage}
               alt={service.heroImageAlt}
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="100vw"
               className="object-cover"
             />
@@ -156,7 +163,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     </h2>
                     <div className="space-y-4 text-gray-600 leading-relaxed text-base sm:text-lg max-w-[68ch]">
                       {section.body.map((paragraph, i) => (
-                        <p key={i}>{paragraph}</p>
+                        <p key={i}>
+                          <RichText text={paragraph} />
+                        </p>
                       ))}
                     </div>
                     {section.list && (
@@ -166,7 +175,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
                             <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
                               <Check className="h-3 w-3 text-primary" strokeWidth={2.5} />
                             </span>
-                            <span className="text-gray-600 text-sm sm:text-base leading-relaxed">{item}</span>
+                            <span className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                              <RichText text={item} />
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -258,6 +269,28 @@ export default async function ServicePage({ params }: ServicePageProps) {
                           >
                             <ArrowRight className="h-3.5 w-3.5 text-gray-300 group-hover:text-primary transition-colors flex-shrink-0" />
                             {s.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Related guides */}
+                {relatedGuides.length > 0 && (
+                  <div className="rounded-2xl bg-gray-50 border border-gray-100 p-6">
+                    <p className="text-xs font-mono uppercase tracking-[0.16em] text-gray-400 mb-4">
+                      Related guides
+                    </p>
+                    <ul className="space-y-3">
+                      {relatedGuides.map((p) => (
+                        <li key={p.slug}>
+                          <Link
+                            href={`/blog/${p.slug}`}
+                            className="flex items-start gap-2 text-sm text-gray-700 hover:text-primary transition-colors group"
+                          >
+                            <ArrowRight className="h-3.5 w-3.5 mt-0.5 text-gray-300 group-hover:text-primary transition-colors flex-shrink-0" />
+                            {p.title}
                           </Link>
                         </li>
                       ))}

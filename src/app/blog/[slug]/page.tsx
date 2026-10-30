@@ -11,6 +11,7 @@ import { ServiceFAQ } from "@/components/service-faq";
 import { CTACarousel } from "@/components/cta-carousel";
 import { Testimonials } from "@/components/testimonials";
 import { ServiceAreas } from "@/components/service-areas";
+import { RichText } from "@/components/rich-text";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -77,6 +78,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   if (!post) notFound();
 
+  // Same related service first, then same category, newest first within each group.
+  const relatedPosts = blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => ({
+      post: p,
+      score:
+        (post.relatedService && p.relatedService?.href === post.relatedService.href ? 2 : 0) +
+        (p.category === post.category ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score || b.post.publishedAt.localeCompare(a.post.publishedAt))
+    .slice(0, 3)
+    .map(({ post: p }) => p);
+
   return (
     <>
       <JsonLd
@@ -95,7 +109,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               src={post.image}
               alt={post.imageAlt}
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="100vw"
               className="object-cover"
             />
@@ -158,7 +173,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     </h2>
                     <div className="space-y-4 text-gray-600 leading-relaxed text-base sm:text-lg max-w-[68ch]">
                       {section.body.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
+                        <p key={paragraph}>
+                          <RichText text={paragraph} />
+                        </p>
                       ))}
                     </div>
                     {section.list && (
@@ -168,7 +185,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             key={item}
                             className="rounded-xl bg-gray-50 border border-gray-100 px-4 py-3 text-sm text-gray-700"
                           >
-                            {item}
+                            <RichText text={item} />
                           </li>
                         ))}
                       </ul>
@@ -216,6 +233,34 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </aside>
           </div>
         </div>
+
+        {relatedPosts.length > 0 && (
+          <section className="border-t border-gray-100 bg-gray-50">
+            <div className="container mx-auto px-5 sm:px-6 max-w-7xl py-14 sm:py-16">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-8">
+                Related articles
+              </h2>
+              <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {relatedPosts.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/blog/${p.slug}`}
+                      className="group flex h-full flex-col rounded-2xl bg-white border border-gray-100 p-6 hover:border-primary/30 hover:shadow-sm transition-all duration-200"
+                    >
+                      <span className="text-xs font-mono uppercase tracking-[0.16em] text-primary mb-3">
+                        {p.category}
+                      </span>
+                      <span className="font-semibold text-gray-900 leading-snug group-hover:text-primary transition-colors">
+                        {p.title}
+                      </span>
+                      <span className="mt-3 text-sm text-gray-500 leading-relaxed">{p.excerpt}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
       </article>
 
       <ServiceAreas />

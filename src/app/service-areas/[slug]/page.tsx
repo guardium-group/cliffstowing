@@ -6,7 +6,9 @@ import { ArrowLeft, ArrowRight, Phone, MapPin, Clock } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { serviceAreas, getArea } from "@/lib/service-areas";
 import { serviceLocations } from "@/lib/service-locations";
+import { services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
+import { RichText } from "@/components/rich-text";
 import { breadcrumbJsonLd, cityLocalBusinessJsonLd, faqJsonLd } from "@/lib/structured-data";
 import { Testimonials } from "@/components/testimonials";
 import { CTACarousel } from "@/components/cta-carousel";
@@ -86,7 +88,8 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
               src="/images/hero/cliffs500rotator.jpg"
               alt=""
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="100vw"
               className="object-cover"
             />
@@ -182,6 +185,39 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
                 </ul>
               </section>
 
+              {/* Landmarks */}
+              {area.localLandmarks.length > 0 && (
+                <section>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-4">
+                    Places we regularly respond to in {area.name}
+                  </h2>
+                  <ul className="space-y-2">
+                    {area.localLandmarks.map((landmark) => (
+                      <li key={landmark} className="flex items-center gap-3 text-gray-700 text-sm">
+                        <MapPin className="h-3.5 w-3.5 text-primary flex-shrink-0" />
+                        {landmark}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
+              {/* City-specific sections */}
+              {area.sections?.map((section) => (
+                <section key={section.heading}>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-4">
+                    {section.heading}
+                  </h2>
+                  <div className="space-y-4 text-gray-600 leading-relaxed">
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph}>
+                        <RichText text={paragraph} />
+                      </p>
+                    ))}
+                  </div>
+                </section>
+              ))}
+
               {/* Service links */}
               <section>
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-4">
@@ -191,15 +227,7 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
                   All of our services are available across {area.name} and the surrounding area.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {[
-                    { label: "Light duty towing", slug: "light-duty-towing" },
-                    { label: "Heavy duty towing", slug: "heavy-duty-towing" },
-                    { label: "Flatbed towing", slug: "flatbed-towing" },
-                    { label: "Accident recovery", slug: "accident-recovery" },
-                    { label: "Roadside assistance", slug: "roadside-assistance" },
-                    { label: "Winching & recovery", slug: "winching-recovery" },
-                    { label: "Equipment transport", slug: "equipment-transport" },
-                  ].map((s) => (
+                  {services.map((s) => ({ label: s.name, slug: s.slug })).map((s) => (
                     <Link
                       key={s.slug}
                       href={

@@ -53,7 +53,7 @@ export function CTABanner() {
               className="border-white/20 text-white bg-white/5 hover:bg-white/10 rounded-full active:scale-[0.98] transition-all duration-200 text-base px-8 group"
             >
               <Link href="/contact">
-                Get a quote
+                Request service
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </Button>

@@ -285,7 +285,7 @@ export default async function ServiceAreaPage({ params }: AreaPageProps) {
                     href="/contact"
                     className="flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-white/70 hover:text-white hover:border-white/40 transition-colors w-full mt-3"
                   >
-                    Request a quote
+                    Request service
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>

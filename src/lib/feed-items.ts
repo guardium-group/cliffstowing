@@ -31,7 +31,7 @@ export const feedItems: FeedItem[] = [
   },
   {
     type: "deal",
-    label: `Free towing quotes - call ${siteConfig.phone.display}.`,
+    label: `Call a tow dispatcher 24/7 - ${siteConfig.phone.display}.`,
     href: siteConfig.phone.href,
   },
 ];

@@ -251,7 +251,7 @@ export function ServiceSpotlights({ limit }: ServiceSpotlightsProps) {
                       className="rounded-full group active:scale-[0.98] transition-transform duration-150"
                     >
                       <Link href="/contact">
-                        Get a free quote
+                        Request service
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                       </Link>
                     </Button>

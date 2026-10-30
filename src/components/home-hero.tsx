@@ -7,7 +7,7 @@ import { Phone, ArrowRight, RadioTower } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export interface HeroSlide {
   image: string;
@@ -56,6 +56,11 @@ function GlassmorphicCTVPlayer({ ctvVideoUrl }: { ctvVideoUrl: string }) {
 
 export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  // Slide whose text is on screen. It lags activeIndex while the text fades out,
+  // so the same <h1> is reused instead of remounted (a new, larger <h1> on each
+  // rotation would be reported as a late LCP).
+  const [shownIndex, setShownIndex] = useState(0);
+  const textVisible = shownIndex === activeIndex;
 
   useEffect(() => {
     if (slides.length <= 1) return;
@@ -66,7 +71,7 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
   }, [slides.length, intervalMs]);
 
   if (!slides.length) return null;
-  const current = slides[activeIndex];
+  const current = slides[shownIndex] ?? slides[0];
 
   return (
     <section className="relative min-h-svh sm:min-h-[700px] md:min-h-[750px] xl:h-[775px] overflow-hidden text-white">
@@ -101,64 +106,47 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
       <div className="container mx-auto px-4 relative z-10 h-full min-h-svh sm:min-h-[650px] md:min-h-[700px] flex items-center">
         <div className="flex h-full w-full items-center py-16 sm:py-20">
           <div className="max-w-7xl border-l-2 sm:border-l pl-4 sm:pl-8 border-white/50 pb-4">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={current.image}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                <motion.h1
-                  className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-[50px] font-bold mb-1 sm:mb-1 leading-tight tracking-tight text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1, duration: 0.5 }}
-                >
-                  {current.title}{" "}
-                  <span className="text-white">{current.highlight}</span>
-                </motion.h1>
+            <motion.div
+              initial={false}
+              animate={textVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+              transition={{ duration: textVisible ? 0.6 : 0.4, ease: "easeOut" }}
+              onAnimationComplete={() => {
+                if (!textVisible) setShownIndex(activeIndex);
+              }}
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-[50px] font-bold mb-1 sm:mb-1 leading-tight tracking-tight text-white">
+                {current.title}{" "}
+                <span className="text-white">{current.highlight}</span>
+              </h1>
 
-                <motion.p
-                  className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-6 max-w-3xl leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                  {current.description}
-                </motion.p>
+              <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-6 max-w-3xl leading-relaxed">
+                {current.description}
+              </p>
 
-                <motion.div
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-2 mb-8 sm:mb-10"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 mb-8 sm:mb-10">
+                <Button
+                  size="lg"
+                  asChild
+                  className="bg-primary hover:bg-primary/90 text-white font-semibold w-full sm:w-auto rounded-full text-sm sm:text-base shadow-lg shadow-red-900/30"
                 >
-                  <Button
-                    size="lg"
-                    asChild
-                    className="bg-primary hover:bg-primary/90 text-white font-semibold w-full sm:w-auto rounded-full text-sm sm:text-base shadow-lg shadow-red-900/30"
-                  >
-                    <a href={siteConfig.phone.href}>
-                      <Phone className="mr-2 h-5 w-5" />
-                      Call Now - {siteConfig.phone.display}
-                    </a>
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full sm:w-auto border-white/40 bg-white/15 text-white hover:bg-white hover:text-gray-900 rounded-full backdrop-blur-sm text-sm sm:text-base"
-                    asChild
-                  >
-                    <Link href="/contact">
-                      Get a Free Quote
-                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    </Link>
-                  </Button>
-                </motion.div>
-
-              </motion.div>
-            </AnimatePresence>
+                  <a href={siteConfig.phone.href}>
+                    <Phone className="mr-2 h-5 w-5" />
+                    Call Now - {siteConfig.phone.display}
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto border-white/40 bg-white/15 text-white hover:bg-white hover:text-gray-900 rounded-full backdrop-blur-sm text-sm sm:text-base"
+                  asChild
+                >
+                  <Link href="/contact">
+                    Get a Free Quote
+                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

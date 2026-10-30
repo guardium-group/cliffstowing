@@ -44,6 +44,7 @@ export const siteConfig = {
     "Flatbed towing",
     "Accident recovery",
     "Roadside assistance",
+    "Battery boosts",
     "Winching and recovery",
     "Equipment transport",
   ],

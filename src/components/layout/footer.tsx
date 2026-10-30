@@ -21,6 +21,7 @@ const serviceLinks = [
   { name: "Flatbed towing", href: "/services/flatbed-towing" },
   { name: "Accident towing & recovery", href: "/services/accident-recovery" },
   { name: "Roadside assistance", href: "/services/roadside-assistance" },
+  { name: "Battery boosts", href: "/services/battery-boost" },
   { name: "Winching & recovery", href: "/services/winching-recovery" },
   { name: "Equipment transport", href: "/services/equipment-transport" },
 ];

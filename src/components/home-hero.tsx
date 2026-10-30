@@ -22,6 +22,11 @@ interface HomeHeroProps {
   ctvVideoUrl?: string;
 }
 
+const HEADLINE_CLASS =
+  "text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-[50px] font-bold mb-1 sm:mb-1 leading-tight tracking-tight text-white";
+const DESCRIPTION_CLASS =
+  "text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-6 max-w-3xl leading-relaxed";
+
 function GlassmorphicCTVPlayer({ ctvVideoUrl }: { ctvVideoUrl: string }) {
   return (
     <motion.div
@@ -106,47 +111,64 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
       <div className="container mx-auto px-4 relative z-10 h-full min-h-svh sm:min-h-[650px] md:min-h-[700px] flex items-center">
         <div className="flex h-full w-full items-center py-16 sm:py-20">
           <div className="max-w-7xl border-l-2 sm:border-l pl-4 sm:pl-8 border-white/50 pb-4">
-            <motion.div
-              initial={false}
-              animate={textVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-              transition={{ duration: textVisible ? 0.6 : 0.4, ease: "easeOut" }}
-              onAnimationComplete={() => {
-                if (!textVisible) setShownIndex(activeIndex);
-              }}
-            >
-              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-[50px] font-bold mb-1 sm:mb-1 leading-tight tracking-tight text-white">
-                {current.title}{" "}
-                <span className="text-white">{current.highlight}</span>
-              </h1>
+            <div className="grid">
+              {/* Invisible copies of every slide's text hold the block at the
+                  tallest slide's height, so swapping text doesn't shift layout (CLS). */}
+              {slides.map((slide) => (
+                <div key={slide.image} aria-hidden="true" className="invisible col-start-1 row-start-1">
+                  <div className={HEADLINE_CLASS}>
+                    {slide.title} {slide.highlight}
+                  </div>
+                  <p className={DESCRIPTION_CLASS}>{slide.description}</p>
+                </div>
+              ))}
+              <motion.div
+                className="col-start-1 row-start-1"
+                initial={false}
+                animate={textVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+                transition={{ duration: textVisible ? 0.6 : 0.4, ease: "easeOut" }}
+                onAnimationComplete={() => {
+                  if (!textVisible) setShownIndex(activeIndex);
+                }}
+              >
+                {/* Keep <h1>/<p> mounted (a new <h1> would be a late LCP) but key
+                    the text inside, so swapped text is new content, not a shift. */}
+                <h1 className={HEADLINE_CLASS}>
+                  <span key={shownIndex}>
+                    {current.title}{" "}
+                    <span className="text-white">{current.highlight}</span>
+                  </span>
+                </h1>
 
-              <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-6 max-w-3xl leading-relaxed">
-                {current.description}
-              </p>
+                <p className={DESCRIPTION_CLASS}>
+                  <span key={shownIndex}>{current.description}</span>
+                </p>
+              </motion.div>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 mb-8 sm:mb-10">
-                <Button
-                  size="lg"
-                  asChild
-                  className="bg-primary hover:bg-primary/90 text-white font-semibold w-full sm:w-auto rounded-full text-sm sm:text-base shadow-lg shadow-red-900/30"
-                >
-                  <a href={siteConfig.phone.href}>
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call Now - {siteConfig.phone.display}
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto border-white/40 bg-white/15 text-white hover:bg-white hover:text-gray-900 rounded-full backdrop-blur-sm text-sm sm:text-base"
-                  asChild
-                >
-                  <Link href="/contact">
-                    Get a Free Quote
-                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 mb-8 sm:mb-10">
+              <Button
+                size="lg"
+                asChild
+                className="bg-primary hover:bg-primary/90 text-white font-semibold w-full sm:w-auto rounded-full text-sm sm:text-base shadow-lg shadow-red-900/30"
+              >
+                <a href={siteConfig.phone.href}>
+                  <Phone className="mr-2 h-5 w-5" />
+                  Call Now - {siteConfig.phone.display}
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-white/40 bg-white/15 text-white hover:bg-white hover:text-gray-900 rounded-full backdrop-blur-sm text-sm sm:text-base"
+                asChild
+              >
+                <Link href="/contact">
+                  Get a Free Quote
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

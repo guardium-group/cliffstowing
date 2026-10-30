@@ -3,48 +3,43 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 
+// Real 5-star reviews from Cliff's Google Business Profile. Quotes are
+// verbatim apart from spelling fixes; "…" marks a trimmed sentence.
 const reviews = [
   {
-    name: "Mike T.",
-    location: "Edmonton",
+    name: "Robert T.",
+    service: null,
     rating: 5,
     quote:
-      "Cliff's saved us on a cold January night. Truck was there in under 30 minutes. Professional, fast, and fair price.",
+      "Very happy. My car broke down downtown … Price quoted on the phone was the price charged, no games. The driver, Parrvinder was very nice and professional. Would recommend.",
   },
   {
-    name: "Sarah K.",
-    location: "Sherwood Park",
+    name: "YEG Closets & Glass",
+    service: "Car towing",
     rating: 5,
     quote:
-      "Called at 2am after hitting black ice. Dispatch was calm and helpful, driver arrived quickly and got my SUV safely home. Highly recommend.",
+      "We used Cliffs to tow one of our work vehicles. There was a minor issue, but with one call and email to the office it was handled quick and professional. Will be using Cliffs again for any towing needs we have.",
   },
   {
-    name: "Dave L.",
-    location: "Leduc",
+    name: "Dan Can Traveller",
+    service: "Car towing",
     rating: 5,
     quote:
-      "Used Cliff's for equipment transport on a tight deadline. They handled our skid steer with care and were on time. Great experience.",
+      "Excellent, professional and definitely went above and beyond. I highly recommend Brian and Dean. We needed a disabled car towed from a challenging spot in a very low parkade - which is tough to exit at the best of times. Brian came and sussed out the situation and called for an additional driver (Dean). Both drivers were diligent and had to expend a bit of energy to get the car moved. Great experience. Thanks guys - you rocked it!",
   },
   {
-    name: "James R.",
-    location: "Edmonton",
+    name: "Mari S.",
+    service: "Special vehicle towing",
     rating: 5,
     quote:
-      "Best towing company in Edmonton. Been using them for 15 years for our fleet. Always reliable, always professional.",
+      "I had a very tricky underground parkade tow that needed to be completed by a certain time, and operator Scotty was marvellous and a professional about the whole affair. He tried jumping the car, and made me feel very at ease with the process. … Cliffs offered the exact service I required, and within a decent time frame for a reasonable price. Thanks guys!",
   },
   {
-    name: "Anita P.",
-    location: "St. Albert",
+    name: "Rachel",
+    service: null,
     rating: 5,
     quote:
-      "Locked out of my truck at -35°C. They were there in 20 minutes. Saved my night. Thank you Cliff's!",
-  },
-  {
-    name: "Trevor B.",
-    location: "Spruce Grove",
-    rating: 5,
-    quote:
-      "Flatbed towing for my lowered car, handled with care. Driver was friendly and professional. Will use again.",
+      "I was impressed with Cliff's Towing's professionalism. Over the phone with the dispatcher and with those who came in person. There was great communication about the process. They were helpful and informative. I will be calling them again if and when I need such services.",
   },
 ];
 
@@ -95,7 +90,9 @@ function ReviewCard({ review }: { review: (typeof reviews)[0] }) {
       </p>
       <div>
         <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
-        <p className="text-xs text-gray-400">{review.location}</p>
+        <p className="text-xs text-gray-400">
+          Google review{review.service && ` · ${review.service}`}
+        </p>
       </div>
     </div>
   );

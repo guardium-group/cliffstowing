@@ -178,7 +178,7 @@ const contactCards = [
   {
     icon: Mail,
     title: "Email dispatch",
-    description: "For quote details and follow-up",
+    description: "For service requests and follow-up",
     action: siteConfig.email,
     href: `mailto:${siteConfig.email}`,
   },

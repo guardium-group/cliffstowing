@@ -186,7 +186,7 @@ export function Header() {
                 size="sm"
                 className="rounded-full active:scale-[0.97] transition-transform duration-150"
               >
-                <Link href="/contact">Get a quote</Link>
+                <Link href="/contact">Request service</Link>
               </Button>
             </div>
 
@@ -389,7 +389,7 @@ export function Header() {
                   </a>
                   <Button asChild className="w-full rounded-full active:scale-[0.98]">
                     <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                      Get a quote
+                      Request service
                     </Link>
                   </Button>
                 </motion.div>

@@ -30,9 +30,9 @@ const defaultSlides: CTASlide[] = [
     ctaType: "phone",
   },
   {
-    headline: "Get a Free Towing Quote",
-    subtext: "No hidden fees. Competitive rates. Call or request a quote online.",
-    ctaText: "Request a Quote",
+    headline: "Talk to a Tow Dispatcher",
+    subtext: "Call a tow dispatcher any time, day or night, or send us a service request.",
+    ctaText: "Request Service",
     ctaLink: "/contact",
     ctaType: "link",
   },

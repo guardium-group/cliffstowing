@@ -164,7 +164,7 @@ export function HomeHero({ slides, intervalMs = 5500, ctvVideoUrl }: HomeHeroPro
                 asChild
               >
                 <Link href="/contact">
-                  Get a Free Quote
+                  Request Service
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Link>
               </Button>

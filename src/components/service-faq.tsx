@@ -34,7 +34,7 @@ export const faqs = [
   },
   {
     q: "How much does a tow cost in Edmonton?",
-    a: `Pricing depends on the vehicle, distance, and type of service needed. We provide upfront pricing before work begins. Call ${siteConfig.phone.display} or submit a quote request for an accurate estimate.`,
+    a: `Pricing depends on the vehicle, distance, and type of service needed. We provide upfront pricing before work begins. Call ${siteConfig.phone.display} or send a service request for an accurate estimate.`,
   },
   {
     q: "Do you offer roadside assistance without towing?",

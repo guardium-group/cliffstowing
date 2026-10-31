@@ -156,6 +156,15 @@ interface ContactFormProps {
   intro?: React.ReactNode;
   submitLabel?: string;
   className?: string;
+  /** Pre-fills services, message and heading; a new nonce applies it again. */
+  preset?: ContactFormPreset | null;
+}
+
+export interface ContactFormPreset {
+  services: string[];
+  message: string;
+  title: string;
+  nonce: number;
 }
 
 export function ContactForm({
@@ -164,6 +173,7 @@ export function ContactForm({
   intro,
   submitLabel = "Send Message",
   className,
+  preset,
 }: ContactFormProps) {
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [formData, setFormData] = useState({
@@ -173,6 +183,17 @@ export function ContactForm({
     message: "",
     services: [] as string[],
   });
+
+  // Keep anything the visitor typed; replace an empty message or an untouched earlier template.
+  const lastTemplate = useRef("");
+  useEffect(() => {
+    if (!preset) return;
+    setFormData((prev) => {
+      const untouched = !prev.message.trim() || prev.message === lastTemplate.current;
+      return { ...prev, services: preset.services, message: untouched ? preset.message : prev.message };
+    });
+    lastTemplate.current = preset.message;
+  }, [preset]);
   const [formToken, setFormToken] = useState("");
   const [formTimestamp, setFormTimestamp] = useState(0);
   const [honeypot, setHoneypot] = useState("");
@@ -334,7 +355,7 @@ export function ContactForm({
   return (
     <div className={cn("bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm", className)}>
       <h2 className="text-2xl font-bold text-gray-900 mb-2">
-        {title}
+        {preset?.title ?? title}
       </h2>
       <p className="text-gray-500 text-sm mb-6">
         {intro ?? (

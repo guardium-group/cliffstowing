@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { BookingProvider } from "@/components/landing/booking-context";
 import { LandingHero, LandingTopBar } from "@/components/landing/landing-hero";
+import { JobsStrip } from "@/components/landing/jobs-strip";
 import { TowTiers } from "@/components/landing/tow-tiers";
+import { NumbersBand } from "@/components/landing/numbers-band";
 import { AudienceSplit } from "@/components/landing/audience-split";
 import { LandingSteps } from "@/components/landing/landing-steps";
 import { ReviewsGrid } from "@/components/landing/reviews-grid";
@@ -19,10 +22,12 @@ export const metadata: Metadata = {
 
 export default function EdmontonTowingPage() {
   return (
-    <>
+    <BookingProvider>
       <LandingTopBar />
       <LandingHero />
+      <JobsStrip />
       <TowTiers />
+      <NumbersBand />
       <AudienceSplit />
       <LandingSteps />
       <ReviewsGrid />
@@ -31,6 +36,6 @@ export default function EdmontonTowingPage() {
       <FinalCall />
       <LandingFooter />
       <StickyCallBar />
-    </>
+    </BookingProvider>
   );
 }

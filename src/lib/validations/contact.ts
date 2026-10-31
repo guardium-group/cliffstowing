@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const serviceOptions = [
   "Light Duty Towing",
+  "Medium Duty Towing",
   "Heavy Duty Towing",
   "Flatbed Towing",
   "Accident Towing & Recovery",

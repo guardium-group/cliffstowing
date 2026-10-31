@@ -38,7 +38,7 @@ export function CookieConsent() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-4 right-4 z-[100] w-[340px] max-w-[calc(100vw-2rem)]"
+          className="fixed bottom-[calc(1rem+var(--sticky-cta-h,0px))] right-4 z-[100] w-[340px] max-w-[calc(100vw-2rem)]"
         >
           <div className="relative bg-gray-900/90 backdrop-blur-2xl border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_24px_48px_-8px_rgba(0,0,0,0.65)]">
 
@@ -55,7 +55,7 @@ export function CookieConsent() {
                 <div>
                   <p className="font-semibold text-white text-sm">We use cookies</p>
                   <p className="text-white/40 text-xs mt-1 leading-relaxed">
-                    With your OK, we use Google Analytics cookies to see how visitors use the site.
+                    With your OK, we use Google Analytics and Meta (Facebook) cookies to see how visitors use the site and measure our ads.
                     Essential storage works either way. See our{" "}
                     <Link
                       href="/cookies"

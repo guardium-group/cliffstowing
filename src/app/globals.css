@@ -152,3 +152,10 @@ html {
   transform: translateX(-50%);
   top: 1rem;
 }
+
+/* Landing pages: lift the cookie banner above the sticky mobile call bar. */
+@media (max-width: 767px) {
+  body:has([data-sticky-call-bar]) {
+    --sticky-cta-h: 4.75rem;
+  }
+}

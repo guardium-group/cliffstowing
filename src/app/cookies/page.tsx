@@ -31,7 +31,7 @@ export default function CookiePolicyPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="space-y-8 text-gray-600 leading-relaxed">
-            <p className="text-gray-500">Last updated: October 29, 2026</p>
+            <p className="text-gray-500">Last updated: October 31, 2026</p>
 
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">
@@ -66,6 +66,22 @@ export default function CookiePolicyPage() {
 
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                Advertising Cookies
+              </h2>
+              <p>
+                The same &ldquo;Accept All&rdquo; choice also loads the Meta
+                Pixel, which tells Meta (Facebook and Instagram) when someone
+                who saw our ads visits the site, taps to call us, or sends the
+                contact form, so we can measure those ads. The Meta Pixel sets
+                the <code>_fbp</code> cookie, which lasts up to 90 days, and{" "}
+                <code>_fbc</code> when you arrive from a Facebook or Instagram
+                ad. It is not loaded unless you accept, and we do not send your
+                name, email, phone number, or message to Meta.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">
                 Embedded Services
               </h2>
               <p>
@@ -91,8 +107,8 @@ export default function CookiePolicyPage() {
               <p>
                 You can change your choice at any time with the &ldquo;Cookie
                 settings&rdquo; link in the website footer. If you withdraw
-                consent, Google Analytics stops collecting data and its cookies
-                are removed. You can also block or delete cookies through your
+                consent, Google Analytics and the Meta Pixel stop collecting
+                data and their cookies are removed. You can also block or delete cookies through your
                 browser settings. Some embedded features may not work as
                 expected if cookies are disabled.
               </p>

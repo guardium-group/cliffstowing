@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { siteConfig } from "@/lib/site";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackMetaEvent } from "@/lib/analytics";
 
 const DIRECTIONS_URLS = new Set<string>([siteConfig.address.mapUrl]);
 
@@ -25,6 +25,7 @@ export function AnalyticsEvents() {
 
       if (href.startsWith("tel:")) {
         trackEvent("phone_call_click", params);
+        trackMetaEvent("Contact");
       } else if (DIRECTIONS_URLS.has(href)) {
         trackEvent("directions_click", params);
       }

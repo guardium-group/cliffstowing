@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="space-y-8 text-gray-600 leading-relaxed">
-            <p className="text-gray-500">Last updated: October 29, 2026</p>
+            <p className="text-gray-500">Last updated: October 31, 2026</p>
 
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">
@@ -80,6 +80,12 @@ export default function PrivacyPolicyPage() {
                 do not send your name, email, phone number, or message to Google
                 Analytics.
               </p>
+              <p className="mt-3">
+                With the same consent, the Meta Pixel tells Meta (Facebook and
+                Instagram) when you visit the site, tap to call us, or send the
+                contact form, so we can measure our ads on those platforms. We
+                do not send your name, email, phone number, or message to Meta.
+              </p>
             </div>
 
             <div>
@@ -92,7 +98,8 @@ export default function PrivacyPolicyPage() {
                 and complete services; to bill and keep service records; to work
                 with insurers, police, or repair shops when you ask us to or the
                 law requires it; to prevent spam and protect the website; and,
-                with your consent, to understand how the website is used.
+                with your consent, to understand how the website is used and
+                measure our advertising.
               </p>
               <p className="mt-3">
                 We will not add you to marketing emails or newsletters without
@@ -114,9 +121,10 @@ export default function PrivacyPolicyPage() {
                 These providers include Web3Forms (delivers contact form
                 messages), Microsoft 365 (our email), Cloudflare (website
                 security and the Turnstile spam check on the contact form),
-                Vercel (website hosting and cookieless page-view analytics), and
+                Vercel (website hosting and cookieless page-view analytics),
                 Google Analytics (website usage analytics, only with your
-                consent).
+                consent), and Meta Platforms (the Meta Pixel, which measures our
+                Facebook and Instagram ads, only with your consent).
               </p>
             </div>
 
@@ -175,8 +183,8 @@ export default function PrivacyPolicyPage() {
                 privacy contact below. We will respond within 30 days.
               </p>
               <p className="mt-3">
-                Google Analytics only runs if you accept analytics cookies. You
-                can change or withdraw that choice at any time with the
+                Google Analytics and the Meta Pixel only run if you accept
+                cookies. You can change or withdraw that choice at any time with the
                 &ldquo;Cookie settings&rdquo; link in the website footer. See
                 our <Link href="/cookies" className="text-primary">Cookie Policy</Link>{" "}
                 for details.

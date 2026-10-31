@@ -31,9 +31,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "24/7 heavy duty towing in Edmonton for semi-trucks, buses, and commercial vehicles. Cliff's Towing — rotator and underlift, highway-rated operators.",
     intro:
-      "Edmonton's highway network handles some of the heaviest commercial traffic in Alberta, and breakdowns on the Henday, Whitemud, or Yellowhead corridor need a heavy duty response that arrives fast and rigged right. Cliff's Towing keeps heavy duty equipment centrally dispatched in Edmonton so we can reach any part of the city or its ring road within 25 to 35 minutes.",
+      "Edmonton's highway network handles some of the heaviest commercial traffic in Alberta, and breakdowns on the Henday, Whitemud, or Yellowhead corridor need a heavy duty response that arrives rigged right. Cliff's Towing keeps heavy duty equipment centrally dispatched in Edmonton so we can reach any part of the city or its ring road in about 30 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A westbound tandem axle on the Henday drops a wheel bearing at the 170 Street interchange. The rig blocks the right lane during evening commute hours. Cliff's heavy duty rotator is on scene within 28 minutes, EPS is managing traffic, and the semi is extracted without secondary contact with the concrete barrier.",
+      "For example, a westbound tandem axle on the Henday drops a wheel bearing at the 170 Street interchange. The rig blocks the right lane during evening commute hours. Cliff's heavy duty rotator attends, EPS is managing traffic, and the semi is extracted without secondary contact with the concrete barrier.",
     landmarks: ["Anthony Henday Drive", "Whitemud Drive", "Yellowhead Trail / Highway 16"],
     sections: [
       {
@@ -99,7 +99,7 @@ export const serviceLocations: ServiceLocationData[] = [
     intro:
       "The Strathcona County Industrial Heartland east of Sherwood Park generates some of the most complex heavy duty towing calls in the Edmonton region — oversize loads on Refinery Row roads, industrial equipment in confined yards, and commercial vehicles on the Highway 16 corridor. Cliff's Towing responds to Sherwood Park and the surrounding industrial area with full heavy duty capability.",
     scenario:
-      "A propane delivery truck develops a brake failure on Wye Road near the Highway 21 junction during morning shift change. Cliff's heavy duty underlift arrives at 35 minutes, secures the vehicle, and coordinates with the propane company's dispatch for safe handling protocol.",
+      "For example, a propane delivery truck develops a brake failure on Wye Road near the Highway 21 junction during morning shift change. Cliff's heavy duty underlift arrives, secures the vehicle, and coordinates with the propane company's dispatch for safe handling protocol.",
     landmarks: ["Wye Road", "Highway 21 north junction", "Strathcona County Industrial Heartland"],
     sections: [
       {
@@ -113,7 +113,7 @@ export const serviceLocations: ServiceLocationData[] = [
         heading: "Fleet coordination for Sherwood Park industrial and commercial accounts",
         body: [
           "Industrial operators and commercial fleets in the Sherwood Park area benefit from towing partners who communicate clearly. Cliff's provides direct fleet coordinator contact during a recovery, accurate ETAs after dispatch, and confirmation once the vehicle is secured and delivered. For fleets running chemical or hazmat vehicles, we coordinate with your transport supervisor before hooking up to confirm safe handling requirements.",
-          "For Sherwood Park-based commercial accounts, ask dispatch about priority arrangements. Fleet coordinators who need guaranteed priority access to heavy duty response for the Strathcona County area can discuss options directly with our dispatch team.",
+          "For Sherwood Park-based commercial accounts, ask dispatch about priority arrangements. Fleet coordinators who need priority access to heavy duty response for the Strathcona County area can discuss options directly with our dispatch team.",
         ],
       },
     ],
@@ -148,15 +148,15 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in St. Albert for commercial vehicles and large trucks. 24/7 service on St. Albert Trail, Ray Gibbon Drive, and Highway 2. Cliff's Towing.",
     intro:
-      "St. Albert sits at the intersection of two busy commercial corridors — Highway 2 to the west and St. Albert Trail connecting to Edmonton — and sees regular commercial truck traffic through both. When a commercial vehicle goes down in St. Albert, Cliff's heavy duty equipment is typically on scene in under 40 minutes, ready for everything from a stalled straight truck on Boudreau Road to a highway recovery on the St. Albert bypass.",
+      "St. Albert sits at the intersection of two busy commercial corridors — Highway 2 to the west and St. Albert Trail connecting to Edmonton — and sees regular commercial truck traffic through both. When a commercial vehicle goes down in St. Albert, Cliff's heavy duty equipment is typically on scene in about 35 to 45 minutes, depending on weather, traffic and road conditions, ready for everything from a stalled straight truck on Boudreau Road to a highway recovery on the St. Albert bypass.",
     scenario:
-      "A straight-body delivery truck with a loaded deck develops a fuel system fault on St. Albert Trail near Lacombe Park during the morning delivery window. Cliff's arrives in 37 minutes, loads the truck on the underlift, and delivers to the nearest commercial repair facility.",
+      "For example, a straight-body delivery truck with a loaded deck develops a fuel system fault on St. Albert Trail near Lacombe Park during the morning delivery window. Cliff's arrives, loads the truck on the underlift, and delivers to the nearest commercial repair facility.",
     landmarks: ["St. Albert Trail", "Ray Gibbon Drive", "Highway 2 St. Albert bypass"],
     sections: [
       {
         heading: "Commercial vehicle traffic through St. Albert's key corridors",
         body: [
-          "St. Albert Trail — the primary arterial connecting St. Albert to Edmonton — carries a steady volume of delivery trucks, light commercial vehicles, and the occasional straight-body truck serving the retail and office nodes along the corridor. The Highway 2 bypass and Ray Gibbon Drive feed commercial traffic to and from the QEII and the Sturgeon County agricultural and industrial areas north of the city. When a commercial vehicle goes down on any of these routes, the response time from our Edmonton dispatch averages 35 to 45 minutes.",
+          "St. Albert Trail — the primary arterial connecting St. Albert to Edmonton — carries a steady volume of delivery trucks, light commercial vehicles, and the occasional straight-body truck serving the retail and office nodes along the corridor. The Highway 2 bypass and Ray Gibbon Drive feed commercial traffic to and from the QEII and the Sturgeon County agricultural and industrial areas north of the city. When a commercial vehicle goes down on any of these routes, the response time from our Edmonton dispatch averages 35 to 45 minutes, depending on weather, traffic and road conditions.",
           "St. Albert also generates bus and transit recovery calls. St. Albert Transit and private charter coaches operating in the area occasionally require heavy duty assistance when mechanical problems arise on route. Transit buses require underlift equipment and coordination with the transit operator's dispatcher — both of which Cliff's handles as standard.",
         ],
       },
@@ -198,9 +198,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in Spruce Grove on Highway 16 and industrial routes. 24/7 response for semis, RVs, and commercial vehicles. Cliff's Towing.",
     intro:
-      "Highway 16 through Spruce Grove is a primary corridor for commercial traffic moving west from Edmonton into Parkland County, and the CN intermodal and industrial areas north of the highway add significant truck traffic to the local road network. Cliff's heavy duty equipment responds to Spruce Grove and the Highway 16 west corridor within approximately 40 to 45 minutes.",
+      "Highway 16 through Spruce Grove is a primary corridor for commercial traffic moving west from Edmonton into Parkland County, and the CN intermodal and industrial areas north of the highway add significant truck traffic to the local road network. Cliff's heavy duty equipment responds to Spruce Grove and the Highway 16 west corridor within approximately 40 to 45 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A 53-foot refrigerated trailer develops a blown steer tire on Highway 16 westbound near the Century Road exit, partially blocking the right lane during an afternoon peak. Cliff's arrives in 43 minutes, manages the recovery without requiring a full lane closure, and arranges tire service on-site.",
+      "For example, a 53-foot refrigerated trailer develops a blown steer tire on Highway 16 westbound near the Century Road exit, partially blocking the right lane during an afternoon peak. Cliff's arrives, manages the recovery without requiring a full lane closure, and arranges tire service on-site.",
     landmarks: ["Highway 16 Yellowhead corridor", "Century Road / Highway 16 interchange", "CN intermodal area north of Highway 16"],
     sections: [
       {
@@ -248,16 +248,16 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in Leduc and Leduc County on the QEII. 24/7 response for semis, tankers, and commercial vehicles near Edmonton International Airport.",
     intro:
-      "The Queen Elizabeth II through Leduc is one of Alberta's highest-volume freight corridors, and proximity to Edmonton International Airport adds tanker trucks, cargo freighters, and oversized equipment transport to the mix. Cliff's heavy duty dispatch covers the QEII through Leduc, Airport Road, and the Nisku-Leduc industrial axis — with an average response time under 45 minutes.",
+      "The Queen Elizabeth II through Leduc is one of Alberta's highest-volume freight corridors, and proximity to Edmonton International Airport adds tanker trucks, cargo freighters, and oversized equipment transport to the mix. Cliff's heavy duty dispatch covers the QEII through Leduc, Airport Road, and the Nisku-Leduc industrial axis — with an average response time of roughly 40 to 50 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A tanker truck moving northbound on the QEII loses air pressure in the braking system just south of the 41st Avenue interchange near Leduc, coming to a controlled stop on the right shoulder. Cliff's heavy duty unit is on scene in 40 minutes and coordinates with RCMP for a safe recovery before peak traffic builds.",
+      "For example, a tanker truck moving northbound on the QEII loses air pressure in the braking system just south of the 41st Avenue interchange near Leduc, coming to a controlled stop on the right shoulder. Cliff's heavy duty unit is on scene and coordinates with RCMP for a safe recovery before peak traffic builds.",
     landmarks: ["Queen Elizabeth II Highway (QEII)", "Airport Road / Township Road 510", "41st Avenue Leduc interchange"],
     sections: [
       {
         heading: "The QEII through Leduc: Alberta's highest-volume freight highway",
         body: [
-          "The Queen Elizabeth II south of Edmonton through Nisku and Leduc is Alberta's busiest freight corridor, carrying northbound and southbound commercial traffic between Edmonton, Calgary, and points south. The mix includes tanker trucks from the Nisku and Leduc County industrial areas, airport cargo vehicles on Airport Road, livestock trailers, flatdeck equipment loads, and long-haul freight. With average daily volumes of tens of thousands of vehicles and posted speeds of 110 km/h, a breakdown on the QEII near Leduc requires fast, highway-capable recovery equipment and operators who know how to coordinate with RCMP for lane control.",
-          "Cliff's Towing runs this corridor regularly. Our heavy duty equipment is rated for QEII-speed highway recovery and our operators are experienced with the RCMP detachment that covers the Leduc stretch. When a commercial vehicle goes down between the Nisku interchange and the 41st Avenue Leduc exit, we're on scene in approximately 40 to 50 minutes and coordinate with RCMP before any equipment is positioned in the live lane.",
+          "The Queen Elizabeth II south of Edmonton through Nisku and Leduc is Alberta's busiest freight corridor, carrying northbound and southbound commercial traffic between Edmonton, Calgary, and points south. The mix includes tanker trucks from the Nisku and Leduc County industrial areas, airport cargo vehicles on Airport Road, livestock trailers, flatdeck equipment loads, and long-haul freight. With average daily volumes of tens of thousands of vehicles and posted speeds of 110 km/h, a breakdown on the QEII near Leduc requires highway-capable recovery equipment and operators who know how to coordinate with RCMP for lane control.",
+          "Cliff's Towing runs this corridor regularly. Our heavy duty equipment is rated for QEII-speed highway recovery and our operators are experienced with the RCMP detachment that covers the Leduc stretch. When a commercial vehicle goes down between the Nisku interchange and the 41st Avenue Leduc exit, we're on scene in approximately 40 to 50 minutes on average, depending on weather, traffic and road conditions and coordinate with RCMP before any equipment is positioned in the live lane.",
         ],
       },
       {
@@ -301,7 +301,7 @@ export const serviceLocations: ServiceLocationData[] = [
     intro:
       "Fort Saskatchewan's refinery and chemical plant infrastructure creates one of the highest concentrations of specialized commercial vehicle traffic in Alberta. Heavy vehicles running on Highway 15 and the industrial access roads northeast of Edmonton are regular heavy duty dispatch calls for Cliff's Towing. We cover Fort Saskatchewan, the adjacent industrial facilities, and the rural Highway 15 corridor to the northeast.",
     scenario:
-      "A chemical tanker servicing one of the Dow facilities develops an air system fault on Range Road 205 between shift changes. The driver contacts dispatch. Cliff's heavy duty unit arrives in 48 minutes, secures the vehicle, and coordinates with the plant's transport supervisor for delivery to the nearest certified repair yard.",
+      "For example, a chemical tanker servicing one of the Dow facilities develops an air system fault on Range Road 205 between shift changes. The driver contacts dispatch. Cliff's heavy duty unit arrives, secures the vehicle, and coordinates with the plant's transport supervisor for delivery to the nearest certified repair yard.",
     landmarks: ["Highway 15", "Dow Chemical Fort Saskatchewan facility", "Range Road 205 industrial corridor"],
     sections: [
       {
@@ -315,7 +315,7 @@ export const serviceLocations: ServiceLocationData[] = [
         heading: "Highway 15 heavy vehicle corridor northeast of Edmonton",
         body: [
           "Highway 15 between Edmonton and Fort Saskatchewan is the primary heavy vehicle corridor for the northeast industrial corridor. Trucks running between the industrial facilities, the Strathcona County area, and the Highway 16 east connection use this route constantly. The highway sees tankers, flatdeck loads, crane trucks, and standard commercial freight, and the RCMP Strathcona detachment manages the corridor.",
-          "Cliff's provides highway-rated heavy duty response on Highway 15. Response time from Edmonton dispatch averages 45 to 55 minutes to central Fort Saskatchewan, with faster times possible for calls closer to the Edmonton city limits on the south end of the highway.",
+          "Cliff's provides highway-rated heavy duty response on Highway 15. Response time from Edmonton dispatch averages 45 to 55 minutes to central Fort Saskatchewan, depending on weather, traffic and road conditions and on where along the highway you are.",
         ],
       },
     ],
@@ -349,16 +349,16 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "24/7 heavy duty towing in Nisku industrial park. Cliff's Towing serves the Nisku Business Park, QEII corridor, and airport-area industrial roads.",
     intro:
-      "Nisku is one of the densest industrial zones in Alberta, and its 24/7 operations mean heavy duty breakdowns happen at every hour of the day and night. We dispatch heavy duty equipment to the Nisku industrial park in approximately 35 minutes — less than any competitor based further from the QEII corridor. Whether it's a semi in a loading dock situation or a heavy equipment breakdown in the yard, Cliff's has the gear and experience to handle it.",
+      "Nisku is one of the densest industrial zones in Alberta, and its 24/7 operations mean heavy duty breakdowns happen at every hour of the day and night. We dispatch heavy duty equipment to the Nisku industrial park in approximately 35 minutes on average, depending on weather, traffic and road conditions. Whether it's a semi in a loading dock situation or a heavy equipment breakdown in the yard, Cliff's has the gear and experience to handle it.",
     scenario:
-      "A 40-ton crane truck going in to a Nisku yard develops a hydraulic failure in the boom system on the Nisku Spine Road after an overnight shift. Cliff's arrives at 6:15am, assesses the load, and uses the rotator to position the boom safely before towing the unit to a certified crane repair facility.",
+      "For example, a 40-ton crane truck going in to a Nisku yard develops a hydraulic failure in the boom system on the Nisku Spine Road after an overnight shift. Cliff's arrives, assesses the load, and uses the rotator to position the boom safely before towing the unit to a certified crane repair facility.",
     landmarks: ["Nisku Spine Road", "Nisku Business Park", "QEII / Airport Road interchange"],
     sections: [
       {
         heading: "Nisku's 24/7 industrial operations and the heavy vehicles that support them",
         body: [
           "The Nisku Business Park operates around the clock. Oilfield services companies, heavy equipment yards, metal fabrication shops, and logistics operators run shift-based operations that generate commercial vehicle activity at 3am as readily as at 3pm. Crane trucks, vacuum trucks, water haulers, oilfield service rigs, and heavy equipment transporters are the norm — and they break down at all hours.",
-          "Because Nisku's operations don't stop, neither does the demand for heavy duty towing. Cliff's has responded to Nisku industrial calls at every hour of the day and night, and our dispatcher knows the Nisku Spine Road, the Nisku Business Park addresses, and the QEII interchange well enough to route the closest available heavy unit efficiently. Response to central Nisku from our Edmonton dispatch averages approximately 35 minutes.",
+          "Because Nisku's operations don't stop, neither does the demand for heavy duty towing. Cliff's has responded to Nisku industrial calls at every hour of the day and night, and our dispatcher knows the Nisku Spine Road, the Nisku Business Park addresses, and the QEII interchange well enough to route the closest available heavy unit efficiently. Response to central Nisku from our Edmonton dispatch averages approximately 35 minutes, depending on weather, traffic and road conditions.",
         ],
       },
       {
@@ -400,16 +400,16 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in Acheson industrial park and Highway 16 west. 24/7 service for semis, distribution trucks, and commercial vehicles. Cliff's Towing.",
     intro:
-      "Acheson's distribution centres and manufacturing operations run heavy trucks in and out at all hours, and Highway 16 through the interchange sees significant commercial traffic connecting Edmonton to Spruce Grove and the Parkland County interior. Cliff's covers the Acheson industrial area and the Highway 16 corridor with heavy duty equipment, typically on scene within 35 to 40 minutes.",
+      "Acheson's distribution centres and manufacturing operations run heavy trucks in and out at all hours, and Highway 16 through the interchange sees significant commercial traffic connecting Edmonton to Spruce Grove and the Parkland County interior. Cliff's covers the Acheson industrial area and the Highway 16 corridor with heavy duty equipment, typically on scene within 35 to 40 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A distribution centre truck with a loaded 48-foot van trailer throws a drive axle on Acheson Road during an outbound morning run. Cliff's heavy duty underlift is on scene in 33 minutes, the load is assessed for redistribution if needed, and the rig is delivered to the fleet's repair contractor in Spruce Grove.",
+      "For example, a distribution centre truck with a loaded 48-foot van trailer throws a drive axle on Acheson Road during an outbound morning run. Cliff's heavy duty underlift is on scene, the load is assessed for redistribution if needed, and the rig is delivered to the fleet's repair contractor in Spruce Grove.",
     landmarks: ["Highway 16 / Acheson Road interchange", "Acheson Business Park", "CN rail siding and intermodal"],
     sections: [
       {
         heading: "Acheson's distribution hub and the commercial vehicles it generates",
         body: [
           "The Acheson Business Park is one of the largest industrial parks in western Canada, anchored by major distribution centres, manufacturing operations, and logistics companies running regional and long-haul fleets. The commercial vehicles operating in and out of Acheson — 53-foot van trailers, refrigerated transport, flatdeck loads, and intermodal containers from the nearby CN rail operations — drive a consistent volume of heavy duty towing calls on Highway 16 and on the Acheson Road access grid.",
-          "When a commercial vehicle breaks down in the Acheson Business Park or on Highway 16 at the Acheson interchange, Cliff's typically arrives in 35 to 40 minutes from Edmonton dispatch via the Yellowhead. We deliver disabled vehicles to repair contractors in Spruce Grove, Edmonton, or wherever the fleet's preferred service shop is located.",
+          "When a commercial vehicle breaks down in the Acheson Business Park or on Highway 16 at the Acheson interchange, Cliff's typically arrives in 35 to 40 minutes, depending on weather, traffic and road conditions from Edmonton dispatch via the Yellowhead. We deliver disabled vehicles to repair contractors in Spruce Grove, Edmonton, or wherever the fleet's preferred service shop is located.",
         ],
       },
       {
@@ -453,9 +453,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Flatbed towing in Edmonton for AWD, EVs, lowered vehicles, and post-accident transport. All four wheels off the ground. Cliff's Towing — 24/7.",
     intro:
-      "Edmonton's roads see a growing proportion of AWD crossovers, electric vehicles, and specialty vehicles that require flatbed transport. As the most centrally dispatched towing operator in the city, Cliff's puts flatbed equipment on the road faster than most — typically under 25 minutes within Edmonton city limits for a flatbed request.",
+      "Edmonton's roads see a growing proportion of AWD crossovers, electric vehicles, and specialty vehicles that require flatbed transport. As the most centrally dispatched towing operator in the city, Cliff's puts flatbed equipment on the road from a central location — about 30 minutes on average within Edmonton city limits for a flatbed request, depending on weather, traffic and road conditions.",
     scenario:
-      "A Tesla Model 3 runs out of charge on the Whitemud Drive westbound during an evening commute. The owner calls dispatch. Cliff's flatbed arrives in 22 minutes, loads the EV on all four wheels, and delivers it to the owner's preferred charging location in Windermere.",
+      "For example, a Tesla Model 3 runs out of charge on the Whitemud Drive westbound during an evening commute. The owner calls dispatch. Cliff's flatbed arrives, loads the EV on all four wheels, and delivers it to the owner's preferred charging location in Windermere.",
     landmarks: ["Whitemud Drive", "Anthony Henday Drive", "West Edmonton Mall area"],
     sections: [
       {
@@ -491,8 +491,8 @@ export const serviceLocations: ServiceLocationData[] = [
         a: "We carry a standard flatbed configuration that fits most underground parking entrances. Let dispatch know the parkade clearance height when you call.",
       },
       {
-        q: "How fast is flatbed response in Edmonton?",
-        a: "Under 25 minutes within the city limits under normal conditions.",
+        q: "How long does flatbed response take in Edmonton?",
+        a: "About 30 minutes on average within the city limits, depending on weather, traffic and road conditions.",
       },
     ],
     keywords: [
@@ -510,11 +510,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Flatbed towing",
     title: "Flatbed Towing — Sherwood Park, AB",
     metaDescription:
-      "Flatbed towing in Sherwood Park for AWD, EVs, and accident-damaged vehicles. 24/7 dispatch from Edmonton. Cliff's Towing — approx. 30-min response.",
+      "Flatbed towing in Sherwood Park for AWD, EVs, and accident-damaged vehicles. 24/7 dispatch from Edmonton. Cliff's Towing.",
     intro:
-      "Sherwood Park's residential streets see high-end AWD vehicles and a growing number of electric vehicles that require flatbed transport when they break down. The Sherwood Park Freeway and Highway 16 east also generate accident recovery flatbed calls from collision damage that makes wheel-lift towing unsafe. Cliff's covers Sherwood Park with flatbed equipment in approximately 30 minutes.",
+      "Sherwood Park's residential streets see high-end AWD vehicles and a growing number of electric vehicles that require flatbed transport when they break down. The Sherwood Park Freeway and Highway 16 east also generate accident recovery flatbed calls from collision damage that makes wheel-lift towing unsafe. Cliff's covers Sherwood Park with flatbed equipment in about 30 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "An Audi Q5 Quattro stalls on Broadmoor Boulevard after a battery module fault. The owner knows the AWD drivetrain requires flatbed. Cliff's arrives in 29 minutes and delivers the vehicle to the Audi dealer on 97 Street in Edmonton.",
+      "For example, an Audi Q5 Quattro stalls on Broadmoor Boulevard after a battery module fault. The owner knows the AWD drivetrain requires flatbed. Cliff's arrives and delivers the vehicle to the Audi dealer on 97 Street in Edmonton.",
     landmarks: ["Broadmoor Boulevard", "Sherwood Park Freeway", "Emerald Hills commercial area"],
     sections: [
       {
@@ -528,7 +528,7 @@ export const serviceLocations: ServiceLocationData[] = [
         heading: "Flatbed pickup from Sherwood Park's residential and commercial areas",
         body: [
           "Flatbed calls from Sherwood Park come from a range of locations. Residential driveways and street parking in Summerwood, Lakeland Ridge, and Clover Bar require navigating narrower suburban streets with the flatbed deck tilted for pickup. Commercial lots at Sherwood Park Mall, the Emerald Hills commercial strip, and the Baseline Road retail corridor provide more room to manoeuvre. For highway accident recovery on the Sherwood Park Freeway (Highway 628), we coordinate with RCMP before positioning.",
-          "Cliff's flatbed arrives in Sherwood Park in approximately 30 minutes from our Edmonton dispatch. For calls from the eastern edges of Sherwood Park or from the Clover Bar and rural Strathcona County areas, dispatch will give you an updated ETA based on the specific address.",
+          "Cliff's flatbed arrives in Sherwood Park in about 30 minutes on average, depending on weather, traffic and road conditions from our Edmonton dispatch. For calls from the eastern edges of Sherwood Park or from the Clover Bar and rural Strathcona County areas, dispatch will give you an updated ETA based on the specific address.",
         ],
       },
     ],
@@ -560,11 +560,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Flatbed towing",
     title: "Flatbed Towing — St. Albert, AB",
     metaDescription:
-      "Flatbed towing in St. Albert for AWD, EVs, and specialty vehicles. Cliff's Towing — 24/7, all makes and models, approx. 35-min response.",
+      "Flatbed towing in St. Albert for AWD, EVs, and specialty vehicles. Cliff's Towing — 24/7, all makes and models.",
     intro:
-      "St. Albert's demographics skew toward late-model vehicles, many of them AWD crossovers and SUVs that require flatbed transport when problems arise. Classic car collectors in the Akinsdale and Lacombe Park area also generate flatbed calls when vintage vehicles need transport to shows or restoration shops. Cliff's dispatches flatbed to St. Albert in approximately 35 minutes.",
+      "St. Albert's demographics skew toward late-model vehicles, many of them AWD crossovers and SUVs that require flatbed transport when problems arise. Classic car collectors in the Akinsdale and Lacombe Park area also generate flatbed calls when vintage vehicles need transport to shows or restoration shops. Cliff's dispatches flatbed to St. Albert in approximately 35 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A Subaru Outback with AWD develops a transmission warning and stalls on Ray Gibbon Drive. The owner knows the AWD requires flatbed. Cliff's arrives in 34 minutes, loads the Outback, and delivers to the owner's preferred shop on the north side of Edmonton.",
+      "For example, a Subaru Outback with AWD develops a transmission warning and stalls on Ray Gibbon Drive. The owner knows the AWD requires flatbed. Cliff's arrives, loads the Outback, and delivers to the owner's preferred shop on the north side of Edmonton.",
     landmarks: ["Ray Gibbon Drive", "St. Albert Trail", "Lacombe Park neighbourhood"],
     sections: [
       {
@@ -612,16 +612,16 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Flatbed towing in Spruce Grove for lowered vehicles, AWD, and EVs. 24/7 service on Highway 16 and 16A west corridor. Cliff's Towing.",
     intro:
-      "Spruce Grove's proximity to the Yellowhead corridor means we see both highway accident recovery flatbeds and residential breakdown requests from this area. The car culture in Spruce Grove also generates regular flatbed calls for lowered and modified vehicles that can't be safely wheel-lifted. Cliff's gets flatbed equipment to Spruce Grove in approximately 40 minutes.",
+      "Spruce Grove's proximity to the Yellowhead corridor means we see both highway accident recovery flatbeds and residential breakdown requests from this area. The car culture in Spruce Grove also generates regular flatbed calls for lowered and modified vehicles that can't be safely wheel-lifted. Cliff's gets flatbed equipment to Spruce Grove in approximately 40 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A lowered Honda Civic modified for show use breaks down on Highway 16A through Spruce Grove. Ground clearance of under 3 inches makes wheel-lift impossible. Cliff's flatbed arrives in 41 minutes, uses the hydraulic tilt deck to minimize approach angle, and loads without any contact with the front bumper splitter.",
+      "For example, a lowered Honda Civic modified for show use breaks down on Highway 16A through Spruce Grove. Ground clearance of under 3 inches makes wheel-lift impossible. Cliff's flatbed arrives, uses the hydraulic tilt deck to minimize approach angle, and loads without any contact with the front bumper splitter.",
     landmarks: ["Highway 16A through Spruce Grove", "Grove Drive", "Westgrove area"],
     sections: [
       {
         heading: "Spruce Grove's car culture and low-clearance flatbed demand",
         body: [
           "Spruce Grove has an active car modification and performance community. Lowered stance builds, modified imports, muscle cars, and track-day vehicles are common in the community, and these vehicles often require flatbed transport because their reduced ground clearance makes wheel-lift loading impossible without contacting the front lip, splitter, or exhaust components. Cliff's flatbed deck tilts to the minimum angle required for low-clearance loading and the operators are experienced at positioning approach to avoid the common contact points on modified vehicles.",
-          "Highway 16A through Spruce Grove also sees regular flatbed calls from minor collisions at the city's main commercial intersections and from highway accident recovery on the Yellowhead corridor. These calls are typically straightforward — the vehicle is accessible and just needs to be loaded and delivered. Response to Spruce Grove from Edmonton averages approximately 40 minutes.",
+          "Highway 16A through Spruce Grove also sees regular flatbed calls from minor collisions at the city's main commercial intersections and from highway accident recovery on the Yellowhead corridor. These calls are typically straightforward — the vehicle is accessible and just needs to be loaded and delivered. Response to Spruce Grove from Edmonton averages approximately 40 minutes, depending on weather, traffic and road conditions.",
         ],
       },
       {
@@ -660,18 +660,18 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Flatbed towing",
     title: "Flatbed Towing — Leduc, AB",
     metaDescription:
-      "Flatbed towing in Leduc for AWD, EVs, and accident recovery near Edmonton International Airport. Cliff's Towing — 24/7, approx. 40-min response.",
+      "Flatbed towing in Leduc for AWD, EVs, and accident recovery near Edmonton International Airport. Cliff's Towing — 24/7.",
     intro:
-      "Leduc's location near the airport generates flatbed requests from rental car returns that can't be driven, vehicles that sustain damage on the QEII and need accident recovery flatbed, and the full range of breakdown flatbed calls from local residents. Cliff's dispatches flatbed to Leduc in approximately 40 minutes.",
+      "Leduc's location near the airport generates flatbed requests from rental car returns that can't be driven, vehicles that sustain damage on the QEII and need accident recovery flatbed, and the full range of breakdown flatbed calls from local residents. Cliff's dispatches flatbed to Leduc in approximately 40 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A Ford Mustang GT500 that was rental-returned with front suspension damage needs transport from the rental facility near the airport. The damage makes driving unsafe and wheel-lift would add undercarriage stress. Cliff's flatbed arrives in 39 minutes and delivers to a Ford specialist shop in south Edmonton.",
+      "For example, a Ford Mustang GT500 that was rental-returned with front suspension damage needs transport from the rental facility near the airport. The damage makes driving unsafe and wheel-lift would add undercarriage stress. Cliff's flatbed arrives and delivers to a Ford specialist shop in south Edmonton.",
     landmarks: ["Airport Road vicinity", "QEII near 41st Avenue interchange", "Leduc Common"],
     sections: [
       {
         heading: "Airport-area flatbed demand: rental vehicles, arrivals, and delivery fleet",
         body: [
           "Edmonton International Airport generates a distinctive flatbed call profile. Rental vehicles returned with hidden damage that makes them unsafe to drive — front-end contact, tire damage, broken suspension — need flatbed transport from the rental facility to a repair shop. Travellers arriving at the airport and driving rental cars or personal vehicles to Leduc sometimes discover mechanical problems during or after the drive. And the delivery fleet servicing the airport's hotels, cargo terminals, and ground transportation operators occasionally generates light commercial flatbed calls.",
-          "Leduc's retail corridor at Leduc Common — hotels, restaurants, box retail — also generates flatbed calls from visitors whose vehicles develop problems away from home. Cliff's covers the airport area and Leduc Common in approximately 40 minutes and can deliver to any shop in south Edmonton, Nisku, or Leduc city.",
+          "Leduc's retail corridor at Leduc Common — hotels, restaurants, box retail — also generates flatbed calls from visitors whose vehicles develop problems away from home. Cliff's covers the airport area and Leduc Common in approximately 40 minutes on average, depending on weather, traffic and road conditions and can deliver to any shop in south Edmonton, Nisku, or Leduc city.",
         ],
       },
       {
@@ -712,9 +712,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Flatbed towing in Fort Saskatchewan for AWD, damaged vehicles, and specialty transport. 24/7 on Highway 15 and industrial routes. Cliff's Towing.",
     intro:
-      "Fort Saskatchewan's industrial workforce and residential community both generate flatbed requests — post-accident vehicles on Highway 15, AWD pickup trucks with drivetrain concerns, and specialty vehicles moving between industrial facilities. Cliff's flatbed dispatch covers Fort Saskatchewan in approximately 45 minutes.",
+      "Fort Saskatchewan's industrial workforce and residential community both generate flatbed requests — post-accident vehicles on Highway 15, AWD pickup trucks with drivetrain concerns, and specialty vehicles moving between industrial facilities. Cliff's flatbed dispatch covers Fort Saskatchewan in approximately 45 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A worker's lifted 4x4 pickup sustains front-end damage in a parking lot collision at an industrial facility on Range Road 205. The owner calls dispatch knowing the 4WD needs flatbed. Cliff's arrives in 47 minutes and delivers the truck to the owner's preferred body shop in Sherwood Park.",
+      "For example, a worker's lifted 4x4 pickup sustains front-end damage in a parking lot collision at an industrial facility on Range Road 205. The owner calls dispatch knowing the 4WD needs flatbed. Cliff's arrives and delivers the truck to the owner's preferred body shop in Sherwood Park.",
     landmarks: ["Highway 15", "Range Road 205 industrial area", "Fort Saskatchewan main avenue"],
     sections: [
       {
@@ -728,7 +728,7 @@ export const serviceLocations: ServiceLocationData[] = [
         heading: "Flatbed accident recovery on Highway 15 northeast of Edmonton",
         body: [
           "Highway 15 between the Edmonton city limit and Fort Saskatchewan sees regular collision recovery flatbed calls. The highway's two-lane sections, winter ice conditions, and the commercial vehicle traffic from the industrial corridor create conditions for rear-end and crossover collisions that leave vehicles with suspension or wheel damage requiring flatbed transport.",
-          "Cliff's covers Highway 15 accident flatbed with the same highway-rated response as any other corridor. For calls on Highway 15 between Edmonton and Fort Saskatchewan, RCMP handles the collision scene, and we coordinate with the officer on scene before loading and departure. Response time to Fort Saskatchewan via Highway 15 averages approximately 45 minutes from our Edmonton dispatch.",
+          "Cliff's covers Highway 15 accident flatbed with the same highway-rated response as any other corridor. For calls on Highway 15 between Edmonton and Fort Saskatchewan, RCMP handles the collision scene, and we coordinate with the officer on scene before loading and departure. Response time to Fort Saskatchewan via Highway 15 averages approximately 45 minutes, depending on weather, traffic and road conditions from our Edmonton dispatch.",
         ],
       },
     ],
@@ -762,15 +762,15 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Flatbed towing in Nisku for specialty vehicles, damaged equipment carriers, and AWD vehicles. 24/7 service in the Nisku industrial park. Cliff's Towing.",
     intro:
-      "The Nisku industrial area generates an unusual mix of flatbed requests: specialty vehicles returning from long hauls with damage, AWD cars belonging to workers that break down in the industrial park, and equipment carriers needing transport between sites. Cliff's flatbed is on scene in Nisku in approximately 35 minutes.",
+      "The Nisku industrial area generates an unusual mix of flatbed requests: specialty vehicles returning from long hauls with damage, AWD cars belonging to workers that break down in the industrial park, and equipment carriers needing transport between sites. Cliff's flatbed is on scene in Nisku in approximately 35 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "An employee's Ford F-150 with 4WD develops a drivetrain warning and the 4WD system locks up in the Nisku Business Park parking area. The vehicle needs flatbed to avoid driving on an engaged transfer case. Cliff's arrives in 33 minutes.",
+      "For example, an employee's Ford F-150 with 4WD develops a drivetrain warning and the 4WD system locks up in the Nisku Business Park parking area. The vehicle needs flatbed to avoid driving on an engaged transfer case. Cliff's arrives.",
     landmarks: ["Nisku Business Park", "Nisku Spine Road", "QEII at Airport Road interchange"],
     sections: [
       {
         heading: "Vehicle types generating flatbed calls in the Nisku industrial area",
         body: [
-          "The Nisku Business Park's workforce drives a mix of personal and company vehicles that generates a range of flatbed requests. Personal AWD vehicles belonging to shift workers that break down in the parking areas, company fleet vehicles with drivetrain faults, and specialty vehicles belonging to oilfield services operators that can't be safely wheel-lifted — all of these are flatbed calls that Cliff's dispatches to Nisku in approximately 35 minutes.",
+          "The Nisku Business Park's workforce drives a mix of personal and company vehicles that generates a range of flatbed requests. Personal AWD vehicles belonging to shift workers that break down in the parking areas, company fleet vehicles with drivetrain faults, and specialty vehicles belonging to oilfield services operators that can't be safely wheel-lifted — all of these are flatbed calls that Cliff's dispatches to Nisku in approximately 35 minutes on average, depending on weather, traffic and road conditions.",
           "The industrial nature of Nisku also means some flatbed calls involve vehicles in positions that require careful approach — tight parking areas between parked equipment, vehicles close to loading dock edges, and lots with heavy traffic from trucks. Our operators assess the approach before positioning the flatbed deck so that loading doesn't create a secondary obstruction in the yard.",
         ],
       },
@@ -785,7 +785,7 @@ export const serviceLocations: ServiceLocationData[] = [
     faqs: [
       {
         q: "Can you flatbed from the Nisku industrial park?",
-        a: "Yes — including from specific facilities. Let dispatch know which business you're at for fastest routing.",
+        a: "Yes — including from specific facilities. Let dispatch know which business you're at for efficient routing.",
       },
       {
         q: "Do you handle specialty vehicle flatbed in Nisku?",
@@ -812,22 +812,22 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Flatbed towing in Acheson for AWD, EVs, and accident recovery on Highway 16 west. 24/7 dispatch from Edmonton. Cliff's Towing.",
     intro:
-      "Acheson's industrial park and the Highway 16 corridor generate flatbed requests from vehicle damage sustained on unpaved access roads, highway accident recovery, and worker vehicle breakdowns in the industrial area. Cliff's flatbed reaches Acheson in approximately 35 minutes via Highway 16.",
+      "Acheson's industrial park and the Highway 16 corridor generate flatbed requests from vehicle damage sustained on unpaved access roads, highway accident recovery, and worker vehicle breakdowns in the industrial area. Cliff's flatbed reaches Acheson in approximately 35 minutes on average, depending on weather, traffic and road conditions via Highway 16.",
     scenario:
-      "A company EV used for site visits develops a charge fault in the Acheson Business Park. Cliff's flatbed is dispatched immediately — EV towing always goes on a flatbed — and arrives in 36 minutes to transport the vehicle to the nearest Level 2 charging facility in Spruce Grove.",
+      "For example, a company EV used for site visits develops a charge fault in the Acheson Business Park. Cliff's flatbed is dispatched — EV towing always goes on a flatbed — and arrives to transport the vehicle to the nearest Level 2 charging facility in Spruce Grove.",
     landmarks: ["Acheson Business Park", "Highway 16 / Acheson Road interchange", "Acheson Drive industrial corridor"],
     sections: [
       {
         heading: "Company vehicles and fleet EVs in the Acheson Business Park",
         body: [
-          "Acheson's major distribution operators — including large logistics and fulfillment companies — are increasingly running electric and hybrid fleet vehicles for last-mile delivery and internal site transport. These vehicles need flatbed when they break down, and because they're fleet assets, the priority is getting the vehicle to a service location quickly so it can return to operation. Cliff's flatbed is on scene in Acheson in approximately 35 minutes and can coordinate documentation directly with fleet operators.",
+          "Acheson's major distribution operators — including large logistics and fulfillment companies — are increasingly running electric and hybrid fleet vehicles for last-mile delivery and internal site transport. These vehicles need flatbed when they break down, and because they're fleet assets, the priority is getting the vehicle to a service location quickly so it can return to operation. Cliff's flatbed is on scene in Acheson in approximately 35 minutes on average, depending on weather, traffic and road conditions and can coordinate documentation directly with fleet operators.",
           "Personal vehicles belonging to the Acheson workforce also generate flatbed requests. AWD crossovers and pickup trucks that develop drivetrain warnings in the industrial park's parking areas, or that sustain minor damage on Acheson's unpaved access lanes, are straightforward flatbed jobs. The access lanes and yard areas in Acheson can be rough, which occasionally accelerates suspension wear and increases the frequency of flatbed calls compared to similar suburban areas.",
         ],
       },
       {
         heading: "Highway 16 accident flatbed near the Acheson interchange",
         body: [
-          "The Highway 16 interchange at Acheson Road sees regular traffic from commercial vehicles merging and accelerating between the industrial park and the highway. Minor collisions at the interchange, vehicles that sustain blowouts on the highway shoulder near the Acheson exit, and the occasional more serious collision on the eastbound approach to Edmonton — all generate flatbed calls from this area. Response from Edmonton dispatch averages 35 minutes.",
+          "The Highway 16 interchange at Acheson Road sees regular traffic from commercial vehicles merging and accelerating between the industrial park and the highway. Minor collisions at the interchange, vehicles that sustain blowouts on the highway shoulder near the Acheson exit, and the occasional more serious collision on the eastbound approach to Edmonton — all generate flatbed calls from this area. Response from Edmonton dispatch averages 35 minutes, depending on weather, traffic and road conditions.",
           "For highway calls near Acheson, RCMP Parkland County manages the scene. Cliff's coordinates with officers before positioning the flatbed. If you're calling from a highway collision and RCMP is already on scene, let dispatch know — we'll confirm with them on approach so loading can happen without delay once we arrive.",
         ],
       },
@@ -862,11 +862,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Accident recovery",
     title: "Accident Recovery Towing — Edmonton, AB",
     metaDescription:
-      "Post-accident towing in Edmonton with insurance coordination. 24/7 on all Edmonton roads and ring roads. Cliff's Towing — avg. under 25-min response.",
+      "Post-accident towing in Edmonton with insurance coordination. 24/7 on all Edmonton roads and ring roads. Cliff's Towing.",
     intro:
-      "Edmonton's road network — from the Henday interchanges to downtown intersections to residential cul-de-sacs — generates accident recovery calls around the clock. Cliff's Towing is dispatched quickly across Edmonton and provides the documentation insurance companies need to process claims efficiently.",
+      "Edmonton's road network — from the Henday interchanges to downtown intersections to residential cul-de-sacs — generates accident recovery calls around the clock. Cliff's Towing is dispatched across Edmonton and provides the documentation insurance companies need to process claims efficiently.",
     scenario:
-      "A two-vehicle collision on the Henday near 167 Street results in one vehicle with front-end damage that makes it undriveable. EPS is on scene. Cliff's arrives in 24 minutes, loads the damaged vehicle on the flatbed, and delivers to the owner's preferred body shop in west Edmonton.",
+      "For example, a two-vehicle collision on the Henday near 167 Street results in one vehicle with front-end damage that makes it undriveable. EPS is on scene. Cliff's arrives, loads the damaged vehicle on the flatbed, and delivers to the owner's preferred body shop in west Edmonton.",
     landmarks: ["Anthony Henday Drive ring road", "Whitemud Drive / Calgary Trail intersection", "Wayne Gretzky Drive"],
     sections: [
       {
@@ -932,7 +932,7 @@ export const serviceLocations: ServiceLocationData[] = [
     intro:
       "Sherwood Park's major thoroughfares — Baseline Road, Wye Road, Cloverbar Road, and the Highway 16 approaches — see regular collision recovery calls. Cliff's covers accident recovery across all of Sherwood Park and the Strathcona County road network, with insurance documentation provided as standard.",
     scenario:
-      "A rear-end collision on Baseline Road near Broadmoor Boulevard leaves one vehicle with frame damage. Cliff's arrives in 31 minutes, photographs the scene for the insurance file, and delivers the vehicle to the body shop the owner selects.",
+      "For example, a rear-end collision on Baseline Road near Broadmoor Boulevard leaves one vehicle with frame damage. Cliff's arrives, photographs the scene for the insurance file, and delivers the vehicle to the body shop the owner selects.",
     landmarks: ["Baseline Road", "Wye Road", "Highway 16 east of Sherwood Park"],
     sections: [
       {
@@ -980,9 +980,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Post-accident towing in St. Albert with insurance coordination. 24/7 coverage on St. Albert Trail, Ray Gibbon Drive, and surrounding roads. Cliff's Towing.",
     intro:
-      "St. Albert Trail and Ray Gibbon Drive see a significant volume of fender-benders and more serious collisions, particularly at major intersections and during winter icing events. Cliff's covers accident recovery across St. Albert with an average response under 40 minutes, providing full insurance documentation on every job.",
+      "St. Albert Trail and Ray Gibbon Drive see a significant volume of fender-benders and more serious collisions, particularly at major intersections and during winter icing events. Cliff's covers accident recovery across St. Albert with an average response of approximately 35 minutes, depending on weather, traffic and road conditions, providing full insurance documentation on every job.",
     scenario:
-      "An intersection collision at St. Albert Trail and Hebert Road leaves a minivan with airbag deployment and front-end damage that makes it unsafe to drive. Cliff's arrives in 36 minutes, coordinates with the St. Albert RCMP officer on scene, and delivers the vehicle to the owner's insurer-approved shop.",
+      "For example, an intersection collision at St. Albert Trail and Hebert Road leaves a minivan with airbag deployment and front-end damage that makes it unsafe to drive. Cliff's arrives, coordinates with the St. Albert RCMP officer on scene, and delivers the vehicle to the owner's insurer-approved shop.",
     landmarks: ["St. Albert Trail / Hebert Road intersection", "Ray Gibbon Drive", "Campbell Road area"],
     sections: [
       {
@@ -1028,11 +1028,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Accident recovery",
     title: "Accident Recovery — Spruce Grove, AB",
     metaDescription:
-      "Post-accident towing in Spruce Grove on Highway 16 and city roads. 24/7 service with insurance coordination. Cliff's Towing — approx. 40-min response.",
+      "Post-accident towing in Spruce Grove on Highway 16 and city roads. 24/7 service with insurance coordination. Cliff's Towing.",
     intro:
-      "Highway 16 through Spruce Grove and the city's internal road network both generate accident recovery calls, particularly during winter months when the Yellowhead corridor becomes slippery. Cliff's dispatches accident recovery equipment to Spruce Grove in approximately 40 minutes and provides all required documentation for insurance claims.",
+      "Highway 16 through Spruce Grove and the city's internal road network both generate accident recovery calls, particularly during winter months when the Yellowhead corridor becomes slippery. Cliff's dispatches accident recovery equipment to Spruce Grove in approximately 40 minutes on average, depending on weather, traffic and road conditions and provides all required documentation for insurance claims.",
     scenario:
-      "A three-vehicle chain collision on Highway 16 westbound near the Century Road exit leaves two vehicles undriveable. Cliff's dispatches two units simultaneously, and both are on scene within 42 minutes. Insurance documentation is provided to both owners on site.",
+      "For example, a three-vehicle chain collision on Highway 16 westbound near the Century Road exit leaves two vehicles undriveable. Cliff's dispatches two units simultaneously. Insurance documentation is provided to both owners on site.",
     landmarks: ["Highway 16 westbound near Century Road", "Grove Drive intersections", "Pioneer Road"],
     sections: [
       {
@@ -1078,11 +1078,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Accident recovery",
     title: "Accident Recovery — Leduc, AB",
     metaDescription:
-      "Post-accident towing in Leduc and the QEII corridor. 24/7 service with insurance documentation. Cliff's Towing — approx. 40-min response.",
+      "Post-accident towing in Leduc and the QEII corridor. 24/7 service with insurance documentation. Cliff's Towing.",
     intro:
       "The QEII between Edmonton and Leduc is one of Alberta's highest-speed freight corridors and generates serious accident recovery calls requiring both heavy duty and flatbed capability. Cliff's covers accident recovery across Leduc city and the surrounding highway network, working with RCMP on scene and providing insurance documentation on every job.",
     scenario:
-      "A northbound sedan rear-ends a slowing transport truck on the QEII near the 41st Avenue interchange. The sedan has severe front-end damage. RCMP is on scene. Cliff's arrives in 38 minutes and delivers the vehicle to the driver's insurer's preferred shop in south Edmonton.",
+      "For example, a northbound sedan rear-ends a slowing transport truck on the QEII near the 41st Avenue interchange. The sedan has severe front-end damage. RCMP is on scene. Cliff's arrives and delivers the vehicle to the driver's insurer's preferred shop in south Edmonton.",
     landmarks: ["QEII near 41st Avenue Leduc", "Airport Road approaches", "Leduc city main roads"],
     sections: [
       {
@@ -1132,7 +1132,7 @@ export const serviceLocations: ServiceLocationData[] = [
     intro:
       "Highway 15 between Edmonton and Fort Saskatchewan sees regular collision recovery calls, and the city's internal roads generate local accident towing requests. Cliff's covers accident recovery across Fort Saskatchewan with full insurance documentation and delivery to any shop or facility the owner specifies.",
     scenario:
-      "An intersection collision on 100th Avenue in Fort Saskatchewan leaves one vehicle with deployed airbags and a non-functional steering system. Cliff's arrives in 47 minutes, loads on the flatbed, and delivers to a body shop the driver's insurer has approved.",
+      "For example, an intersection collision on 100th Avenue in Fort Saskatchewan leaves one vehicle with deployed airbags and a non-functional steering system. Cliff's arrives, loads on the flatbed, and delivers to a body shop the driver's insurer has approved.",
     landmarks: ["Highway 15", "100th Avenue Fort Saskatchewan", "Industrial access roads northeast"],
     sections: [
       {
@@ -1182,7 +1182,7 @@ export const serviceLocations: ServiceLocationData[] = [
     intro:
       "The QEII at the Nisku and Airport Road interchanges is a high-speed, high-volume zone where accidents can involve commercial vehicles, airport-bound traffic, and local industrial workers simultaneously. Cliff's covers accident recovery in Nisku with both light and heavy duty capability, providing documentation for insurance claims and coordinating with RCMP on scene.",
     scenario:
-      "A compact car and a cube van collide at the Nisku Spine Road / Airport Road intersection during the morning industrial shift change. Both vehicles are undriveable. Cliff's dispatches two units — a flatbed for the car and a wheel-lift for the cube van — arriving within 36 minutes.",
+      "For example, a compact car and a cube van collide at the Nisku Spine Road / Airport Road intersection during the morning industrial shift change. Both vehicles are undriveable. Cliff's dispatches two units, a flatbed for the car and a wheel-lift for the cube van.",
     landmarks: ["QEII / Nisku interchange", "Airport Road intersection", "Nisku Spine Road"],
     sections: [
       {
@@ -1230,9 +1230,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Post-accident towing in Acheson on Highway 16 and industrial roads. 24/7 service with insurance coordination. Cliff's Towing.",
     intro:
-      "Highway 16 through the Acheson interchange sees regular accidents involving both commercial and passenger vehicles, and internal industrial road incidents in the Acheson Business Park are a secondary source of accident recovery calls. Cliff's covers accident recovery in Acheson in approximately 35 to 40 minutes.",
+      "Highway 16 through the Acheson interchange sees regular accidents involving both commercial and passenger vehicles, and internal industrial road incidents in the Acheson Business Park are a secondary source of accident recovery calls. Cliff's covers accident recovery in Acheson in approximately 35 to 40 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A passenger vehicle rear-ends a decelerating delivery truck at the Acheson Road exit off Highway 16. The passenger car is heavily damaged and RCMP is managing traffic. Cliff's arrives in 37 minutes and uses the flatbed for the passenger car, delivering to a south Edmonton body shop.",
+      "For example, a passenger vehicle rear-ends a decelerating delivery truck at the Acheson Road exit off Highway 16. The passenger car is heavily damaged and RCMP is managing traffic. Cliff's arrives and uses the flatbed for the passenger car, delivering to a south Edmonton body shop.",
     landmarks: ["Highway 16 / Acheson Road interchange", "Acheson Drive", "Acheson Business Park"],
     sections: [
       {
@@ -1280,11 +1280,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Edmonton, AB",
     metaDescription:
-      "24/7 roadside assistance in Edmonton: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — avg. under 25-min response across the city.",
+      "24/7 roadside assistance in Edmonton: lockout, battery boost, tire change, fuel delivery. Cliff's Towing, 24/7 across the city.",
     intro:
       "Edmonton's extreme winters make roadside assistance more than a convenience — a dead battery at -30°C or a flat tire on an icy night road can turn into a safety issue quickly. Cliff's dispatches roadside technicians across all of Edmonton with commercial-grade equipment suited for cold-weather operation.",
     scenario:
-      "A driver leaves work at a downtown Edmonton office tower at 8pm in January and finds their battery completely dead after a -28°C day. Cliff's roadside arrives in 21 minutes, boosts the battery, confirms it's holding charge, and the driver is back on the road within 30 minutes of the original call.",
+      "For example, a driver leaves work at a downtown Edmonton office tower at 8pm in January and finds their battery completely dead after a -28°C day. Cliff's roadside arrives, boosts the battery, confirms it's holding charge, and the driver is back on the road.",
     landmarks: ["Downtown Edmonton core", "University of Alberta campus", "West Edmonton Mall parking"],
     sections: [
       {
@@ -1292,7 +1292,7 @@ export const serviceLocations: ServiceLocationData[] = [
         body: [
           "Edmonton's climate is genuinely harsh. Average January lows hover around -15°C to -20°C, with cold snaps regularly reaching -30°C or colder. At those temperatures, a car battery that starts reliably in September may fail completely by February — cold weather increases the cranking load while simultaneously reducing the battery's available output capacity. A battery that tests at 70% health in summer can test at 40% effective capacity at -25°C.",
           "Flat tires and lockouts follow a similar seasonal pattern. Tire pressure drops with temperature, increasing the chance of a slow leak becoming a sudden flat. Cold makes fingers less responsive, which means more dropped keys and fumbled locks — and more lockout calls. Cliff's roadside technicians are equipped and trained for Edmonton's cold-weather conditions: commercial-grade booster cables rated for sub-zero starts, non-destructive lockout tools that work in extreme cold, and flat tire equipment that handles frozen wheel bolts.",
-          "Dispatch is available around the clock and the response target within Edmonton city limits is under 25 minutes. For common roadside calls — dead battery in a downtown parkade, locked out at West Edmonton Mall, flat tire on the Henday — the turnaround from your call to driving away is typically well under an hour.",
+          "Dispatch is available around the clock and the average response within Edmonton city limits is about 30 minutes, depending on weather, traffic and road conditions. For common roadside calls — dead battery in a downtown parkade, locked out at West Edmonton Mall, flat tire on the Henday — dispatch sends a roadside unit to your location.",
         ],
       },
       {
@@ -1323,8 +1323,8 @@ export const serviceLocations: ServiceLocationData[] = [
         a: "Most standard passenger vehicles using non-destructive methods — air wedge and long-reach tool. Some newer vehicles may require a locksmith; we'll let you know on arrival.",
       },
       {
-        q: "How fast is roadside response in Edmonton?",
-        a: "Under 25 minutes within city limits under normal conditions.",
+        q: "How long does roadside response take in Edmonton?",
+        a: "About 30 minutes on average within city limits, depending on weather, traffic and road conditions.",
       },
       {
         q: "Do you provide battery boosts in extremely cold temperatures?",
@@ -1347,18 +1347,18 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Sherwood Park, AB",
     metaDescription:
-      "24/7 roadside assistance in Sherwood Park: lockout, battery boost, tire change, and fuel delivery. Cliff's Towing — approx. 30-min response.",
+      "24/7 roadside assistance in Sherwood Park: lockout, battery boost, tire change, and fuel delivery. Cliff's Towing.",
     intro:
-      "Sherwood Park's residential neighbourhoods and commercial areas generate a steady volume of lockout calls at shopping centres, battery boosts in cold weather, and tire changes on the city's main roads. Cliff's covers all of Sherwood Park with roadside services averaging around 30 minutes response time.",
+      "Sherwood Park's residential neighbourhoods and commercial areas generate a steady volume of lockout calls at shopping centres, battery boosts in cold weather, and tire changes on the city's main roads. Cliff's covers all of Sherwood Park with roadside services, with an average response time of about 30 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A parent drops their kids at school on a cold morning and realizes their keys are inside the car when they return to the parking lot. Cliff's roadside arrives in 28 minutes and unlocks the vehicle without any damage to the door frame.",
+      "For example, a parent drops their kids at school on a cold morning and realizes their keys are inside the car when they return to the parking lot. Cliff's roadside arrives and unlocks the vehicle without any damage to the door frame.",
     landmarks: ["Sherwood Park Mall parking", "Emerald Hills commercial strip", "Sherwood Park residential neighbourhoods"],
     sections: [
       {
         heading: "Cold weather and Sherwood Park's roadside call patterns",
         body: [
           "Sherwood Park's residential layout — large lots, attached garages, and a high proportion of newer vehicles — might suggest fewer cold-weather battery failures than older urban areas, but the reality is different. Garage-kept vehicles often have batteries that test fine in warm conditions but fail on the rare occasions they're parked outside at a shopping centre or workplace parking lot overnight in winter. Sherwood Park's commercial parking areas at the mall, Emerald Hills, and the Baseline Road retail strip generate a consistent volume of cold-weather battery calls from vehicles that weren't parked outside long enough to matter — until they were.",
-          "Lockout calls follow a predictable Sherwood Park pattern: school drop-off at the elementary and high schools, shopping centre parking lots in the afternoon, and industrial area gates in the Strathcona County area during shift changes. Cliff's covers Sherwood Park in approximately 30 minutes from Edmonton dispatch for all four core roadside services.",
+          "Lockout calls follow a predictable Sherwood Park pattern: school drop-off at the elementary and high schools, shopping centre parking lots in the afternoon, and industrial area gates in the Strathcona County area during shift changes. Cliff's covers Sherwood Park in about 30 minutes on average, depending on weather, traffic and road conditions from Edmonton dispatch for all four core roadside services.",
         ],
       },
       {
@@ -1397,18 +1397,18 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — St. Albert, AB",
     metaDescription:
-      "24/7 roadside assistance in St. Albert: lockout, battery boost, tire change, and fuel delivery. Cliff's Towing — approx. 35-min response.",
+      "24/7 roadside assistance in St. Albert: lockout, battery boost, tire change, and fuel delivery. Cliff's Towing.",
     intro:
-      "St. Albert's residential layout — with many newer suburban streets and a growing population — means that roadside calls come from a wide geographic spread across the city. Battery failures in winter are common, and lockouts happen year-round. Cliff's covers all of St. Albert in approximately 35 minutes.",
+      "St. Albert's residential layout — with many newer suburban streets and a growing population — means that roadside calls come from a wide geographic spread across the city. Battery failures in winter are common, and lockouts happen year-round. Cliff's covers all of St. Albert in approximately 35 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A couple returning from shopping at St. Albert Centre find a flat tire in the parking lot on a winter afternoon. Cliff's roadside arrives in 34 minutes and completes the spare tire swap in under 20 minutes, including a safety check of the spare's pressure.",
+      "For example, a couple returning from shopping at St. Albert Centre find a flat tire in the parking lot on a winter afternoon. Cliff's roadside arrives and completes the spare tire swap, including a safety check of the spare's pressure.",
     landmarks: ["St. Albert Centre parking", "Erin Ridge commercial area", "Servus Place vicinity"],
     sections: [
       {
         heading: "St. Albert's cold weather battery failures and suburban lockouts",
         body: [
           "St. Albert's residential character and high proportion of later-model AWD vehicles creates a specific cold-weather battery failure pattern. AWD crossovers and premium SUVs have larger electrical loads than conventional vehicles — heated seats, heating elements in mirrors and wipers, and the AWD system's electronics all draw current when the vehicle is cold. A battery that's marginal in September may fail to turn the vehicle over when it's -25°C in January and the driver has left the car parked outside at Servus Place or St. Albert Centre for a few hours.",
-          "Lockout calls in St. Albert concentrate around the school cluster on Gaetz Avenue, the St. Albert Centre parking area, and the Erin Ridge and Jensen Lakes commercial strips. Cliff's covers St. Albert in approximately 35 minutes with non-destructive lockout tools — air wedge and long-reach — that don't leave marks on door frames or weather stripping.",
+          "Lockout calls in St. Albert concentrate around the school cluster on Gaetz Avenue, the St. Albert Centre parking area, and the Erin Ridge and Jensen Lakes commercial strips. Cliff's covers St. Albert in approximately 35 minutes on average, depending on weather, traffic and road conditions with non-destructive lockout tools — air wedge and long-reach — that don't leave marks on door frames or weather stripping.",
         ],
       },
       {
@@ -1447,17 +1447,17 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Spruce Grove, AB",
     metaDescription:
-      "24/7 roadside assistance in Spruce Grove: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — approx. 40-min response.",
+      "24/7 roadside assistance in Spruce Grove: lockout, battery boost, tire change, fuel delivery. Cliff's Towing.",
     intro:
-      "Spruce Grove's drivers face the same Alberta winter challenges as anywhere in the Edmonton metro area. Cold starts, icy roads that cause flat tires, and the occasional out-of-fuel situation on a drive back from the city are all familiar roadside calls from Spruce Grove. Cliff's covers the full city in approximately 40 minutes.",
+      "Spruce Grove's drivers face the same Alberta winter challenges as anywhere in the Edmonton metro area. Cold starts, icy roads that cause flat tires, and the occasional out-of-fuel situation on a drive back from the city are all familiar roadside calls from Spruce Grove. Cliff's covers the full city in approximately 40 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A driver runs out of diesel on Highway 16A through Spruce Grove misjudging the distance to the next station. Cliff's roadside delivers 10 litres of diesel in 41 minutes, enough to reach the nearest fuel station safely.",
+      "For example, a driver runs out of diesel on Highway 16A through Spruce Grove misjudging the distance to the next station. Cliff's roadside delivers 10 litres of diesel, enough to reach the nearest fuel station safely.",
     landmarks: ["Highway 16A through Spruce Grove", "Westgrove commercial strip", "Tri Leisure Centre area"],
     sections: [
       {
         heading: "Roadside calls on the Highway 16A corridor and Spruce Grove commercial areas",
         body: [
-          "Highway 16A through Spruce Grove is the old Yellowhead route, a lower-speed alternative to the main Highway 16 that runs through established commercial areas and older residential neighbourhoods. Out-of-fuel situations on 16A are more common than on the main highway because the slower-moving traffic and stop-and-go at commercial intersections gives drivers a false sense of how much range remains. Cliff's roadside delivers emergency fuel to Highway 16A and all Spruce Grove commercial areas in approximately 40 minutes.",
+          "Highway 16A through Spruce Grove is the old Yellowhead route, a lower-speed alternative to the main Highway 16 that runs through established commercial areas and older residential neighbourhoods. Out-of-fuel situations on 16A are more common than on the main highway because the slower-moving traffic and stop-and-go at commercial intersections gives drivers a false sense of how much range remains. Cliff's roadside delivers emergency fuel to Highway 16A and all Spruce Grove commercial areas in approximately 40 minutes on average, depending on weather, traffic and road conditions.",
           "The Westgrove commercial strip and the Century Road retail corridor generate lockout calls from shopping and errand stops. The Tri Leisure Centre's parking area is a consistent source of lockout calls — gym and recreation visits are prime lockout moments because drivers are in a rush and distracted when they lock up. Cliff's covers these locations as standard roadside calls.",
         ],
       },
@@ -1499,16 +1499,16 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "24/7 roadside assistance in Leduc near Edmonton International Airport. Lockout, battery boost, tire change, fuel delivery. Cliff's Towing.",
     intro:
-      "Leduc's proximity to the airport means we see roadside calls from drivers rushing to catch flights who lock their keys in the car, rental vehicles with flat tires, and drivers who run low on fuel on the airport approach roads. Cliff's covers Leduc and the airport corridor with roadside services averaging around 40 minutes response.",
+      "Leduc's proximity to the airport means we see roadside calls from drivers rushing to catch flights who lock their keys in the car, rental vehicles with flat tires, and drivers who run low on fuel on the airport approach roads. Cliff's covers Leduc and the airport corridor with roadside services, with an average response time of around 40 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A traveller parking at a long-term lot near the airport realizes they've locked their keys inside. Cliff's roadside arrives in 38 minutes — plenty of time for a 90-minute-to-departure scenario — and unlocks the vehicle without any damage.",
+      "For example, a traveller parking at a long-term lot near the airport realizes they've locked their keys inside. Cliff's roadside arrives and unlocks the vehicle without any damage.",
     landmarks: ["Edmonton International Airport area", "Leduc Common commercial area", "Airport Road corridor"],
     sections: [
       {
         heading: "Airport-area roadside calls: lockouts, rental vehicles, and fuel emergencies",
         body: [
           "The Edmonton International Airport area generates a distinctive roadside call mix. Departing passengers who lock their keys in the car in the departures drop-off area or long-term parking need fast lockout service with a clear time constraint. Arriving passengers whose rental cars develop problems on the Airport Road approach to Leduc need quick roadside assessment and potentially a tow if the issue can't be resolved at the roadside.",
-          "Out-of-fuel situations on Airport Road and the approaches to the Leduc area are more common than in suburban areas — travellers unfamiliar with the local fuel station locations often miscalculate how far they can stretch the tank after leaving the airport or highway. Cliff's delivers both gasoline and diesel to Airport Road and the Leduc Common area, arriving in approximately 40 minutes.",
+          "Out-of-fuel situations on Airport Road and the approaches to the Leduc area are more common than in suburban areas — travellers unfamiliar with the local fuel station locations often miscalculate how far they can stretch the tank after leaving the airport or highway. Cliff's delivers both gasoline and diesel to Airport Road and the Leduc Common area, arriving in approximately 40 minutes on average, depending on weather, traffic and road conditions.",
         ],
       },
       {
@@ -1522,7 +1522,7 @@ export const serviceLocations: ServiceLocationData[] = [
     faqs: [
       {
         q: "Can you do a quick lockout near the Edmonton airport if I'm catching a flight?",
-        a: "Yes. Give us your flight time when you call and we'll prioritize. We can't guarantee you catch your flight, but we'll be as fast as possible.",
+        a: "Yes. Give us your flight time when you call and we'll note it for dispatch. We can't promise you'll make your flight, and arrival times vary with weather, traffic and road conditions.",
       },
       {
         q: "Do you provide roadside for rental vehicles in Leduc?",
@@ -1547,11 +1547,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Fort Saskatchewan, AB",
     metaDescription:
-      "24/7 roadside assistance in Fort Saskatchewan: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — approx. 45-min response.",
+      "24/7 roadside assistance in Fort Saskatchewan: lockout, battery boost, tire change, fuel delivery. Cliff's Towing.",
     intro:
       "Fort Saskatchewan's industrial workforce and residential community generate roadside calls across a wide area — from worker lockouts at shift change in the industrial facilities to cold-weather battery failures in residential areas north of the river. Cliff's covers Fort Saskatchewan with all four core roadside services.",
     scenario:
-      "A shift worker finishes a night shift at one of the Fort Saskatchewan chemical plants and finds a flat tire in the facility's outdoor parking area at 6am in February. Cliff's roadside arrives in 46 minutes and installs the spare before the morning commute traffic builds.",
+      "For example, a shift worker finishes a night shift at one of the Fort Saskatchewan chemical plants and finds a flat tire in the facility's outdoor parking area at 6am in February. Cliff's roadside arrives and installs the spare before the morning commute traffic builds.",
     landmarks: ["Fort Saskatchewan industrial facility parking areas", "100th Avenue residential zone", "Highway 15 corridor"],
     sections: [
       {
@@ -1565,7 +1565,7 @@ export const serviceLocations: ServiceLocationData[] = [
         heading: "Residential roadside service across Fort Saskatchewan",
         body: [
           "Outside the industrial areas, Fort Saskatchewan's residential neighbourhoods along 100th Avenue, the south side residential area, and the newer developments near the RCMP detachment generate standard residential roadside calls — lockouts in driveways, battery failures in residential parking areas, and tire changes after a nail or road hazard flat.",
-          "For residential calls in Fort Saskatchewan, response time from Edmonton dispatch averages 45 to 55 minutes. Fort Saskatchewan is one of our longer-response communities due to distance, and we're transparent about this when you call. For non-emergency roadside situations where waiting is acceptable, this response window is manageable. For safety-sensitive situations — stranded alone in extreme cold, for example — call dispatch immediately and we'll give you an honest ETA and advice for staying safe while you wait.",
+          "For residential calls in Fort Saskatchewan, response time from Edmonton dispatch averages 45 to 55 minutes, depending on weather, traffic and road conditions. Fort Saskatchewan is one of our longer-response communities due to distance, and we're transparent about this when you call. For non-emergency roadside situations where waiting is acceptable, this response window is manageable. For safety-sensitive situations — stranded alone in extreme cold, for example — call dispatch immediately and we'll give you an honest ETA and advice for staying safe while you wait.",
         ],
       },
     ],
@@ -1597,18 +1597,18 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Nisku, AB",
     metaDescription:
-      "24/7 roadside assistance in Nisku industrial park. Lockout, battery boost, tire change, and fuel delivery. Cliff's Towing — approx. 35-min response.",
+      "24/7 roadside assistance in Nisku industrial park. Lockout, battery boost, tire change, and fuel delivery. Cliff's Towing.",
     intro:
-      "The Nisku industrial park runs 24 hours and generates roadside calls at every hour — dead batteries in cold industrial yards, lockouts during shift changes, and flat tires on unpaved access roads. Cliff's covers Nisku with all four core roadside services, arriving in approximately 35 minutes.",
+      "The Nisku industrial park runs 24 hours and generates roadside calls at every hour — dead batteries in cold industrial yards, lockouts during shift changes, and flat tires on unpaved access roads. Cliff's covers Nisku with all four core roadside services, arriving in approximately 35 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A worker's pickup truck develops a flat tire on an unpaved access road inside the Nisku Business Park during the afternoon shift. Cliff's roadside arrives in 32 minutes, changes to the spare, and the worker is back in the yard before the shift ends.",
+      "For example, a worker's pickup truck develops a flat tire on an unpaved access road inside the Nisku Business Park during the afternoon shift. Cliff's roadside arrives, changes to the spare, and the worker is back in the yard before the shift ends.",
     landmarks: ["Nisku Business Park unpaved access roads", "Nisku Spine Road", "QEII / Airport Road vicinity"],
     sections: [
       {
         heading: "24/7 industrial operations and roadside calls in the Nisku Business Park",
         body: [
           "The Nisku Business Park operates continuously. Oilfield services companies, heavy equipment yards, and logistics operations run overnight shifts that create roadside call demand at every hour. Cold-weather battery failures in outdoor industrial parking, lockouts during busy loading shifts, and flat tires from the rough unpaved access roads inside some industrial facilities are the most common Nisku roadside call types.",
-          "Unlike suburban roadside calls, Nisku calls often happen in locations that are harder to find and harder to access — specific buildings inside a large industrial park, yards accessible only through a manned gate, or vehicles on an unpaved service road not visible from the Nisku Spine Road. When you call from a Nisku location, provide the business name or facility address and we'll route the closest unit efficiently. Response averages approximately 35 minutes.",
+          "Unlike suburban roadside calls, Nisku calls often happen in locations that are harder to find and harder to access — specific buildings inside a large industrial park, yards accessible only through a manned gate, or vehicles on an unpaved service road not visible from the Nisku Spine Road. When you call from a Nisku location, provide the business name or facility address and we'll route the closest unit efficiently. Response averages approximately 35 minutes, depending on weather, traffic and road conditions.",
         ],
       },
       {
@@ -1647,18 +1647,18 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Acheson, AB",
     metaDescription:
-      "24/7 roadside assistance in Acheson industrial park. Lockout, battery boost, tire change, fuel delivery. Cliff's Towing — approx. 35-min response.",
+      "24/7 roadside assistance in Acheson industrial park. Lockout, battery boost, tire change, fuel delivery. Cliff's Towing.",
     intro:
-      "Acheson's distribution and manufacturing operations mean workers and delivery drivers face roadside situations at all hours. Cold-weather battery failures in outdoor parking, lockouts during busy loading window shifts, and flat tires from the industrial park's rougher road surfaces are common calls from this area. Cliff's covers Acheson in approximately 35 minutes.",
+      "Acheson's distribution and manufacturing operations mean workers and delivery drivers face roadside situations at all hours. Cold-weather battery failures in outdoor parking, lockouts during busy loading window shifts, and flat tires from the industrial park's rougher road surfaces are common calls from this area. Cliff's covers Acheson in approximately 35 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A delivery driver finishing a late-night route to the Acheson distribution area locks the keys in the cab during a drop-off. Cliff's roadside arrives in 34 minutes and unlocks the cab without interrupting the loading dock operations.",
+      "For example, a delivery driver finishing a late-night route to the Acheson distribution area locks the keys in the cab during a drop-off. Cliff's roadside arrives and unlocks the cab without interrupting the loading dock operations.",
     landmarks: ["Acheson Business Park loading areas", "Acheson Drive", "Highway 16 access points"],
     sections: [
       {
         heading: "Distribution workers and late-shift roadside calls in Acheson",
         body: [
           "Acheson's major distribution centres and manufacturing facilities run multiple shifts, with delivery drivers and warehouse workers rotating in and out at all hours. The pattern of roadside calls from Acheson reflects this — lockouts at loading docks during shift handoffs, battery failures in outdoor employee parking after an evening shift in winter, and delivery truck fuel emergencies on the Highway 16 access roads between the park and the highway.",
-          "Loading dock lockouts are a Acheson specialty. Drivers who are moving efficiently through multiple stops sometimes lock their keys inside the cab while they're at the dock — they need fast, non-disruptive lockout service that doesn't interrupt the loading dock operation. Cliff's is familiar with the Acheson Business Park addresses and loading dock access, and our lockout tools work without requiring large vehicle repositioning.",
+          "Loading dock lockouts are a Acheson specialty. Drivers who are moving efficiently through multiple stops sometimes lock their keys inside the cab while they're at the dock — they need non-disruptive lockout service that doesn't interrupt the loading dock operation. Cliff's is familiar with the Acheson Business Park addresses and loading dock access, and our lockout tools work without requiring large vehicle repositioning.",
         ],
       },
       {
@@ -1701,9 +1701,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in Beaumont on Highway 625 and QEII. 24/7 response for semis, agricultural trucks, and commercial vehicles. Cliff's Towing.",
     intro:
-      "Beaumont sits at the junction of Highway 625 and the QEII corridor, placing it within the heavy commercial traffic flow connecting Leduc County's agricultural and industrial areas to Edmonton. Cliff's Towing covers Beaumont and the surrounding Leduc County roads with heavy duty equipment, typically on scene within 40 to 50 minutes.",
+      "Beaumont sits at the junction of Highway 625 and the QEII corridor, placing it within the heavy commercial traffic flow connecting Leduc County's agricultural and industrial areas to Edmonton. Cliff's Towing covers Beaumont and the surrounding Leduc County roads with heavy duty equipment, typically on scene within 40 to 50 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A grain truck moving northbound on Highway 625 toward the QEII develops a steering fault and pulls onto the Beaumont shoulder. Cliff's heavy duty underlift arrives in 43 minutes, secures the truck with the cab separated from the trailer, and delivers to a Leduc repair facility.",
+      "For example, a grain truck moving northbound on Highway 625 toward the QEII develops a steering fault and pulls onto the Beaumont shoulder. Cliff's heavy duty underlift arrives, secures the truck with the cab separated from the trailer, and delivers to a Leduc repair facility.",
     landmarks: ["Highway 625 / QEII interchange", "50 Street commercial corridor", "Leduc County agricultural roads"],
     sections: [
       {
@@ -1749,11 +1749,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Flatbed towing",
     title: "Flatbed Towing — Beaumont, AB",
     metaDescription:
-      "Flatbed towing in Beaumont for AWD, EVs, and accident-damaged vehicles. 24/7 dispatch from Edmonton. Cliff's Towing — approx. 45-min response.",
+      "Flatbed towing in Beaumont for AWD, EVs, and accident-damaged vehicles. 24/7 dispatch from Edmonton. Cliff's Towing.",
     intro:
-      "Beaumont's rapid residential growth and high proportion of newer-model vehicles — many of them AWD crossovers and SUVs — drives consistent flatbed demand. When a vehicle in Beaumont breaks down and wheel-lift is unsafe due to drivetrain type or collision damage, Cliff's dispatches flatbed from Edmonton in approximately 45 minutes.",
+      "Beaumont's rapid residential growth and high proportion of newer-model vehicles — many of them AWD crossovers and SUVs — drives consistent flatbed demand. When a vehicle in Beaumont breaks down and wheel-lift is unsafe due to drivetrain type or collision damage, Cliff's dispatches flatbed from Edmonton in approximately 45 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A Honda CR-V AWD develops a transmission fault on Coloniale Way in Beaumont. The owner knows AWD vehicles need flatbed. Cliff's arrives in 44 minutes and delivers to the Honda dealership on the south side of Edmonton.",
+      "For example, a Honda CR-V AWD develops a transmission fault on Coloniale Way in Beaumont. The owner knows AWD vehicles need flatbed. Cliff's arrives and delivers to the Honda dealership on the south side of Edmonton.",
     landmarks: ["Coloniale Way commercial strip", "50 Street residential and commercial area", "Highway 625 access"],
     sections: [
       {
@@ -1799,11 +1799,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Accident recovery",
     title: "Accident Recovery — Beaumont, AB",
     metaDescription:
-      "Post-accident towing in Beaumont with insurance coordination. 24/7 service on Highway 625 and city roads. Cliff's Towing — approx. 45-min response.",
+      "Post-accident towing in Beaumont with insurance coordination. 24/7 service on Highway 625 and city roads. Cliff's Towing.",
     intro:
       "Beaumont falls under RCMP Leduc County jurisdiction, and collision recovery across the town and its connecting highways is managed accordingly. Cliff's covers accident recovery in Beaumont with full insurance documentation, delivering to any shop or facility the driver chooses.",
     scenario:
-      "A rear-end collision on 50 Street near the Beaumont commercial area leaves one vehicle with airbag deployment. RCMP is on scene. Cliff's arrives in 46 minutes, photographs the scene, loads the vehicle, and delivers to the driver's insurer-approved shop in south Edmonton.",
+      "For example, a rear-end collision on 50 Street near the Beaumont commercial area leaves one vehicle with airbag deployment. RCMP is on scene. Cliff's arrives, photographs the scene, loads the vehicle, and delivers to the driver's insurer-approved shop in south Edmonton.",
     landmarks: ["50 Street Beaumont", "Highway 625 approaches", "Coloniale Way intersections"],
     sections: [
       {
@@ -1849,11 +1849,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Beaumont, AB",
     metaDescription:
-      "24/7 roadside assistance in Beaumont: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — approx. 45-min response.",
+      "24/7 roadside assistance in Beaumont: lockout, battery boost, tire change, fuel delivery. Cliff's Towing.",
     intro:
-      "Beaumont's residential growth means a large suburban area with late-model vehicles whose owners may not have a preferred towing company when something goes wrong. Cliff's covers Beaumont with all four core roadside services — lockout, battery boost, tire change, and fuel delivery — arriving in approximately 45 minutes.",
+      "Beaumont's residential growth means a large suburban area with late-model vehicles whose owners may not have a preferred towing company when something goes wrong. Cliff's covers Beaumont with all four core roadside services — lockout, battery boost, tire change, and fuel delivery — arriving in approximately 45 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A Beaumont resident parks at the Sobeys on 50 Street and returns to find a dead battery after a cold snap. Cliff's roadside arrives in 44 minutes, boosts the battery, confirms the charging system is functioning, and the driver is on the way home.",
+      "For example, a Beaumont resident parks at the Sobeys on 50 Street and returns to find a dead battery after a cold snap. Cliff's roadside arrives, boosts the battery, confirms the charging system is functioning, and the driver is on the way home.",
     landmarks: ["50 Street commercial area", "Coloniale Way retail", "Beaumont residential neighbourhoods"],
     sections: [
       {
@@ -1903,9 +1903,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in Devon on Highway 60 southwest of Edmonton. 24/7 response for commercial and agricultural vehicles. Cliff's Towing.",
     intro:
-      "Devon sits on the North Saskatchewan River southwest of Edmonton, connected to the city via Highway 60. The highway sees agricultural equipment, construction vehicles serving the river valley area, and occasional commercial freight. Cliff's covers Devon and the Highway 60 corridor with heavy duty equipment, typically on scene within 50 to 60 minutes.",
+      "Devon sits on the North Saskatchewan River southwest of Edmonton, connected to the city via Highway 60. The highway sees agricultural equipment, construction vehicles serving the river valley area, and occasional commercial freight. Cliff's covers Devon and the Highway 60 corridor with heavy duty equipment, typically on scene within 50 to 60 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A flatdeck loaded with construction equipment develops a brake issue on Highway 60 north of Devon before the river bridge. RCMP is on scene. Cliff's arrives in 54 minutes and manages a safe recovery on the two-lane highway shoulder.",
+      "For example, a flatdeck loaded with construction equipment develops a brake issue on Highway 60 north of Devon before the river bridge. RCMP is on scene. Cliff's arrives and manages a safe recovery on the two-lane highway shoulder.",
     landmarks: ["Highway 60 north of Devon", "North Saskatchewan River bridge", "Devon bypass road"],
     sections: [
       {
@@ -1919,7 +1919,7 @@ export const serviceLocations: ServiceLocationData[] = [
         heading: "Heavy vehicle recovery in a rural highway environment",
         body: [
           "Highway 60 heavy duty calls have a different character from urban or major highway recovery. The road is narrower, shoulders are often soft or non-existent, and the traffic volumes are lower but the speeds are similar to divided highways. Recovery on a rural two-lane highway requires careful positioning of the recovery vehicle to protect both the operator and any passing traffic, and in some cases RCMP is needed to manage a temporary lane restriction during extraction.",
-          "Cliff's heavy duty operators are trained for both urban and rural highway environments. For Devon calls, response time from Edmonton dispatch is approximately 50 to 60 minutes — longer than closer communities, and we're transparent about this when you call.",
+          "Cliff's heavy duty operators are trained for both urban and rural highway environments. For Devon calls, response time from Edmonton dispatch is approximately 50 to 60 minutes on average, depending on weather, traffic and road conditions — longer than closer communities, and we're transparent about this when you call.",
         ],
       },
     ],
@@ -1951,11 +1951,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Flatbed towing",
     title: "Flatbed Towing — Devon, AB",
     metaDescription:
-      "Flatbed towing in Devon for AWD, EVs, and accident-damaged vehicles. 24/7 dispatch from Edmonton. Cliff's Towing — approx. 50-min response.",
+      "Flatbed towing in Devon for AWD, EVs, and accident-damaged vehicles. 24/7 dispatch from Edmonton. Cliff's Towing.",
     intro:
-      "Devon's residential community and the Highway 60 corridor generate flatbed requests from AWD vehicle breakdowns, highway accident recovery, and the occasional classic car transport from collectors in the river valley area. Cliff's dispatches flatbed to Devon in approximately 50 minutes.",
+      "Devon's residential community and the Highway 60 corridor generate flatbed requests from AWD vehicle breakdowns, highway accident recovery, and the occasional classic car transport from collectors in the river valley area. Cliff's dispatches flatbed to Devon in approximately 50 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A Subaru Forester AWD develops an AWD system warning light on Highway 60 approaching Devon. The owner calls dispatch knowing AWD requires flatbed. Cliff's arrives in 51 minutes and delivers to the Subaru dealer in southwest Edmonton.",
+      "For example, a Subaru Forester AWD develops an AWD system warning light on Highway 60 approaching Devon. The owner calls dispatch knowing AWD requires flatbed. Cliff's arrives and delivers to the Subaru dealer in southwest Edmonton.",
     landmarks: ["Highway 60", "Devon main street", "North Saskatchewan River valley access roads"],
     sections: [
       {
@@ -1969,7 +1969,7 @@ export const serviceLocations: ServiceLocationData[] = [
         heading: "Classic vehicle and specialty flatbed transport near Devon",
         body: [
           "The North Saskatchewan River valley communities west of Edmonton, including Devon, have a number of hobby farms and rural properties where classic and collector vehicles are stored and maintained. When these vehicles need to move — to a restoration shop, a car show, or a new owner — flatbed transport is the standard approach. Cliff's handles classic car flatbed with soft straps and careful deck positioning to avoid contact with vulnerable panels.",
-          "Response from Edmonton dispatch to Devon is approximately 50 minutes. For non-emergency flatbed requests like classic car transport, scheduling in advance through dispatch allows us to send the most appropriate equipment and ensures the operator has enough time for a careful, unhurried load.",
+          "Response from Edmonton dispatch to Devon is approximately 50 minutes on average, depending on weather, traffic and road conditions. For non-emergency flatbed requests like classic car transport, scheduling in advance through dispatch allows us to send the most appropriate equipment and ensures the operator has enough time for a careful, unhurried load.",
         ],
       },
     ],
@@ -2001,18 +2001,18 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Accident recovery",
     title: "Accident Recovery — Devon, AB",
     metaDescription:
-      "Post-accident towing in Devon on Highway 60 and city roads. 24/7 service with insurance coordination. Cliff's Towing — approx. 50-min response.",
+      "Post-accident towing in Devon on Highway 60 and city roads. 24/7 service with insurance coordination. Cliff's Towing.",
     intro:
       "Devon and the Highway 60 corridor are served by RCMP Leduc County for collision response. Cliff's covers accident recovery across Devon with full insurance documentation, delivering to Edmonton shops and facilities that Devon residents typically use for collision repair.",
     scenario:
-      "A two-vehicle collision at a Devon intersection leaves one car with suspension damage and deployed airbags. RCMP attends. Cliff's arrives in 52 minutes, coordinates with the officer, and transports the vehicle to the driver's chosen body shop in southwest Edmonton.",
+      "For example, a two-vehicle collision at a Devon intersection leaves one car with suspension damage and deployed airbags. RCMP attends. Cliff's arrives, coordinates with the officer, and transports the vehicle to the driver's chosen body shop in southwest Edmonton.",
     landmarks: ["Devon main intersection", "Highway 60 rural stretch", "Devon Park area"],
     sections: [
       {
         heading: "Accident recovery on Highway 60 and Devon city roads",
         body: [
           "Highway 60 through and around Devon is a two-lane rural highway where collisions can occur at highway speeds with limited shoulder space for recovery operations. Head-on and crossover incidents are risks on two-lane rural highways, and when they occur at speed, the resulting vehicle damage typically requires flatbed transport. RCMP Leduc County manages these scenes and Cliff's works with officers to stage the recovery safely on the narrow highway.",
-          "Inside Devon, collisions on the city's residential and commercial streets are lower-speed but still produce vehicles that can't be driven. The recovery process on Devon's city streets is more straightforward than highway work — better access, lower speeds, and simpler traffic management — but the response time from Edmonton remains approximately 50 minutes.",
+          "Inside Devon, collisions on the city's residential and commercial streets are lower-speed but still produce vehicles that can't be driven. The recovery process on Devon's city streets is more straightforward than highway work — better access, lower speeds, and simpler traffic management — but the response time from Edmonton remains approximately 50 minutes on average, depending on weather, traffic and road conditions.",
         ],
       },
       {
@@ -2051,17 +2051,17 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Devon, AB",
     metaDescription:
-      "24/7 roadside assistance in Devon: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — approx. 50-min response.",
+      "24/7 roadside assistance in Devon: lockout, battery boost, tire change, fuel delivery. Cliff's Towing.",
     intro:
-      "Devon's isolated river valley location — farther from Edmonton's service infrastructure than most Edmonton-area communities — makes roadside assistance particularly valuable. Cliff's covers Devon with lockout, battery boost, tire change, and fuel delivery, arriving in approximately 50 minutes.",
+      "Devon's isolated river valley location — farther from Edmonton's service infrastructure than most Edmonton-area communities — makes roadside assistance particularly valuable. Cliff's covers Devon with lockout, battery boost, tire change, and fuel delivery, arriving in approximately 50 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A Devon resident's vehicle battery fails completely in the driveway on a February morning. Cliff's roadside arrives in 49 minutes, boosts the battery, and confirms whether the charging system is functioning or whether the battery needs replacement.",
+      "For example, a Devon resident's vehicle battery fails completely in the driveway on a February morning. Cliff's roadside arrives, boosts the battery, and confirms whether the charging system is functioning or whether the battery needs replacement.",
     landmarks: ["Devon residential neighbourhoods", "Highway 60 access", "Devon Golf Course area"],
     sections: [
       {
         heading: "Roadside assistance in an isolated community",
         body: [
-          "Devon's distance from Edmonton and limited local commercial services makes roadside situations more stressful than in larger communities. A dead battery or flat tire in Devon means either waiting for a service provider to travel from Edmonton or hoping the limited local resources can help. Cliff's provides the same quality roadside response to Devon that we provide in Sherwood Park or St. Albert — the response time is longer at approximately 50 minutes, but the equipment and capability are identical.",
+          "Devon's distance from Edmonton and limited local commercial services makes roadside situations more stressful than in larger communities. A dead battery or flat tire in Devon means either waiting for a service provider to travel from Edmonton or hoping the limited local resources can help. Cliff's provides the same quality roadside response to Devon that we provide in Sherwood Park or St. Albert — the response time is longer at approximately 50 minutes on average, depending on weather, traffic and road conditions, but the equipment and capability are identical.",
           "For stranded situations in Devon during extreme cold — temperatures below -30°C — the wait for roadside assistance can be uncomfortable. Cliff's dispatch will give you an honest ETA when you call, and if the wait is long, we'll advise on safe ways to stay warm inside the vehicle while you wait.",
         ],
       },
@@ -2076,7 +2076,7 @@ export const serviceLocations: ServiceLocationData[] = [
     faqs: [
       {
         q: "Can you boost a battery in Devon during extreme cold?",
-        a: "Yes. We cover Devon for cold-weather battery boosts — response is approximately 50 minutes, and we'll give you an honest ETA when you call.",
+        a: "Yes. We cover Devon for cold-weather battery boosts — response is approximately 50 minutes on average, depending on weather, traffic and road conditions, and we'll give you an honest ETA when you call.",
       },
       {
         q: "Do you deliver fuel to Devon if I run out on Highway 60?",
@@ -2105,16 +2105,16 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in Morinville on Highway 2 north of Edmonton. 24/7 response for semis, agricultural trucks, and commercial vehicles. Cliff's Towing.",
     intro:
-      "Morinville sits on Highway 2 north of Edmonton in the heart of Sturgeon County's agricultural region. The highway sees significant commercial and agricultural truck traffic connecting Edmonton to the Peace Country and Grande Prairie, and Cliff's covers Morinville and the surrounding county roads with heavy duty equipment, typically on scene within 50 to 60 minutes.",
+      "Morinville sits on Highway 2 north of Edmonton in the heart of Sturgeon County's agricultural region. The highway sees significant commercial and agricultural truck traffic connecting Edmonton to the Peace Country and Grande Prairie, and Cliff's covers Morinville and the surrounding county roads with heavy duty equipment, typically on scene within 50 to 60 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A northbound cattle transport truck on Highway 2 near Morinville develops a rear axle fault and pulls to the shoulder with livestock still on board. Cliff's dispatches the heavy duty underlift in 52 minutes and coordinates with the driver and a veterinarian contact for safe livestock management during the recovery.",
+      "For example, a northbound cattle transport truck on Highway 2 near Morinville develops a rear axle fault and pulls to the shoulder with livestock still on board. Cliff's dispatches the heavy duty underlift and coordinates with the driver and a veterinarian contact for safe livestock management during the recovery.",
     landmarks: ["Highway 2 north of Morinville", "Highway 642 junction", "Sturgeon County agricultural roads"],
     sections: [
       {
         heading: "Highway 2 north: the primary freight corridor to Grande Prairie and Peace Country",
         body: [
           "Highway 2 north of Edmonton through Morinville carries the freight, livestock, and heavy equipment moving between Edmonton and the Peace Country, including the Grande Prairie oilfield service industry. Tandem axle grain trucks from Sturgeon County farms, livestock transports, flatdeck loads with oilfield equipment, and RVs heading north all share this corridor. When a heavy vehicle breaks down on this stretch, the recovery affects northbound freight and requires coordination with RCMP Sturgeon County.",
-          "Morinville's location on Highway 2 makes it the natural stopping point for disabled heavy vehicles that can limp this far north of Edmonton before breaking down completely. Cliff's responds to Morinville and the Highway 2 corridor in approximately 50 to 60 minutes from Edmonton dispatch.",
+          "Morinville's location on Highway 2 makes it the natural stopping point for disabled heavy vehicles that can limp this far north of Edmonton before breaking down completely. Cliff's responds to Morinville and the Highway 2 corridor in approximately 50 to 60 minutes on average, depending on weather, traffic and road conditions from Edmonton dispatch.",
         ],
       },
       {
@@ -2153,11 +2153,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Flatbed towing",
     title: "Flatbed Towing — Morinville, AB",
     metaDescription:
-      "Flatbed towing in Morinville for AWD, EVs, and damaged vehicles on Highway 2. 24/7 dispatch from Edmonton. Cliff's Towing — approx. 50-min response.",
+      "Flatbed towing in Morinville for AWD, EVs, and damaged vehicles on Highway 2. 24/7 dispatch from Edmonton. Cliff's Towing.",
     intro:
-      "Morinville's rural community and Highway 2 location generate flatbed requests from AWD vehicle breakdowns, highway accident recovery, and the occasional specialty vehicle transport. Cliff's dispatches flatbed to Morinville in approximately 50 minutes.",
+      "Morinville's rural community and Highway 2 location generate flatbed requests from AWD vehicle breakdowns, highway accident recovery, and the occasional specialty vehicle transport. Cliff's dispatches flatbed to Morinville in approximately 50 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A pickup truck with 4WD develops a front differential fault on Highway 2 near Morinville. The owner knows 4WD requires flatbed. Cliff's arrives in 53 minutes and delivers to a north Edmonton repair shop.",
+      "For example, a pickup truck with 4WD develops a front differential fault on Highway 2 near Morinville. The owner knows 4WD requires flatbed. Cliff's arrives and delivers to a north Edmonton repair shop.",
     landmarks: ["Highway 2 through Morinville", "Cardiff Road junction", "Morinville main street"],
     sections: [
       {
@@ -2203,11 +2203,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Accident recovery",
     title: "Accident Recovery — Morinville, AB",
     metaDescription:
-      "Post-accident towing in Morinville on Highway 2 and city roads. 24/7 service with insurance coordination. Cliff's Towing — approx. 50-min response.",
+      "Post-accident towing in Morinville on Highway 2 and city roads. 24/7 service with insurance coordination. Cliff's Towing.",
     intro:
       "Morinville falls under RCMP Sturgeon County jurisdiction. Cliff's covers accident recovery across Morinville and the Highway 2 north corridor with full insurance documentation and delivery to any shop or facility the driver specifies.",
     scenario:
-      "An intersection collision in Morinville's commercial area leaves one vehicle with front suspension damage. RCMP attends. Cliff's arrives in 54 minutes and delivers to the owner's preferred Edmonton body shop.",
+      "For example, an intersection collision in Morinville's commercial area leaves one vehicle with front suspension damage. RCMP attends. Cliff's arrives and delivers to the owner's preferred Edmonton body shop.",
     landmarks: ["Highway 2 through Morinville", "100th Street Morinville commercial area", "Highway 642 junction"],
     sections: [
       {
@@ -2253,17 +2253,17 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Morinville, AB",
     metaDescription:
-      "24/7 roadside assistance in Morinville: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — approx. 50-min response.",
+      "24/7 roadside assistance in Morinville: lockout, battery boost, tire change, fuel delivery. Cliff's Towing.",
     intro:
-      "Morinville's rural northern character and agricultural surroundings mean that roadside situations can happen in more isolated conditions than suburban areas. Cliff's covers Morinville with all four core roadside services, arriving in approximately 50 minutes from Edmonton dispatch.",
+      "Morinville's rural northern character and agricultural surroundings mean that roadside situations can happen in more isolated conditions than suburban areas. Cliff's covers Morinville with all four core roadside services, arriving in approximately 50 minutes on average, depending on weather, traffic and road conditions from Edmonton dispatch.",
     scenario:
-      "A Morinville resident's car battery dies in a Walmart parking lot off Cardiff Road during winter. Cliff's roadside arrives in 51 minutes and boosts the vehicle successfully.",
+      "For example, a Morinville resident's car battery dies in a Walmart parking lot off Cardiff Road during winter. Cliff's roadside arrives and boosts the vehicle successfully.",
     landmarks: ["Cardiff Road commercial area", "100th Street Morinville", "Highway 2 rest stop areas"],
     sections: [
       {
         heading: "Rural roadside assistance with longer response times",
         body: [
-          "Morinville is approximately 35 kilometres north of Edmonton, which means roadside response times are longer than in closer suburban communities. At approximately 50 minutes, Cliff's is transparent about this when you call. For safety-sensitive situations — extreme cold, isolation on a rural highway, medical concern — we advise calling emergency services as well if the situation warrants it while waiting for roadside assistance.",
+          "Morinville is approximately 35 kilometres north of Edmonton, which means roadside response times are longer than in closer suburban communities. At approximately 50 minutes on average, depending on weather, traffic and road conditions, Cliff's is transparent about this when you call. For safety-sensitive situations — extreme cold, isolation on a rural highway, medical concern — we advise calling emergency services as well if the situation warrants it while waiting for roadside assistance.",
           "The most common Morinville roadside calls are the same as anywhere in the Edmonton area: battery failures in winter, lockouts in parking areas and residential driveways, and flat tires from road hazards. The rural roads around Morinville add gravel-surface flat tires to the mix, which are particularly common during construction season when loose aggregate migrates onto the highway shoulders.",
         ],
       },
@@ -2278,7 +2278,7 @@ export const serviceLocations: ServiceLocationData[] = [
     faqs: [
       {
         q: "Can you boost a battery in Morinville during winter?",
-        a: "Yes. Cold-weather battery boosts in Morinville are standard roadside calls — response is approximately 50 minutes.",
+        a: "Yes. Cold-weather battery boosts in Morinville are standard roadside calls — response is approximately 50 minutes on average, depending on weather, traffic and road conditions.",
       },
       {
         q: "Do you deliver fuel to Morinville or Highway 2 north?",
@@ -2307,9 +2307,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Heavy duty towing in Stony Plain on Highway 16A. 24/7 response for commercial vehicles, RVs, and farm equipment. Cliff's Towing — Parkland County.",
     intro:
-      "Stony Plain sits on Highway 16A in Parkland County, adjacent to Spruce Grove and west of Edmonton. The Yellowhead corridor through Stony Plain handles commercial freight, RVs heading west to Jasper and the mountains, and agricultural equipment from Parkland County farms. Cliff's covers Stony Plain with heavy duty equipment, typically arriving within 45 to 55 minutes.",
+      "Stony Plain sits on Highway 16A in Parkland County, adjacent to Spruce Grove and west of Edmonton. The Yellowhead corridor through Stony Plain handles commercial freight, RVs heading west to Jasper and the mountains, and agricultural equipment from Parkland County farms. Cliff's covers Stony Plain with heavy duty equipment, typically arriving within 45 to 55 minutes, depending on weather, traffic and road conditions.",
     scenario:
-      "A Class A motorhome breaks down on Highway 16A through Stony Plain with engine failure. The owners are headed to Jasper. Cliff's heavy duty underlift arrives in 48 minutes and delivers the motorhome to an RV repair facility in Spruce Grove.",
+      "For example, a Class A motorhome breaks down on Highway 16A through Stony Plain with engine failure. The owners are headed to Jasper. Cliff's heavy duty underlift arrives and delivers the motorhome to an RV repair facility in Spruce Grove.",
     landmarks: ["Highway 16A through Stony Plain", "Stony Plain Road west of Edmonton", "Parkland County agricultural roads"],
     sections: [
       {
@@ -2357,9 +2357,9 @@ export const serviceLocations: ServiceLocationData[] = [
     metaDescription:
       "Flatbed towing in Stony Plain for AWD, EVs, lowered vehicles, and accident recovery. 24/7 on Highway 16A. Cliff's Towing — Parkland County.",
     intro:
-      "Stony Plain's residential community and Highway 16A location generate flatbed requests from AWD vehicle breakdowns, highway accident recovery, and the modified vehicle community that's active in Parkland County's car culture. Cliff's dispatches flatbed to Stony Plain in approximately 45 minutes.",
+      "Stony Plain's residential community and Highway 16A location generate flatbed requests from AWD vehicle breakdowns, highway accident recovery, and the modified vehicle community that's active in Parkland County's car culture. Cliff's dispatches flatbed to Stony Plain in approximately 45 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A lowered Volkswagen Golf R AWD breaks down on Highway 16A through Stony Plain. Its ground clearance and AWD drivetrain both require flatbed. Cliff's arrives in 46 minutes, loads without bumper contact using the tilted deck approach, and delivers to a Volkswagen specialist shop in west Edmonton.",
+      "For example, a lowered Volkswagen Golf R AWD breaks down on Highway 16A through Stony Plain. Its ground clearance and AWD drivetrain both require flatbed. Cliff's arrives, loads without bumper contact using the tilted deck approach, and delivers to a Volkswagen specialist shop in west Edmonton.",
     landmarks: ["Highway 16A through Stony Plain", "Main Street commercial area", "Tri Leisure Centre parking"],
     sections: [
       {
@@ -2409,7 +2409,7 @@ export const serviceLocations: ServiceLocationData[] = [
     intro:
       "Stony Plain is within RCMP Parkland County jurisdiction. Cliff's covers accident recovery across Stony Plain and the Highway 16A corridor with full insurance documentation, delivering to the Edmonton and Spruce Grove repair facilities that Stony Plain residents typically use.",
     scenario:
-      "A collision on Main Street in Stony Plain leaves a minivan with front bumper and radiator damage. RCMP Parkland attends. Cliff's arrives in 47 minutes and delivers to the driver's chosen west Edmonton body shop.",
+      "For example, a collision on Main Street in Stony Plain leaves a minivan with front bumper and radiator damage. RCMP Parkland attends. Cliff's arrives and delivers to the driver's chosen west Edmonton body shop.",
     landmarks: ["Highway 16A Stony Plain", "Main Street commercial corridor", "48 Street area"],
     sections: [
       {
@@ -2455,11 +2455,11 @@ export const serviceLocations: ServiceLocationData[] = [
     serviceName: "Roadside assistance",
     title: "Roadside Assistance — Stony Plain, AB",
     metaDescription:
-      "24/7 roadside assistance in Stony Plain: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — Parkland County, approx. 45-min response.",
+      "24/7 roadside assistance in Stony Plain: lockout, battery boost, tire change, fuel delivery. Cliff's Towing — Parkland County.",
     intro:
-      "Stony Plain's position on the Yellowhead corridor and its residential character generate a steady stream of roadside calls from both local residents and highway travellers. Cliff's covers Stony Plain with lockout, battery boost, tire change, and fuel delivery, arriving in approximately 45 minutes.",
+      "Stony Plain's position on the Yellowhead corridor and its residential character generate a steady stream of roadside calls from both local residents and highway travellers. Cliff's covers Stony Plain with lockout, battery boost, tire change, and fuel delivery, arriving in approximately 45 minutes on average, depending on weather, traffic and road conditions.",
     scenario:
-      "A traveller passing through Stony Plain on Highway 16A runs low on fuel and stalls before reaching the next station. Cliff's roadside delivers 15 litres of diesel in 44 minutes, enough to get to the Spruce Grove fuel stations.",
+      "For example, a traveller passing through Stony Plain on Highway 16A runs low on fuel and stalls before reaching the next station. Cliff's roadside delivers 15 litres of diesel, enough to get to the Spruce Grove fuel stations.",
     landmarks: ["Highway 16A commercial strip", "Stony Plain residential neighbourhoods", "Tri Leisure Centre area"],
     sections: [
       {

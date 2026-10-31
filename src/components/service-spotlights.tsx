@@ -29,12 +29,12 @@ const spotlights: ServiceSpotlight[] = [
     image: "/images/hero/decktruckoldcar1024x693.jpg",
     imageAlt: "Light duty tow truck securing a passenger vehicle",
     benefits: [
-      "Average 30-minute response across Edmonton",
+      "About 30-minute average response across Edmonton, depending on weather, traffic and road conditions",
       "All makes and models, including AWD and EVs",
       "Flatbed available on request for low-clearance vehicles",
-      "Works directly with all major insurance providers",
+      "Documentation ready for your insurance claim",
     ],
-    stat: { value: "30 min", label: "Average response time" },
+    stat: { value: "30 min", label: "Average response time (varies with weather, traffic & road conditions)" },
   },
   {
     id: "heavy-duty",

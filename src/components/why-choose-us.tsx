@@ -34,7 +34,7 @@ const features = [
     icon: Headphones,
     title: "Fast dispatch",
     description:
-      "We aim to be on-scene within 30 minutes in the Edmonton area. Every minute stranded matters.",
+      "We aim to be on scene in about 30 minutes on average in the Edmonton area, depending on weather, traffic and road conditions. Every minute stranded matters.",
   },
 ];
 

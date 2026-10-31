@@ -29,7 +29,8 @@ Cliff's Towing provides 24/7 towing, transport, recovery, and roadside assistanc
 - Heavy duty towing: https://cliffstowing.ca/services/heavy-duty-towing
 - Flatbed towing: https://cliffstowing.ca/services/flatbed-towing
 - Accident towing and recovery: https://cliffstowing.ca/services/accident-recovery
-- Roadside assistance (battery boosts, lockouts, fuel delivery, tire changes): https://cliffstowing.ca/services/roadside-assistance
+- Roadside assistance (lockouts, fuel delivery, tire changes): https://cliffstowing.ca/services/roadside-assistance
+- Battery boosts and jump starts: https://cliffstowing.ca/services/battery-boost
 - Winching and off-road recovery: https://cliffstowing.ca/services/winching-recovery
 - Equipment transport: https://cliffstowing.ca/services/equipment-transport
 
@@ -63,6 +64,15 @@ City-specific service pages follow the pattern https://cliffstowing.ca/service-a
 - EV towing in Edmonton: what Tesla, Rivian, and Ford Lightning owners need to know: https://cliffstowing.ca/blog/ev-towing-guide-edmonton
 - How to choose a towing company in Edmonton: https://cliffstowing.ca/blog/how-to-choose-towing-company-edmonton
 - Winching vs. towing — when you need recovery, not just a hook: https://cliffstowing.ca/blog/winching-vs-towing-edmonton
+- Towing and insurance in Alberta: what's usually covered and what to ask: https://cliffstowing.ca/blog/towing-and-insurance-alberta
+- What size tow truck does your fleet need? A guide for Edmonton fleet managers: https://cliffstowing.ca/blog/fleet-towing-guide-edmonton
+- How heavy truck and semi recovery works on Edmonton highways: https://cliffstowing.ca/blog/heavy-truck-recovery-edmonton
+- Locked out of your car in Edmonton? What to do, step by step: https://cliffstowing.ca/blog/car-lockout-edmonton
+- Dead battery on a cold Edmonton morning: what to try before you call: https://cliffstowing.ca/blog/dead-battery-cold-morning-edmonton
+- Flatbed, wheel-lift, or dollies: how each tow method works: https://cliffstowing.ca/blog/tow-methods-flatbed-wheel-lift-dolly
+- Towing a classic, lowered, or modified car in Edmonton: https://cliffstowing.ca/blog/classic-lowered-car-towing-edmonton
+- After a minor fender-bender: when do you actually need a tow?: https://cliffstowing.ca/blog/minor-collision-do-you-need-a-tow
+- Broken down on the Anthony Henday: what to do and what dispatch needs to know: https://cliffstowing.ca/blog/anthony-henday-breakdown-guide
 
 ## Media
 

@@ -37,7 +37,7 @@ const defaultSlides: CTASlide[] = [
     ctaType: "link",
   },
   {
-    headline: "Trusted Since 1952",
+    headline: "Trusted for 70+ Years",
     subtext: "Over 70 years serving Edmonton drivers with integrity and professionalism.",
     ctaText: "Our Story",
     ctaLink: "/about",

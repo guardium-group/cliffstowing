@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
-import { CalendarCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import type { ContactFormPreset } from "@/components/contact-form";
+import { TEXT_LINK } from "@/components/landing/ui";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
@@ -91,27 +91,23 @@ export function useBooking() {
   return ctx;
 }
 
-/** Scrolls to the request form with the service ticked and the message started. */
-export function BookButton({
+/** Text-link action that scrolls to the request form with the service ticked and the message started. */
+export function BookLink({
   kind,
   source,
-  label = "Book online",
-  variant = "outline",
-  size = "default",
+  children = "Book a tow",
   className,
 }: {
   kind: BookingKind;
   source: string;
-  label?: string;
-  variant?: "outline" | "secondary" | "default";
-  size?: "default" | "lg" | "xl";
+  children?: ReactNode;
   className?: string;
 }) {
   const { book } = useBooking();
   return (
-    <Button type="button" variant={variant} size={size} className={cn("rounded-full font-semibold", className)} onClick={() => book(kind, source)}>
-      <CalendarCheck className="h-4 w-4" aria-hidden="true" />
-      {label}
-    </Button>
+    <button type="button" className={cn(TEXT_LINK, className)} onClick={() => book(kind, source)}>
+      {children}
+      <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
+    </button>
   );
 }

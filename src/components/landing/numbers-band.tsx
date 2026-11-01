@@ -1,35 +1,48 @@
-import Image from "next/image";
+import { BODY, CONTENT_GAP, H3, Mark, MUTED, STAT, Section, SectionIntro } from "@/components/landing/ui";
 import { siteConfig } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
-// Every figure is on cliffstowing.ca (80,000+ lb is from the heavy duty FAQ).
-const numbers = [
-  { value: "70+", label: "years towing in Edmonton" },
-  { value: "24/7", label: "dispatch, storms included" },
-  { value: String(siteConfig.serviceArea.length), label: "communities covered" },
-  { value: "80,000+", unit: "lb", label: "heavy recovery capacity" },
+// Every figure is on cliffstowing.ca.
+const stats = [
+  { value: "24/7", title: "Day or night", body: "Towing, winching and recovery every day of the year, storm nights included.", ring: true },
+  { value: "70+", title: "Years in Edmonton", body: `Cliff's Towing has been ${siteConfig.foundedCopy}.` },
+  { value: String(siteConfig.serviceArea.length), title: "Communities", body: "From St. Albert to Leduc, Spruce Grove to Fort Saskatchewan." },
 ];
+
+/** Slow sweeping dial on the 24/7 card. */
+function DispatchDial() {
+  return (
+    <svg viewBox="0 0 64 64" className="h-16 w-16" aria-hidden="true">
+      <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeOpacity="0.15" strokeWidth="2" />
+      <g className="origin-center motion-safe:animate-[spin_14s_linear_infinite]">
+        <path d="M32 4 A28 28 0 0 1 56.2 18" fill="none" stroke="#ff5a5f" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="56.2" cy="18" r="3.5" fill="#ff5a5f" />
+      </g>
+    </svg>
+  );
+}
 
 export function NumbersBand() {
   return (
-    <section className="relative overflow-hidden bg-[#3e000c] text-white">
-      <Image src="/images/hero/cliffs500rotator.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 mix-blend-luminosity" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#3e000c] via-[#3e000c]/85 to-[#3e000c]/60" aria-hidden="true" />
-      <div className="relative container mx-auto px-5 sm:px-6 max-w-7xl py-14 sm:py-20">
-        <dl className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-          {numbers.map((n) => (
-            <div key={n.label} className="border-l-2 border-[#ff5a5f] pl-4 sm:pl-6">
-              <dt className="sr-only">{n.label}</dt>
-              <dd>
-                <span className="block text-4xl sm:text-6xl font-extrabold tracking-tight tabular-nums">
-                  {n.value}
-                  {n.unit && <span className="ml-1 text-xl sm:text-2xl font-bold text-white/70">{n.unit}</span>}
-                </span>
-                <span className="mt-2 block text-sm sm:text-base text-white/75" aria-hidden="true">{n.label}</span>
-              </dd>
+    <Section tone="dark" labelledBy="ready-heading">
+      <SectionIntro
+        id="ready-heading"
+        eyebrow="Why drivers call Cliff's"
+        title={<>Built for<br />snow <Mark>days.</Mark></>}
+        lede="Ditch recovery is one of our most frequent winter calls, and dispatch answers around the clock."
+      />
+      <div className={cn(CONTENT_GAP, "grid gap-6 md:grid-cols-3")}>
+        {stats.map((s) => (
+          <div key={s.title} className="flex flex-col rounded-2xl bg-white/[0.05] p-8 ring-1 ring-white/10">
+            <div className="flex items-start justify-between gap-4">
+              <span className={cn(STAT, "text-[#ff5a5f]")}>{s.value}</span>
+              {s.ring && <DispatchDial />}
             </div>
-          ))}
-        </dl>
+            <h3 className={cn(H3, "mt-10")}>{s.title}</h3>
+            <p className={cn(BODY, "mt-3", MUTED)}>{s.body}</p>
+          </div>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

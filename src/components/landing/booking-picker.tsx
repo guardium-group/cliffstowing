@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ArrowLeft, CalendarCheck, Phone, Zap } from "lucide-react";
 import { BOOKINGS, useBooking, type BookingKind } from "@/components/landing/booking-context";
+import { BODY, DISPLAY, H3 } from "@/components/landing/ui";
 import { trackEvent } from "@/lib/analytics";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,8 @@ const TILES: { kind: BookingKind; image: string; alt: string }[] = [
   { kind: "stuck", image: "/images/hero/recoverysnow1024x681.jpg", alt: "Cliff's wreckers winching a tanker out of snow" },
 ];
 
+const STEP = "text-xs font-semibold uppercase tracking-[0.16em] text-primary";
+
 /** Two taps from "what needs a tow" to a call or a pre-filled booking. */
 export function BookingPicker() {
   const { book } = useBooking();
@@ -22,17 +25,12 @@ export function BookingPicker() {
   const [now, setNow] = useState(false);
   const chosen = kind ? BOOKINGS[kind] : null;
 
-  const pick = (k: BookingKind) => { setKind(k); setNow(false); };
-  const reset = () => { setKind(null); setNow(false); };
-
   return (
-    <div className="rounded-3xl bg-white p-5 sm:p-6 shadow-2xl shadow-black/40 ring-1 ring-black/5">
+    <div className="rounded-2xl bg-white p-6 shadow-[0_24px_60px_-28px_rgba(20,10,11,0.35)] ring-1 ring-gray-200 sm:p-8">
       <div className="flex items-center justify-between gap-3">
-        <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary">
-          {chosen ? "Step 2 of 2" : "Step 1 of 2"}
-        </p>
+        <p className={STEP}>{chosen ? "Step 2 of 2" : "Step 1 of 2"}</p>
         {chosen && (
-          <button type="button" onClick={reset} className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900">
+          <button type="button" onClick={() => { setKind(null); setNow(false); }} className="flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-900">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Change
           </button>
         )}
@@ -40,62 +38,59 @@ export function BookingPicker() {
 
       {!chosen ? (
         <>
-          <h2 className="mt-2 text-2xl font-bold text-gray-900">What needs a tow?</h2>
-          <div className="mt-4 grid grid-cols-2 gap-3">
+          <h3 className={cn(H3, "mt-3")}>What needs a tow?</h3>
+          <div className="mt-6 grid grid-cols-2 gap-4">
             {TILES.map((t) => (
               <button
                 key={t.kind}
                 type="button"
-                onClick={() => pick(t.kind)}
-                className="group relative aspect-[4/3] overflow-hidden rounded-2xl text-left ring-1 ring-gray-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
+                onClick={() => { setKind(t.kind); setNow(false); }}
+                className="group text-left focus-visible:outline-none"
               >
-                <Image src={t.image} alt={t.alt} fill sizes="(min-width: 1024px) 200px, 45vw" className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-110" />
-                <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" aria-hidden="true" />
-                <span className="absolute inset-x-3 bottom-3 text-sm sm:text-base font-semibold leading-tight text-white">
-                  {BOOKINGS[t.kind].label}
+                <span className="relative block aspect-[4/3] overflow-hidden rounded-xl ring-1 ring-gray-200 group-focus-visible:ring-4 group-focus-visible:ring-primary/40">
+                  <Image src={t.image} alt={t.alt} fill sizes="(min-width: 1024px) 240px, 45vw" className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-105" />
                 </span>
+                <span className="mt-3 block text-sm font-semibold text-gray-900 group-hover:text-primary sm:text-base">{BOOKINGS[t.kind].label}</span>
               </button>
             ))}
           </div>
-          <p className="mt-4 text-sm text-gray-500">
-            In a hurry? Call{" "}
-            <a href={siteConfig.phone.href} className="font-semibold text-primary">{siteConfig.phone.compact}</a>
-          </p>
         </>
       ) : !now ? (
         <>
-          <h2 className="mt-2 text-2xl font-bold text-gray-900">{chosen.label}. When do you need us?</h2>
-          <div className="mt-5 grid gap-3">
+          <h3 className={cn(H3, "mt-3")}>{chosen.label}. When do you need us?</h3>
+          <div className="mt-6 grid gap-4">
             <button
               type="button"
               onClick={() => { setNow(true); trackEvent("booking_picker", { vehicle: kind!, urgency: "now" }); }}
-              className="flex items-center gap-4 rounded-2xl bg-primary p-4 text-left text-white shadow-lg shadow-primary/30 hover:bg-primary/90"
+              className="flex items-center gap-5 rounded-xl bg-primary p-5 text-left text-white transition-colors hover:bg-[#c8161c]"
             >
-              <Zap className="h-7 w-7 flex-shrink-0" aria-hidden="true" />
-              <span><span className="block text-lg font-bold">Right now</span><span className="block text-sm text-white/85">Stuck, broken down or in a ditch</span></span>
+              <Zap className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
+              <span><span className="block text-lg font-semibold">Right now</span><span className="block text-sm text-white/80">Stuck, broken down or in a ditch</span></span>
             </button>
             <button
               type="button"
               onClick={() => { trackEvent("booking_picker", { vehicle: kind!, urgency: "later" }); book(kind!, "picker"); }}
-              className="flex items-center gap-4 rounded-2xl border-2 border-gray-200 p-4 text-left hover:border-primary"
+              className="flex items-center gap-5 rounded-xl p-5 text-left ring-1 ring-gray-200 transition-shadow hover:ring-2 hover:ring-primary"
             >
-              <CalendarCheck className="h-7 w-7 flex-shrink-0 text-primary" aria-hidden="true" />
-              <span><span className="block text-lg font-bold text-gray-900">It can wait</span><span className="block text-sm text-gray-500">Send the details and we&apos;ll get back to you</span></span>
+              <CalendarCheck className="h-6 w-6 flex-shrink-0 text-primary" aria-hidden="true" />
+              <span><span className="block text-lg font-semibold text-gray-900">It can wait</span><span className="block text-sm text-gray-500">Send the details and we&apos;ll get back to you</span></span>
             </button>
           </div>
         </>
       ) : (
         <>
-          <h2 className="mt-2 text-2xl font-bold text-gray-900">Dispatch is ready for your call.</h2>
-          <p className="mt-2 text-gray-600">Have your location handy: cross streets, direction of travel or a GPS pin.</p>
-          <a
-            href={siteConfig.phone.href}
-            className="mt-5 flex items-center justify-center gap-3 rounded-2xl bg-primary px-5 py-5 text-center text-white shadow-lg shadow-primary/30 hover:bg-primary/90"
-          >
-            <Phone className="h-7 w-7 motion-safe:animate-pulse" aria-hidden="true" />
-            <span><span className="block text-sm font-medium text-white/85">{chosen.call}</span><span className="block text-2xl sm:text-3xl font-extrabold tracking-tight">{siteConfig.phone.compact}</span></span>
+          <h3 className={cn(H3, "mt-3")}>Dispatch is ready for your call.</h3>
+          <p className={cn(BODY, "mt-3 text-gray-600")}>Have your location handy: cross streets, direction of travel or a GPS pin.</p>
+          <a href={siteConfig.phone.href} className="mt-6 flex items-center gap-5 rounded-xl bg-primary p-5 text-white transition-colors hover:bg-[#c8161c]">
+            <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white text-primary">
+              <Phone className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <span>
+              <span className="block text-sm text-white/80">{chosen.call}</span>
+              <span className={cn(DISPLAY, "block text-3xl font-extrabold tracking-[-0.03em]")}>{siteConfig.phone.compact}</span>
+            </span>
           </a>
-          <button type="button" onClick={() => book(kind!, "picker")} className={cn("mt-3 w-full text-sm text-gray-500 hover:text-gray-900 underline-offset-2 hover:underline")}>
+          <button type="button" onClick={() => book(kind!, "picker")} className="mt-4 text-sm font-medium text-gray-500 underline-offset-4 hover:text-gray-900 hover:underline">
             Can&apos;t talk? Send the details instead
           </button>
         </>

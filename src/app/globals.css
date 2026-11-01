@@ -172,3 +172,12 @@ html {
 /* Landing photo strip: hide the scrollbar but keep it scrollable. */
 .landing-strip { scrollbar-width: none; }
 .landing-strip::-webkit-scrollbar { display: none; }
+
+/* Landing hero: headline lines rise in once on load. */
+@keyframes landing-rise {
+  from { opacity: 0; transform: translateY(0.35em); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .landing-rise { animation: landing-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+}

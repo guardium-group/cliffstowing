@@ -156,6 +156,9 @@ interface ContactFormProps {
   intro?: React.ReactNode;
   submitLabel?: string;
   className?: string;
+  titleClassName?: string;
+  /** Heading level for the card title; pages with their own h2 pass "h3". */
+  titleAs?: "h2" | "h3";
   /** Pre-fills services, message and heading; a new nonce applies it again. */
   preset?: ContactFormPreset | null;
 }
@@ -173,6 +176,8 @@ export function ContactForm({
   intro,
   submitLabel = "Send Message",
   className,
+  titleClassName,
+  titleAs: TitleTag = "h2",
   preset,
 }: ContactFormProps) {
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
@@ -354,9 +359,9 @@ export function ContactForm({
 
   return (
     <div className={cn("bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm", className)}>
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+      <TitleTag className={cn("text-2xl font-bold text-gray-900 mb-2", titleClassName)}>
         {preset?.title ?? title}
-      </h2>
+      </TitleTag>
       <p className="text-gray-500 text-sm mb-6">
         {intro ?? (
           <>

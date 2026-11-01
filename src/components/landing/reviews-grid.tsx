@@ -1,61 +1,68 @@
-import { Quote } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { GoogleG, Stars } from "@/components/review-icons";
+import { CONTENT_GAP, Mark, QUOTE, Section, SectionIntro } from "@/components/landing/ui";
 import { reviews } from "@/lib/reviews";
+import { cn } from "@/lib/utils";
 
 // Robert T.'s review praises a phone price quote; the ads never promise quotes, so it's left out here.
 const shown = reviews.filter((r) => r.name !== "Robert T.");
-const featured = shown.find((r) => r.name === "Dan Can Traveller") ?? shown[0];
-const others = shown.filter((r) => r !== featured);
+const pad = (n: number) => String(n).padStart(2, "0");
 
 export function ReviewsGrid() {
+  const [i, setI] = useState(0);
+  const reduce = useReducedMotion();
+  const r = shown[i];
+  const go = (d: 1 | -1) => setI((x) => (x + d + shown.length) % shown.length);
+
   return (
-    <section className="py-16 sm:py-24 bg-white" aria-labelledby="reviews-heading">
-      <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary">Google reviews</p>
-            <h2 id="reviews-heading" className="mt-3 text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 text-balance">
-              Drivers trust Cliff&apos;s when the job matters.
-            </h2>
-          </div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-gray-50 px-4 py-2 ring-1 ring-gray-200">
-            <GoogleG />
-            <span className="scale-125 origin-left"><Stars count={5} /></span>
-            <span className="ml-2 text-sm font-medium text-gray-700">5-star reviews</span>
-          </span>
+    <Section tone="light" labelledBy="reviews-heading">
+      <SectionIntro
+        id="reviews-heading"
+        eyebrow="Google reviews"
+        title={<>Drivers trust Cliff&apos;s<br />when it <Mark>matters.</Mark></>}
+        lede="Real 5-star reviews from Cliff's Google Business Profile."
+      />
+      <div className={cn(CONTENT_GAP, "border-y border-gray-200 py-12 lg:py-16")}>
+        <div className="flex items-center gap-3">
+          <GoogleG />
+          <span className="scale-125 origin-left"><Stars count={r.rating} /></span>
         </div>
-
-        <figure className="relative mt-10 overflow-hidden rounded-3xl bg-[#3e000c] p-8 sm:p-12 text-white">
-          <Quote className="absolute -top-2 right-6 h-32 w-32 text-white/[0.06]" aria-hidden="true" />
-          <div className="scale-150 origin-left w-fit"><Stars count={featured.rating} /></div>
-          <blockquote className="relative mt-6 text-xl sm:text-2xl lg:text-3xl font-medium leading-snug text-balance">
-            &ldquo;{featured.quote}&rdquo;
-          </blockquote>
-          <figcaption className="mt-6 flex items-center gap-3 text-white/80">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-semibold">{featured.name[0]}</span>
-            <span><span className="block font-semibold text-white">{featured.name}</span>Google review{featured.service && ` · ${featured.service}`}</span>
-          </figcaption>
-        </figure>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          {others.map((review) => (
-            <figure key={review.name} className="flex flex-col gap-4 rounded-3xl bg-gray-50 p-6 ring-1 ring-gray-100">
-              <div className="flex items-center justify-between gap-3">
-                <Stars count={review.rating} />
-                <GoogleG />
-              </div>
-              <blockquote className="text-gray-700 text-sm leading-relaxed flex-1">&ldquo;{review.quote}&rdquo;</blockquote>
-              <figcaption className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">{review.name[0]}</span>
+        <div className="mt-8 min-h-[16rem] sm:min-h-[12rem]" aria-live="polite">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.figure
+              key={r.name}
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? undefined : { opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+            >
+              <blockquote className={cn(QUOTE, "max-w-5xl text-gray-950")}>&ldquo;{r.quote}&rdquo;</blockquote>
+              <figcaption className="mt-8 flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">{r.name[0]}</span>
                 <span>
-                  <span className="block font-semibold text-gray-900 text-sm">{review.name}</span>
-                  <span className="block text-xs text-gray-500">Google review{review.service && ` · ${review.service}`}</span>
+                  <span className="block font-semibold text-gray-900">{r.name}</span>
+                  <span className="block text-sm text-gray-500">Google review{r.service && ` · ${r.service}`}</span>
                 </span>
               </figcaption>
-            </figure>
-          ))}
+            </motion.figure>
+          </AnimatePresence>
+        </div>
+        <div className="mt-10 flex items-center justify-between gap-6">
+          <span className="font-mono text-sm tabular-nums text-gray-500">{pad(i + 1)} / {pad(shown.length)}</span>
+          <div className="flex gap-3">
+            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-gray-300 transition-colors hover:bg-gray-950 hover:text-white hover:ring-gray-950">
+              <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button type="button" onClick={() => go(1)} aria-label="Next review" className="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-gray-300 transition-colors hover:bg-gray-950 hover:text-white hover:ring-gray-950">
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -49,14 +49,21 @@ export default function CookiePolicyPage() {
                 Analytics Cookies
               </h2>
               <p>
-                If you click &ldquo;Accept All&rdquo; in the cookie banner, we
-                load Google Analytics 4 to understand how visitors find and use
-                the site, for example which pages are viewed and whether people
-                call us or send the contact form. Google Analytics sets the{" "}
-                <code>_ga</code> and <code>_ga_*</code> cookies, which last up
-                to two years. Google Analytics is not loaded unless you accept,
-                and we do not send your name, email, phone number, or message to
-                Google.
+                We use Google Analytics 4 to understand how visitors find and
+                use the site, for example which pages are viewed and whether
+                people call us or send the contact form. Google Analytics sets
+                the <code>_ga</code> and <code>_ga_*</code> cookies, which last
+                up to two years, only if you click &ldquo;Accept All&rdquo; in the
+                cookie banner.
+              </p>
+              <p className="mt-3">
+                Until you accept, Google&apos;s tag runs in a cookieless mode
+                (Google Consent Mode): it sets no cookies and sends Google only
+                basic signals, such as that a page was viewed or that a visit
+                from an ad led to a call or form, without an identifier that
+                links your visits together. Google uses these to estimate how
+                our site and ads perform. We do not send your name, email, phone
+                number, or message to Google.
               </p>
               <p className="mt-3">
                 We also use Vercel Web Analytics, which counts page views in
@@ -69,6 +76,12 @@ export default function CookiePolicyPage() {
                 Advertising Cookies
               </h2>
               <p>
+                If you accept, Google Ads sets the <code>_gcl_*</code> cookies,
+                which last up to 90 days, so we can tell which Google ads led to
+                a call or a contact form. Without your consent these cookies are
+                not set.
+              </p>
+              <p className="mt-3">
                 The same &ldquo;Accept All&rdquo; choice also loads the Meta
                 Pixel, which tells Meta (Facebook and Instagram) when someone
                 who saw our ads visits the site, taps to call us, or sends the
@@ -107,8 +120,9 @@ export default function CookiePolicyPage() {
               <p>
                 You can change your choice at any time with the &ldquo;Cookie
                 settings&rdquo; link in the website footer. If you withdraw
-                consent, Google Analytics and the Meta Pixel stop collecting
-                data and their cookies are removed. You can also block or delete cookies through your
+                consent, their cookies are removed, the Meta Pixel stops
+                collecting data, and Google&apos;s tag goes back to the
+                cookieless mode described above. You can also block or delete cookies through your
                 browser settings. Some embedded features may not work as
                 expected if cookies are disabled.
               </p>

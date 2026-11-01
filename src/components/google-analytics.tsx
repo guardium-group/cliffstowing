@@ -2,43 +2,48 @@
 
 import { useEffect, useRef } from "react";
 import Script from "next/script";
-import { useConsent } from "@/lib/consent";
-import { GA_MEASUREMENT_ID, disableAnalytics, enableAnalytics } from "@/lib/analytics";
+import { CONSENT_KEY, useConsent } from "@/lib/consent";
+import { GOOGLE_TAG_IDS, updateGoogleConsent } from "@/lib/analytics";
 
 /**
- * Loads GA4 only after the visitor accepts analytics cookies.
+ * Google tag with Consent Mode v2 (advanced). gtag.js loads on every page. Until the visitor
+ * clicks "Accept All" it runs with all consent denied: no cookies, only cookieless pings that
+ * Google uses to model conversions. Accepting or declining updates the consent state in place.
  * Page views (including client-side navigations) come from GA4 Enhanced Measurement.
  */
 export function GoogleAnalytics() {
   const consent = useConsent();
-  const wasAccepted = useRef(false);
+  const lastConsent = useRef(consent);
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID) return;
-    if (consent === "accepted") {
-      enableAnalytics();
-      wasAccepted.current = true;
-    } else if (consent === "declined" && wasAccepted.current) {
-      // A loaded script can't be unloaded, so withdraw by disabling GA and clearing its cookies.
-      disableAnalytics();
-    }
+    // The init script reads the stored choice itself, so only react to changes made on this page.
+    if (consent === lastConsent.current) return;
+    lastConsent.current = consent;
+    if (consent) updateGoogleConsent(consent === "accepted");
   }, [consent]);
 
-  if (!GA_MEASUREMENT_ID || consent !== "accepted") return null;
+  if (GOOGLE_TAG_IDS.length === 0) return null;
+
+  // The consent default must be queued before 'js' and 'config', so all three live in one script.
+  const init = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+var consent = 'denied';
+try { if (localStorage.getItem(${JSON.stringify(CONSENT_KEY)}) === 'accepted') consent = 'granted'; } catch (e) {}
+gtag('consent', 'default', { ad_storage: consent, ad_user_data: consent, ad_personalization: consent, analytics_storage: consent });
+gtag('set', 'ads_data_redaction', true);
+gtag('js', new Date());
+${GOOGLE_TAG_IDS.map((id) => `gtag('config', ${JSON.stringify(id)});`).join("\n")}`;
 
   return (
     <>
+      <Script id="google-tag-init" strategy="afterInteractive">
+        {init}
+      </Script>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_IDS[0]}`}
         strategy="afterInteractive"
       />
-      <Script id="ga4-init" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = gtag;
-gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`}
-      </Script>
     </>
   );
 }

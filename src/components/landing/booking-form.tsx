@@ -17,7 +17,7 @@ export function BookingForm() {
       intro={<>Tell us the vehicle, where it is and what you need. For anything urgent, call {siteConfig.phone.compact}.</>}
       submitLabel="Send booking request"
       preset={preset}
-      className="rounded-2xl p-8 sm:p-10 shadow-[0_24px_60px_-28px_rgba(20,10,11,0.35)] ring-1 ring-gray-200"
+      className="rounded-2xl p-6 sm:p-10 shadow-[0_24px_60px_-28px_rgba(20,10,11,0.35)] ring-1 ring-gray-200"
     />
   );
 }

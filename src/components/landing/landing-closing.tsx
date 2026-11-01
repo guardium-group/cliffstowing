@@ -68,11 +68,11 @@ export function LandingFooter() {
         <p>
           © {new Date().getFullYear()} {siteConfig.legalName} · {siteConfig.address.display}
         </p>
-        <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/privacy-policy" className="hover:text-white">Privacy</Link>
-          <Link href="/cookies" className="hover:text-white">Cookies</Link>
-          <Link href="/terms" className="hover:text-white">Terms</Link>
-          <CookieSettingsButton className="hover:text-white" />
+        <nav aria-label="Legal" className="flex flex-wrap gap-x-6">
+          <Link href="/privacy-policy" className="inline-flex min-h-11 items-center hover:text-white">Privacy</Link>
+          <Link href="/cookies" className="inline-flex min-h-11 items-center hover:text-white">Cookies</Link>
+          <Link href="/terms" className="inline-flex min-h-11 items-center hover:text-white">Terms</Link>
+          <CookieSettingsButton className="inline-flex min-h-11 items-center hover:text-white" />
         </nav>
       </Container>
     </footer>

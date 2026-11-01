@@ -7,12 +7,13 @@ import { cn } from "@/lib/utils";
  * spacing and buttons stay identical down the page. Don't add one-off sizes in sections.
  *
  * Type scale:  hero h1 · h2 (every section) · h3 · stat · quote · lede · body · eyebrow
+ *              On phones h1/h2 scale with the screen so each authored line stays on one line.
  * Spacing:     section py-24/lg:py-32 · intro → content mt-14/lg:mt-20 · cards p-8, gap-6
  */
 
 export const DISPLAY = "font-[family-name:var(--font-display)]";
-export const H1 = `${DISPLAY} text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.95] tracking-[-0.045em] font-extrabold text-balance`;
-export const H2 = `${DISPLAY} text-[clamp(2.25rem,4.4vw,3.5rem)] leading-[1.02] tracking-[-0.04em] font-extrabold text-balance`;
+export const H1 = `${DISPLAY} text-[clamp(2rem,calc(12.2vw_-_6px),3.5rem)] sm:text-[clamp(3.5rem,7vw,5.75rem)] leading-[0.95] tracking-[-0.045em] font-extrabold text-balance`;
+export const H2 = `${DISPLAY} text-[clamp(1.75rem,calc(11vw_-_5.5px),2.25rem)] sm:text-[clamp(2.25rem,4.4vw,3.5rem)] leading-[1.02] tracking-[-0.04em] font-extrabold text-balance`;
 export const H3 = `${DISPLAY} text-2xl leading-tight tracking-[-0.02em] font-bold`;
 export const STAT = `${DISPLAY} text-[clamp(4rem,8vw,6.5rem)] leading-[0.9] tracking-[-0.05em] font-extrabold`;
 /** Outlined display numeral (01, 02...) used by the tow index and the steps. */
@@ -23,7 +24,7 @@ export const CONTENT_GAP = "mt-14 lg:mt-20";
 /** Muted text that adapts to light and dark sections. */
 export const MUTED = "text-gray-600 group-data-[dark=true]/s:text-white/70";
 export const TEXT_LINK =
-  "group/link inline-flex items-center gap-2 font-semibold decoration-2 underline-offset-[6px] hover:underline focus-visible:underline";
+  "group/link relative inline-flex items-center gap-2 text-left font-semibold after:absolute after:inset-x-0 after:-inset-y-2.5 after:content-[''] decoration-2 underline-offset-[6px] hover:underline focus-visible:underline";
 
 type Tone = "light" | "muted" | "dark" | "maroon";
 const TONES: Record<Tone, string> = {
@@ -104,12 +105,15 @@ export function PrimaryCta({
   children,
   icon = "phone",
   size = "lg",
+  compactOnXs = false,
   className,
 }: {
   href: string;
   children: ReactNode;
   icon?: "phone" | "arrow";
   size?: "sm" | "lg";
+  /** Drop the round badge below 360px, where the top bar can't fit logo + full pill. */
+  compactOnXs?: boolean;
   className?: string;
 }) {
   const Icon = icon === "phone" ? Phone : ArrowRight;
@@ -117,13 +121,14 @@ export function PrimaryCta({
     <a
       href={href}
       className={cn(
-        "group/cta inline-flex items-center rounded-full bg-primary font-semibold text-white shadow-lg shadow-primary/25 transition-colors hover:bg-[#c8161c] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40",
+        "group/cta inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-primary font-semibold text-white shadow-lg shadow-primary/25 transition-colors hover:bg-[#c8161c] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40",
         size === "lg" ? "gap-4 py-2 pl-7 pr-2 text-base" : "gap-3 py-1.5 pl-5 pr-1.5 text-sm",
+        compactOnXs && "max-[359px]:min-h-11 max-[359px]:px-4",
         className
       )}
     >
       {children}
-      <span className={cn("flex items-center justify-center rounded-full bg-white text-primary transition-transform group-hover/cta:translate-x-0.5", size === "lg" ? "h-11 w-11" : "h-8 w-8")}>
+      <span className={cn("flex items-center justify-center rounded-full bg-white text-primary transition-transform group-hover/cta:translate-x-0.5", size === "lg" ? "h-11 w-11" : "h-8 w-8", compactOnXs && "max-[359px]:hidden")}>
         <Icon className={size === "lg" ? "h-5 w-5" : "h-4 w-4"} aria-hidden="true" />
       </span>
     </a>

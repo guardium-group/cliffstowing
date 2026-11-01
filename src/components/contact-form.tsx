@@ -204,6 +204,12 @@ export function ContactForm({
   const [honeypot, setHoneypot] = useState("");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
+  // The standard widget is a fixed 300px wide. On narrow phones that pushes the page
+  // sideways, so measure the slot once and use Cloudflare's compact size when it won't fit.
+  const [widgetSize, setWidgetSize] = useState<"normal" | "compact" | null>(null);
+  const measureWidgetSlot = (el: HTMLDivElement | null) => {
+    if (el && widgetSize === null) setWidgetSize(el.clientWidth < 300 ? "compact" : "normal");
+  };
   const pendingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [pendingSubmit, setPendingSubmit] = useState(false);
@@ -492,23 +498,27 @@ export function ContactForm({
         )}
 
         {turnstileSiteKey ? (
-          <Turnstile
-            ref={turnstileRef}
-            siteKey={turnstileSiteKey}
-            onSuccess={setTurnstileToken}
-            onExpire={() => setTurnstileToken(null)}
-            onError={() =>
-              abortPendingVerification(
-                `Security verification failed. Please refresh the page and try again, or call us directly at ${siteConfig.phone.display}.`
-              )
-            }
-            onTimeout={() =>
-              abortPendingVerification(
-                `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
-              )
-            }
-            options={{ execution: "render", size: "normal", refreshExpired: "auto" }}
-          />
+          <div ref={measureWidgetSlot} className={widgetSize === "compact" ? "min-h-[140px]" : "min-h-[65px]"}>
+            {widgetSize && (
+              <Turnstile
+                ref={turnstileRef}
+                siteKey={turnstileSiteKey}
+                onSuccess={setTurnstileToken}
+                onExpire={() => setTurnstileToken(null)}
+                onError={() =>
+                  abortPendingVerification(
+                    `Security verification failed. Please refresh the page and try again, or call us directly at ${siteConfig.phone.display}.`
+                  )
+                }
+                onTimeout={() =>
+                  abortPendingVerification(
+                    `Verification timed out. Please try again or call ${siteConfig.phone.display}.`
+                  )
+                }
+                options={{ execution: "render", size: widgetSize, refreshExpired: "auto" }}
+              />
+            )}
+          </div>
         ) : (
           <div className="flex items-start gap-2 p-4 rounded-lg bg-red-50 text-red-700">
             <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />

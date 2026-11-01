@@ -7,12 +7,12 @@ export function LandingTopBar() {
   return (
     <div className="sticky top-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur-md">
       <Container className="flex h-18 items-center justify-between gap-4 py-3">
-        <Image src="/cliffs_logo.png" alt="Cliff's Towing" width={130} height={36} className="h-10 w-auto object-contain sm:h-11" priority />
+        <Image src="/cliffs_logo.png" alt="Cliff's Towing" width={130} height={36} className="h-9 w-auto object-contain sm:h-11" priority />
         <div className="flex items-center gap-6">
           <span className="hidden items-center gap-2 text-sm font-medium text-gray-700 sm:flex">
             <LiveDot /> Dispatch live 24/7
           </span>
-          <PrimaryCta href={siteConfig.phone.href} size="sm" className="shadow-none">
+          <PrimaryCta href={siteConfig.phone.href} size="sm" compactOnXs className="shadow-none">
             {siteConfig.phone.compact}
           </PrimaryCta>
         </div>
@@ -41,7 +41,7 @@ export function LandingHero() {
         <Eyebrow>24/7 towing &amp; winching · Edmonton area</Eyebrow>
         <h1 className={cn("mt-6 max-w-4xl", H1)}>
           <span className="landing-rise block">Stuck in the snow.</span>
-          <span className="landing-rise block text-[#ff5a5f] [animation-delay:120ms]">We&apos;ll get you out.</span>
+          <span className="landing-rise block [animation-delay:120ms]">We&apos;ll get you out.</span>
         </h1>
         <p className="mt-8 max-w-[46ch] text-lg leading-relaxed text-white/80">
           Light, medium and heavy duty towing plus winching, from cars and pickups to semis, for drivers and businesses
@@ -61,7 +61,7 @@ export function LandingHero() {
               <span className="font-semibold text-white">Need help now?</span> Dispatch is answering 24/7.
             </p>
           </div>
-          <a href={siteConfig.phone.href} className="text-2xl font-extrabold tracking-[-0.02em] hover:text-[#ff8a8e] font-[family-name:var(--font-display)]">
+          <a href={siteConfig.phone.href} className="inline-flex min-h-11 items-center text-2xl font-extrabold tracking-[-0.02em] hover:text-[#ff8a8e] font-[family-name:var(--font-display)]">
             {siteConfig.phone.compact}
           </a>
         </div>

@@ -50,16 +50,16 @@ export function TowTiers() {
       />
       <ol className={cn(CONTENT_GAP, "border-b border-gray-200")}>
         {tiers.map((t, i) => (
-          <li key={t.kind} className="group grid gap-6 border-t border-gray-200 py-10 lg:grid-cols-[8rem_minmax(0,1fr)_minmax(0,26rem)] lg:items-start lg:gap-12">
+          <li key={t.kind} className="group grid gap-6 border-t border-gray-200 py-10 md:grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,17rem)] md:items-start md:gap-8 lg:grid-cols-[8rem_minmax(0,1fr)_minmax(0,26rem)] lg:gap-12">
             <span aria-hidden="true" className={cn(NUMERAL, "[-webkit-text-stroke-color:#e81e25]")}>{String(i + 1).padStart(2, "0")}</span>
-            <div className="order-last lg:order-none">
+            <div className="order-last md:order-none">
               <h3 className={H3}>{t.name}</h3>
               <p className={cn(BODY, "mt-2 font-medium")}>{t.vehicles}</p>
               <p className={cn(BODY, "mt-2 max-w-[52ch]", MUTED)}>{t.detail}</p>
               <BookLink kind={t.kind} source="tiers" className="mt-5 text-primary">Book {t.name.toLowerCase()}</BookLink>
             </div>
             <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
-              <Image src={t.image} alt={t.alt} fill sizes="(min-width: 1024px) 26rem, 100vw" className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" />
+              <Image src={t.image} alt={t.alt} fill sizes="(min-width: 1024px) 26rem, (min-width: 768px) 17rem, 100vw" className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" />
             </div>
           </li>
         ))}

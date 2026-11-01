@@ -1,36 +1,71 @@
-import { Snowflake } from "lucide-react";
+import { Check, Snowflake } from "lucide-react";
+import { BODY, CONTENT_GAP, H3, Mark, MUTED, NUMERAL, Section, SectionIntro } from "@/components/landing/ui";
 import { siteConfig } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 const steps = [
-  { title: "Call dispatch", body: `Call ${siteConfig.phone.compact}. Dispatch answers 24/7, including storm nights.` },
-  { title: "Tell us where you are", body: "Cross streets, direction of travel or a GPS pin, plus what you drive and what happened." },
-  { title: "We get you moving", body: "A tow, a winch-out or both, with an honest ETA up front." },
+  {
+    title: "Share your location.",
+    body: "Give dispatch your location so the right truck finds you.",
+    ready: ["Cross streets or highway and direction", "Nearby exits, businesses or a GPS pin"],
+  },
+  {
+    title: "Describe the vehicle.",
+    body: "What you drive and how it's stuck decides which truck we send.",
+    ready: ["Year, make and model, or the equipment", "In a ditch, won't start, or a collision"],
+  },
+  {
+    title: "We get you moving.",
+    body: "A tow, a winch-out or both, with an honest ETA up front.",
+    ready: ["Where the vehicle should go", "Your insurance details, if it's a collision"],
+  },
 ];
 
 export function LandingSteps() {
   return (
-    <section className="py-16 sm:py-24 bg-gray-50 border-y border-gray-100">
-      <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
-        <p className="text-xs font-mono uppercase tracking-[0.18em] text-primary">How it works</p>
-        <h2 className="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">Three steps to get out of the snow.</h2>
-        <ol className="mt-10 grid gap-4 md:grid-cols-3">
-          {steps.map((s, i) => (
-            <li key={s.title} className="rounded-2xl bg-white p-6 ring-1 ring-gray-100">
-              <span className="text-sm font-mono text-primary">Step {i + 1}</span>
-              <h3 className="mt-2 text-lg font-semibold text-gray-900">{s.title}</h3>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{s.body}</p>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-6 flex items-start gap-3 rounded-2xl bg-white p-5 ring-1 ring-gray-100 max-w-3xl">
-          <Snowflake className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" aria-hidden="true" />
-          <p className="text-sm text-gray-700">
-            <strong className="font-semibold text-gray-900">Slid off the road?</strong> If you can&apos;t
-            get safely away from traffic, stay belted in with your hazard lights on, then call us. If
-            anyone is hurt, call emergency services first.
-          </p>
-        </div>
-      </div>
-    </section>
+    <Section tone="dark" labelledBy="steps-heading">
+      <SectionIntro
+        id="steps-heading"
+        eyebrow="How it works"
+        title={<>Three steps.<br />One phone <Mark>call.</Mark></>}
+        lede={`Call ${siteConfig.phone.compact} and dispatch walks you through it. Having these ready helps.`}
+      />
+      <ol className={cn(CONTENT_GAP, "border-b border-white/10")}>
+        {steps.map((s, i) => (
+          <li key={s.title} className="grid gap-8 border-t border-white/10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-16">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
+              <span
+                className={cn(NUMERAL, "[-webkit-text-stroke-color:#ff5a5f]")}
+                aria-hidden="true"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className={H3}>{s.title}</h3>
+                <p className={cn(BODY, "mt-2 max-w-[44ch]", MUTED)}>{s.body}</p>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-white/[0.05] p-8 ring-1 ring-white/10">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#ff6b70]">Have ready</p>
+              <ul className="mt-4 grid gap-3">
+                {s.ready.map((r) => (
+                  <li key={r} className={cn(BODY, "flex items-start gap-3 text-white/85")}>
+                    <Check className="mt-1 h-4 w-4 flex-shrink-0 text-[#ff6b70]" strokeWidth={3} aria-hidden="true" />
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p className={cn(BODY, "mt-10 flex items-start gap-3", MUTED)}>
+        <Snowflake className="mt-1 h-4 w-4 flex-shrink-0 text-[#ff6b70]" aria-hidden="true" />
+        <span>
+          <span className="font-semibold text-white">Slid off the road?</span>{" "}If you can&apos;t get safely away from
+          traffic, stay belted in with your hazard lights on, then call. If anyone is hurt, call emergency services first.
+        </span>
+      </p>
+    </Section>
   );
 }

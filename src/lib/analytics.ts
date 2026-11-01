@@ -1,4 +1,8 @@
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+/** The Google tag from Google Ads (GT-…). Its destinations (GA4 + Google Ads) are managed in the Google tag UI. */
+export const GOOGLE_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "";
+/** Every Google tag ID to configure; gtag.js is loaded once, with the first. */
+export const GOOGLE_TAG_IDS = [...new Set([GOOGLE_TAG_ID, GA_MEASUREMENT_ID].filter(Boolean))];
 export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
 
 type GtagParams = Record<string, string | number | boolean | undefined>;
@@ -11,7 +15,10 @@ declare global {
   }
 }
 
-/** Sends a GA4 event. No-op until GA4 has loaded (i.e. without analytics consent). */
+/**
+ * Sends a Google event (GA4 and any other destinations of the Google tag). Without consent,
+ * Consent Mode turns it into a cookieless ping. No-op until gtag has loaded.
+ */
 export function trackEvent(name: string, params?: GtagParams) {
   if (typeof window === "undefined") return;
   window.gtag?.("event", name, params);
@@ -36,11 +43,19 @@ function clearCookies(matches: (name: string) => boolean) {
   }
 }
 
-/** Stops GA4 sending hits and removes its first-party cookies. */
-export function disableAnalytics() {
-  if (!GA_MEASUREMENT_ID) return;
-  (window as unknown as Record<string, boolean>)[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
-  clearCookies((name) => name === "_ga" || name.startsWith("_ga_"));
+/** Consent Mode v2: tells every Google tag whether it may use cookies and ad data. */
+export function updateGoogleConsent(granted: boolean) {
+  const state = granted ? "granted" : "denied";
+  window.gtag?.("consent", "update", {
+    ad_storage: state,
+    ad_user_data: state,
+    ad_personalization: state,
+    analytics_storage: state,
+  });
+  // Denying stops new cookies; remove the ones set while consent was granted.
+  if (!granted) {
+    clearCookies((name) => name === "_ga" || name.startsWith("_ga_") || name.startsWith("_gcl_"));
+  }
 }
 
 /** Stops the Meta Pixel sending events and removes its first-party cookies. */
@@ -48,9 +63,4 @@ export function disableMetaPixel() {
   if (!META_PIXEL_ID) return;
   window.fbq?.("consent", "revoke");
   clearCookies((name) => name === "_fbp" || name === "_fbc");
-}
-
-export function enableAnalytics() {
-  if (!GA_MEASUREMENT_ID) return;
-  (window as unknown as Record<string, boolean>)[`ga-disable-${GA_MEASUREMENT_ID}`] = false;
 }

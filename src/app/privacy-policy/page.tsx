@@ -73,12 +73,15 @@ export default function PrivacyPolicyPage() {
                 spam and limit repeated contact form submissions.
               </p>
               <p className="mt-3">
-                If you accept analytics cookies, Google Analytics collects
-                website usage information such as pages viewed, approximate
-                location, device and browser type, how you arrived at the site,
-                and whether you clicked to call us or sent the contact form. We
-                do not send your name, email, phone number, or message to Google
-                Analytics.
+                If you accept analytics cookies, Google Analytics and Google Ads
+                collect website usage information such as pages viewed,
+                approximate location, device and browser type, how you arrived
+                at the site, and whether you clicked to call us or sent the
+                contact form. If you do not accept, Google&apos;s tag still sends
+                basic cookieless signals (such as a page view or a call click)
+                without an identifier that links your visits together, which
+                Google uses to estimate how our site and ads perform. We do not
+                send your name, email, phone number, or message to Google.
               </p>
               <p className="mt-3">
                 With the same consent, the Meta Pixel tells Meta (Facebook and
@@ -122,8 +125,8 @@ export default function PrivacyPolicyPage() {
                 messages), Microsoft 365 (our email), Cloudflare (website
                 security and the Turnstile spam check on the contact form),
                 Vercel (website hosting and cookieless page-view analytics),
-                Google Analytics (website usage analytics, only with your
-                consent), and Meta Platforms (the Meta Pixel, which measures our
+                Google (Google Analytics and Google Ads: website usage and ad
+                measurement, with cookies only with your consent), and Meta Platforms (the Meta Pixel, which measures our
                 Facebook and Instagram ads, only with your consent).
               </p>
             </div>
@@ -183,8 +186,8 @@ export default function PrivacyPolicyPage() {
                 privacy contact below. We will respond within 30 days.
               </p>
               <p className="mt-3">
-                Google Analytics and the Meta Pixel only run if you accept
-                cookies. You can change or withdraw that choice at any time with the
+                Google Analytics and Google Ads only set cookies, and the Meta
+                Pixel only runs, if you accept cookies. You can change or withdraw that choice at any time with the
                 &ldquo;Cookie settings&rdquo; link in the website footer. See
                 our <Link href="/cookies" className="text-primary">Cookie Policy</Link>{" "}
                 for details.

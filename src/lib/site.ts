@@ -22,7 +22,7 @@ export const siteConfig = {
   },
   owner: "Guardium Group of Companies",
   foundedCopy: "serving Edmonton for over 70 years",
-  hours: "24/7 emergency dispatch",
+  hours: "24/7hrs",
   serviceArea: [
     "Edmonton",
     "Sherwood Park",

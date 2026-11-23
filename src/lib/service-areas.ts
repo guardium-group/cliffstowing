@@ -53,9 +53,9 @@ export const serviceAreas: AreaData[] = [
         ],
       },
       {
-        heading: "Dispatch from south-east Edmonton",
+        heading: "Dispatch from north-west Edmonton",
         body: [
-          "Our head office is at 4918 Roper Rd NW in south-east Edmonton, and dispatch answers around the clock. Wayne Gretzky Drive, the Henday and Whitemud give crews ring-road and river-crossing options to reach the north end, the west end near West Edmonton Mall, or the Highway 2 approach to Edmonton International Airport. When you call, give the nearest intersection or address, the make and model, what the vehicle is doing, and where you would like it taken. We will confirm the plan before a driver is sent.",
+          "Our head office is at 14360 Yellowhead Trail in north-west Edmonton, and dispatch answers around the clock. Yellowhead Trail, the Henday and St. Albert Trail give crews direct routes east across the north side, west toward Acheson and Spruce Grove, and around the ring road to the south end and the Highway 2 approach to Edmonton International Airport. When you call, give the nearest intersection or address, the make and model, what the vehicle is doing, and where you would like it taken. We will confirm the plan before a driver is sent.",
         ],
       },
     ],

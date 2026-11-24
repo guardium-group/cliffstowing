@@ -11,18 +11,18 @@ export const siteConfig = {
   },
   email: "dispatch@cliffstowing.ca",
   address: {
-    street: "4918 Roper Rd NW Suite 206",
+    street: "14360 Yellowhead Trail",
     city: "Edmonton",
     region: "AB",
-    postalCode: "T6B 3T7",
+    postalCode: "T5L 3C2",
     country: "CA",
-    display: "4918 Roper Rd NW Suite 206, Edmonton, AB T6B 3T7",
+    display: "14360 Yellowhead Trail, Edmonton, AB T5L 3C2",
     mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=4918%20Roper%20Rd%20NW%20Suite%20206%2C%20Edmonton%2C%20AB%20T6B%203T7",
+      "https://www.google.com/maps/search/?api=1&query=14360%20Yellowhead%20Trail%2C%20Edmonton%2C%20AB%20T5L%203C2",
   },
   owner: "Guardium Group of Companies",
   foundedCopy: "serving Edmonton for over 70 years",
-  hours: "24/7 emergency dispatch",
+  hours: "24/7hrs",
   serviceArea: [
     "Edmonton",
     "Sherwood Park",

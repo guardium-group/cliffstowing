@@ -41,7 +41,7 @@ const contactCards = [
     icon: Clock,
     title: "Hours",
     description: "Emergency dispatch never closes",
-    action: "24/7 - 365 days",
+    action: siteConfig.hours,
     href: null,
   },
 ];

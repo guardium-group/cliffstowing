@@ -5,9 +5,9 @@
 **Company:** Cliff's Towing  
 **Site:** https://cliffstowing.ca  
 **Type:** Local service business — towing, transport & roadside assistance  
-**Location:** 4918 Roper Rd NW Suite 206, Edmonton, AB T6B 3T7  
+**Location:** 14360 Yellowhead Trail, Edmonton, AB T5L 3C2  
 **Phone:** +1 (780) 451-1555  
-**Hours:** 24/7 emergency dispatch  
+**Hours:** 24/7hrs  
 **Founded:** Serving Edmonton for over 70 years  
 **Parent:** Guardium Group of Companies
 

@@ -33,7 +33,7 @@ const contactCards = [
   {
     icon: MapPin,
     title: "Head office",
-    description: "Edmonton, Alberta",
+    description: siteConfig.address.display,
     action: "Get directions",
     href: siteConfig.address.mapUrl,
   },

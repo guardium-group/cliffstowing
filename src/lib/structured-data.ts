@@ -22,11 +22,6 @@ export function localBusinessJsonLd() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: siteConfig.address.country,
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 53.5461,
-      longitude: -113.4938,
-    },
     priceRange: "$$",
     // hasMap: "https://maps.google.com/?cid=REPLACE_WITH_GBP_CID", // add once GBP is verified
     sameAs: [
